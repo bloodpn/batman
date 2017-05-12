@@ -28,4 +28,5 @@
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/apps.min.js"></script>
 <script src="/js/demo.js"></script>
+<script src="/js/table_paginate.js"></script>
 <!-- <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script> -->
