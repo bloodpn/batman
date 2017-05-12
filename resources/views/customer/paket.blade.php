@@ -27,7 +27,13 @@
 			</div>
 			<div class="col-lg-5">
 				<div class="form-group">
-					
+					<label>Tanggal Pengiriman</label>
+					<div class="input-group date">
+	                  	<div class="input-group-addon">
+	                    	<i class="fa fa-calendar"></i>
+	                  	</div>
+	                  	<input type="text" class="form-control pull-right" id="tgl_berangkat" placeholder="Tanggal Berangkat">
+	                </div>
 				</div>
 			</div>
 		</div>
@@ -42,7 +48,21 @@
 					</select>
 				</div>
 			</div>
+			<div class="col-lg-5">
+				<div class="form-group">
+					<label>Jadwal Pengiriman</label>
+					<select class="form-control" style="width: 100%">
+						<option>Blr (09:00) - BDG (11.00)</option>
+					</select>
+				</div>
+			</div>
 		</div>
+	</div>
+	<div class="box-footer">
+		<div class="input-group pull-right">
+            <!-- <button type="button" class="btn btn-primary btn-flat">Lanjut</button> -->
+            <a href="{{ url('/datapaket') }}" class="btn btn-primary btn-flat">Lanjut</a>
+        </div>
 	</div>
 
 @endsection

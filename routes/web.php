@@ -25,3 +25,5 @@ Route::get('/masterkendaraan', 'MasterkendaraanController@index');
 Route::get('/masterjadwal', 'MasterjadwalController@index');
 
 Route::get('/paket', 'Paketcontroller@index');
+
+Route::get('/datapaket', 'DatapaketController@index');
