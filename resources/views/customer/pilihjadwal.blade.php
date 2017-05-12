@@ -5,6 +5,7 @@
 @section('content')
 <div class="box box-primary box-solid direct-chat direct-chat-primary">
   <div class="box-header">
+    <a href="/"><i class="fa fa-home fa-lg"></i></a> | 
     <h3 class="box-title">Pilih Jadwal</h3>
     <div class="box-tools pull-right">
       <button class="btn btn-box-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle">Bantuan</button>
@@ -124,21 +125,21 @@
                   <td>12.00 WIB</td>
                   <td>3 Kursi</td>
                   <td>Rp. 90.000</td>
-                  <td><button type="button" class="btn btn-primary btn-flat">Pilih</button></td>
+                  <td><a href="{{ url('/datapenumpang') }}" class="btn btn-primary btn-flat">Pilih</a></td>
                 </tr>
                 <tr>
                   <td>3.</td>
                   <td>15.00 WIB</td>
                   <td>3 Kursi</td>
                   <td>Rp. 90.000</td>
-                  <td><button type="button" class="btn btn-primary btn-flat">Pilih</button></td>
+                  <td><a href="{{ url('/datapenumpang') }}" class="btn btn-primary btn-flat">Pilih</a></td>
                 </tr>
                 <tr>
                   <td>4.</td>
                   <td>20.00 WIB</td>
                   <td>3 Kursi</td>
                   <td>Rp. 100.000</td>
-                  <td><button type="button" class="btn btn-primary btn-flat">Pilih</button></td>
+                  <td><a href="{{ url('/datapenumpang') }}" class="btn btn-primary btn-flat">Pilih</a></td>
                 </tr>
               </table>
             </div>

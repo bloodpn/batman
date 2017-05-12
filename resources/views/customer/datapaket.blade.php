@@ -6,8 +6,8 @@
 
 <div class="box box-primary box-solid direct-chat direct-chat-primary">
 	<div class="box-header">
-		<a href="/"><i class="fa fa-home">Home</i></a> | 
-		<h3 class="box-title">Data Paket</h3>
+		<a href="/"><i class="fa fa-home fa-lg"></i></a> | 
+		<h3 class="box-title">Data Pengiriman</h3>
 			<div class="box-tools pull-right">
     			<button class="btn btn-box-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle">Bantuan</button>
   			</div>
@@ -132,6 +132,103 @@
 					<div class="col-lg-5">
 						<div class="form-group">
 							<input type="number" min="0" name="berat" class="form-control form-purchase"></input>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="form-group" style="margin-left: 10px;">
+							<label>Jenis Barang :</label>
+						</div>
+					</div>
+					<div class="col-lg-5">
+						<div class="form-group">
+							<select class="form-control form-purchase">
+								<option>Dokumen</option>
+								<option>Paket</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="form-group" style="margin-left: 10px;">
+							<label>Isi Barang :</label>
+						</div>
+					</div>
+					<div class="col-lg-5">
+						<div class="form-group">
+							<input type="text" name="isi_paket" class="form-control form-purchase" placeholder="Isi Paket"></input>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="form-group" style="margin-left: 10px;">
+							<label>Instruksi Khusus : </label>
+						</div>
+					</div>
+					<div class="col-lg-5">
+						<div class="form-group">
+							<input type="text" name="instruksi" class="form-control form-purchase" placeholder="Hati-hati...."></input>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="form-group">
+							<label>Jenis Layanan :</label>
+						</div>
+					</div>
+					<div class="col-lg-5">
+						<div class="form-group">
+							<select class="form-control form-purchase">
+								<option>Gold</option>
+								<option>Platinum</option>
+								<option>Internal</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="form-group">
+							<label>Cara Bayar :</label>
+						</div>
+					</div>
+					<div class="col-lg-5">
+						<div class="form-group">
+							<select class="form-control form-purchase">
+								<option>Cash</option>
+								<option>Transfer</option>
+								<option>Berlangganan</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="form-group">
+							<label>Discount :</label>
+						</div>
+					</div>
+					<div class="col-lg-5">
+						<div class="form-group">
+							<input type="text" name="discount" class="form-control form-purchase" placeholder="10%" readonly=""></input>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="form-group">
+							<label>Total Bayar :</label>
+						</div>
+					</div>
+					<div class="col-lg-5">
+						<div class="form-group">
+							<input type="text" name="total_bayar" class="form-control form-purchase" placeholder="Rp. 90.000" readonly=""></input>
 						</div>
 					</div>
 				</div>
