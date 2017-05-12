@@ -17,3 +17,11 @@ Route::get('/pilihkursi', 'PilihkursiController@index');
 Route::get('/metodepembayaran', 'PilihpembayaranController@index');
 
 Route::get('/invoice', 'InvoiceController@index');
+
+Route::get('/reservasi', 'ReservasiController@index');
+
+Route::get('/masterkendaraan', 'MasterkendaraanController@index');
+
+Route::get('/masterjadwal', 'MasterjadwalController@index');
+
+Route::get('/paket', 'Paketcontroller@index');

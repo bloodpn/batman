@@ -12,12 +12,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/UI/general.html"><i class="fa fa-circle-o text-aqua"></i> General</a></li>
-            <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o text-aqua"></i> Icons</a></li>
-            <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o text-aqua"></i> Buttons</a></li>
-            <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o text-aqua"></i> Sliders</a></li>
-            <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o text-aqua"></i> Timeline</a></li>
-            <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o text-aqua"></i> Modals</a></li>
+            <li><a href="masterkendaraan"><i class="fa fa-circle-o text-aqua"></i> Master Kendaraan</a></li>
+            <li><a href="masterjadwal"><i class="fa fa-circle-o text-aqua"></i> Master Jadwal</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -28,20 +24,19 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o text-aqua"></i> Simple tables</a></li>
-            <li><a href="pages/tables/data.html"><i class="fa fa-circle-o text-aqua"></i> Data tables</a></li>
+            <li><a href="reservasi"><i class="fa fa-circle-o text-aqua"></i>Reservasi</a></li>
           </ul>
         </li>
         <li>
           <a href="pages/calendar.html">
-            <i class="fa fa-truck"></i> <span>Pengiriman</span>
+            <i class="fa fa-truck"></i> <span>Paket</span>
              <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o text-aqua"></i> Simple tables</a></li>
-            <li><a href="pages/tables/data.html"><i class="fa fa-circle-o text-aqua"></i> Data tables</a></li>
+            <li><a href="paket"><i class="fa fa-circle-o text-aqua"></i>Pengiriman Paket</a></li>
+            <li><a href="checkin"><i class=""></i>Check in paket</a></li>
           </ul>
         </li>
       </ul>
