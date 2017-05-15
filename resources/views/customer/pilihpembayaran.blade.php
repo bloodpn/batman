@@ -65,13 +65,80 @@
 
 <div class="box box-primary box-solid direct-chat direct-chat-primary">
   <div class="box-header">
-    <h3 class="box-title">Pilih Tempat Duduk</h3>
+    <h3 class="box-title">Pilih Metode Pembayaran</h3>
     <!-- <div class="box-tools pull-right">
       <button class="btn btn-box-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle">Bantuan</button>
     </div> -->
   </div><!-- /.box-header -->
-  <div class="box-body text-center">
-    <img class="img-responsive pad" src="/images/1.jpg" alt="Photo">
+  <div class="box-body">
+  <br>
+    <div class="row">
+      <div class="col-sm-6" >
+        <div class="box" style="margin-left: 10px;">
+            <div class="box-body no-padding" >
+              <table class="table table-striped table-bordered">
+                <tr>
+                  <td class="text-left col-sm-6">Harga Tiket</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="text-left col-sm-6">Diskon</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="text-left col-sm-6">Total Biaya</td>
+                  <td></td>
+                </tr>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="form-group">
+          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Masukan Kode Voucher">
+        </div>
+      </div>
+      <div class="col-sm-2">
+         <button type="button" class="btn btn-primary .btn-xs">validasi</button>
+      </div>
+    </div>
+
+    <div class="row" style="margin-left: 10px;">
+      <div class="col-md-3">
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+            ATM / Internet Banking
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+            Option two can be something el
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+            Option two can be something el
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+            Option two can be something el
+          </label>
+        </div>
+      </div>
+    </div>
     
   </div><!--/.direct-chat -->
   <div class="box-footer">
