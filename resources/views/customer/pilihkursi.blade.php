@@ -64,6 +64,7 @@
 
 <div class="box box-primary box-solid direct-chat direct-chat-primary">
   <div class="box-header">
+    <a href="/"><i class="fa fa-home fa-lg"></a></i> | 
     <h3 class="box-title">Pilih Tempat Duduk</h3>
     <!-- <div class="box-tools pull-right">
       <button class="btn btn-box-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle">Bantuan</button>

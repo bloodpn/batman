@@ -35,8 +35,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="paket"><i class="fa fa-circle-o text-aqua"></i>Pengiriman Paket</a></li>
-            <li><a href="checkin"><i class=""></i>Check in paket</a></li>
+            <li><a href="paket"><i class=""></i>Pengiriman Paket</a></li>
+            <li><a href="checkinpaket"><i class=""></i>Check in paket</a></li>
           </ul>
         </li>
       </ul>

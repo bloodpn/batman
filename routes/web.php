@@ -27,3 +27,5 @@ Route::get('/masterjadwal', 'MasterjadwalController@index');
 Route::get('/paket', 'Paketcontroller@index');
 
 Route::get('/datapaket', 'DatapaketController@index');
+
+Route::get('/checkinpaket', 'CheckinpaketController@index');
