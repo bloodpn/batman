@@ -14,6 +14,7 @@
           <ul class="treeview-menu">
             <li><a href="masterkendaraan"><i class="fa fa-circle-o text-aqua"></i> Master Kendaraan</a></li>
             <li><a href="masterjadwal"><i class="fa fa-circle-o text-aqua"></i> Master Jadwal</a></li>
+			<li><a href="mastersupir"><i class="fa fa-circle-o text-aqua"></i> Master Supir</a></li>
           </ul>
         </li>
         <li class="treeview">

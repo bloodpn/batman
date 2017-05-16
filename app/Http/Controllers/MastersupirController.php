@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class MasterjadwalController extends Controller
+class MastersupirController extends Controller
 {
     public function index()
     {
-    	return view('master/masterjadwal');
+    	return view('master/mastersupir');
     }
 }

@@ -7,5 +7,8 @@ use App\Http\Controllers\Controller;
 
 class MasterkendaraanController extends Controller
 {
-    //
+   public function index()
+    {
+    	return view('master/masterkendaraan');
+    }
 }
