@@ -63,7 +63,7 @@
   </div>
 </div>
 
-<div class="box box-primary box-solid direct-chat direct-chat-primary">
+<div class="box box-primary box-solid">
   <div class="box-header">
     <a href="/"><i class="fa fa-home fa-lg"></a></i> | 
     <h3 class="box-title">Data Pemesan dan Penumpang</h3>
@@ -72,7 +72,6 @@
     </div>
   </div><!-- /.box-header -->
   <div class="box-body">
-    <div class="box">
     <br>
       <div class="row"  style="margin-left: 0px;">
         <div class="col-sm-3">
@@ -112,23 +111,6 @@
         </div>
       </div>
          
-      <div class="direct-chat-contacts">
-        <ul class="contacts-list">
-          <li>
-            <a href="#">
-              <img class="contacts-list-img" src="../dist/img/user1-128x128.jpg" alt="Contact Avatar">
-              <div class="contacts-list-info">
-                <span class="contacts-list-name">
-                  Count Dracula
-                  <small class="contacts-list-date pull-right">2/28/2015</small>
-                </span>
-                <span class="contacts-list-msg">How have you been? I was...</span>
-              </div><!-- /.contacts-list-info -->
-            </a>
-          </li><!-- End Contact Item -->
-        </ul><!-- /.contatcts-list -->
-      </div><!-- /.direct-chat-pane -->
-    </div><!-- /.box-body -->
   </div><!--/.direct-chat -->
   <div class="box-footer">
     <div class="row">

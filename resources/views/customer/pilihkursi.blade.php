@@ -26,7 +26,24 @@
    </div>
   </div>
   <div class="box-body">
-   
+    <div class="col-sm-12" >
+        <!-- <div class="box" style="margin-left: 3px;"> -->
+            <table class="table table-striped table-bordered">
+              <tr>
+                <th class="col-md-2">Pemesan</th>
+                <th class="col-md-2">Telepon</th>
+                <th class="col-md-2">Email</th>
+                <th class="col-md-5">Alamat</th>
+              </tr>
+              <tr>
+                <td class="col-md-2">Adam</td>
+                <td class="col-md-2">0899876421</td>
+                <td class="col-md-2">adam21@mail.com</td>
+                <td class="col-md-5">Jl. sukabumi 2 no 19</td>
+              </tr>
+            </table>
+        <!-- </div> -->
+      </div>
   </div>
   <div class="box-footer">
   <div class="row">
@@ -71,7 +88,67 @@
     </div> -->
   </div><!-- /.box-header -->
   <div class="box-body text-center">
-    <img class="img-responsive pad" src="/images/1.jpg" alt="Photo">
+  <br>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="row">
+          <div class="col-md-4">
+            <input type='checkbox' name='thing' value='valuable' id="1"/>
+            <label for="1"></label>
+          </div>
+          <div class="col-md-4">
+            <input type="checkbox" id="2" />
+            <label for="2"></label>
+          </div>
+          <div class="col-md-4">
+            <input type="checkbox" id="3" />
+            <label for="3"></label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <input type='checkbox' name='thing' value='valuable' id="4"/>
+            <label for="4"></label>
+          </div>
+          <div class="col-md-4">
+            <input type="checkbox" id="inputOne" />
+            <label for="5"></label>
+          </div>
+          <div class="col-md-4">
+            <input type="checkbox" id="inputOne" />
+            <label for="6"></label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <input type='checkbox' name='thing' value='valuable' id="thing"/>
+            <label for="7"></label>
+          </div>
+          <div class="col-md-4">
+            <input type="checkbox" id="inputOne" />
+            <label for="8"></label>
+          </div>
+          <div class="col-md-4">
+            <input type="checkbox" id="inputOne" />
+            <label for="9"></label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <input type='checkbox' name='thing' value='valuable' id="thing"/>
+            <label for="10"></label>
+          </div>
+          <div class="col-md-4">
+            <input type="checkbox" id="inputOne" />
+            <label for="11"></label>
+          </div>
+          <div class="col-md-4">
+            <input type="checkbox" id="inputOne" />
+            <label for="12"></label>
+          </div>
+        </div>
+      </div>
+    </div>
     
   </div><!--/.direct-chat -->
   <div class="box-footer">

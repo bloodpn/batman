@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="/css/AdminLTE.min.css">
   	<link rel="stylesheet" href="/css/datepicker3.css">
 	<link rel="stylesheet" href="/css/_all-skins.min.css">
+	<link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="hold-transition login-page">
 <br>
@@ -34,4 +35,5 @@
       autoclose: true
     });
 </script>
+
 <!-- <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script> -->
