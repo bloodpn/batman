@@ -22,6 +22,8 @@ Route::get('/invoice', 'InvoiceController@index');
 
 Route::get('/reservasi', 'ReservasiController@index');
 
+Route::get('/mastercustomer', 'MastercustomerController@index');
+
 Route::get('/masterkendaraan', 'MasterkendaraanController@index');
 
 Route::get('/masterjadwal', 'MasterjadwalController@index');
