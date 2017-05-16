@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="box box-solid">
-<div class="box-header">
+  <div class="box-header">
      <div class="row">
       <div class="col-xs-10">
         <h1>Asal - Tujuan</h1>
@@ -30,31 +30,31 @@
    
   </div>
   <div class="box-footer">
-  <div class="row">
-    <div class="col-md-5">
-      <div class="row">
-        <div class="col-lg-6">
-          <h4>Pilih Jadwal</h4>
-        </div>
-        <div class="col-lg-6">
-          <h4>Isi Data</h4>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-5">
-      <div class="row">
-        <div class="col-lg-6">
-          <h4>Tempat Duduk</h4>
-        </div>
-        <div class="col-lg-6">
-          <h4>Metode Pembayaran</h4>
+    <div class="row">
+      <div class="col-md-5">
+        <div class="row">
+          <div class="col-lg-6">
+            <h4>Pilih Jadwal</h4>
+          </div>
+          <div class="col-lg-6">
+            <h4>Isi Data</h4>
+          </div>
         </div>
       </div>
+      <div class="col-md-5">
+        <div class="row">
+          <div class="col-lg-6">
+            <h4>Tempat Duduk</h4>
+          </div>
+          <div class="col-lg-6">
+            <h4>Metode Pembayaran</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <h4>Selesai</h4>
+      </div>
     </div>
-    <div class="col-md-2">
-      <h4>Selesai</h4>
-    </div>
-  </div>
     <div class="progress">
       <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 22%">
         <span class="sr-only">40% Complete (success)</span>

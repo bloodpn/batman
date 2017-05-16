@@ -6,6 +6,8 @@ Route::get('/login', 'LoginController@index');
 
 Route::get('/about', 'AboutController@index');
 
+Route::get('/cektiket', 'ChecktiketController@index');
+
 Route::get('/carijadwal', 'ReservasiController@index');
 
 Route::get('/pilihjadwal', 'PilihjadwalController@index');
@@ -29,5 +31,9 @@ Route::get('/mastersupir', 'MastersupirController@index');
 Route::get('/paket', 'Paketcontroller@index');
 
 Route::get('/datapaket', 'DatapaketController@index');
+
+Route::get('/ubahjadwal', 'UbahjadwalController@index');
+
+Route::get('/ubahkursi', 'UbahkursiController@index');
 
 Route::get('/checkinpaket', 'CheckinpaketController@index');
