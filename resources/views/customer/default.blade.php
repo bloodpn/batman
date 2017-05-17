@@ -14,12 +14,11 @@
 	<link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="hold-transition login-page">
-<br>
-<br>
-<div class="container">
-	@yield('content')		
-</div>
-</div>
+	<br>
+	<br>
+	<div class="container">
+		@yield('content')		
+	</div>
 </body>
 </html>
 <script src="/js/jquery-2.2.3.min.js"></script>

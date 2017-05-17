@@ -39,3 +39,5 @@ Route::get('/ubahjadwal', 'UbahjadwalController@index');
 Route::get('/ubahkursi', 'UbahkursiController@index');
 
 Route::get('/checkinpaket', 'CheckinpaketController@index');
+
+Route::get('/cso', 'CsoController@index');
