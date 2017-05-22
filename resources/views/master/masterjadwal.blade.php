@@ -45,21 +45,25 @@
                     </tr>
                   </thead>
                   <tbody>
+                  <?php $no = 0;?>
+                  @foreach($jadwal as $jadwal)
+                  <?php $no++ ;?>
                     <tr class="odd gradeX">
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td>{{$no}}</td>
+                      <td>{{$jadwal->car->no_body}}</td>
+                      <td>{{$jadwal->origin->name}}</td>
+                      <td>{{$jadwal->destination->name}}</td>
+                      <td>{{date('H:i', strtotime($jadwal->time)) }} WIB</td>
+                      <td>{{$jadwal->price->umum}}</td>
+                      <td>{{$jadwal ->schedule_type }}</td>
+                      <td>{{$jadwal->id_schedule_utama}}</td>
+                      <td>{{$jadwal ->stats }}</td>
                       <td>
                         <button type="submit" class="btn btn-info btn-sm pull-center">Edit</button>
                         <!-- <button type="submit" class="btn btn-info btn-sm pull-center">Hapus</button> -->
                       </td>
                     </tr>
+                    @endforeach
                   </tbody>  
                 </table>
               </div>
