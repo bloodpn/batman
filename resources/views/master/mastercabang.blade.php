@@ -1,6 +1,6 @@
 @extends('customer.default')
 
-@section('title','Master Customer')
+@section('title','Master Cabang')
 
 @section('content')
 
