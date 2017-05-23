@@ -42,7 +42,7 @@
                     	<td></td>
                     	<td></td>
                     	<td></td>
-                    	<td><img src=" width="75px" height="120px" alt="Responsive image"></td>
+                    	<td></td>
                     	<td>
 							<button type="submit" class="btn btn-info btn-sm pull-center">Edit</button>
 							<button type="submit" class="btn btn-info btn-sm pull-center">Hapus</button>
