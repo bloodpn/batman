@@ -47,3 +47,5 @@ Route::get('/mastercabang', 'MastercabangController@index');
 Route::get('/masterjurusan', 'MasterjurusanController@index');
 
 Route::get('/masteruser', 'MasteruserController@index');
+
+Route::get('/masterarea', 'MasterareaController@index');
