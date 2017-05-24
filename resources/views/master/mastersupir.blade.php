@@ -12,101 +12,117 @@
 	      <button class="btn btn-box-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle">Bantuan</button>
 	    </div>
 	</div>
+    <br>
+
 <!--box header-->
-
-<div class="halaman">
-	<div class="box-body"><br>
-		<div class="col-lg-1">
-            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalsupir">Supir Baru</button>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-lg-10" style="margin-left: 10px;">
+                <div class="form-group input-group">
+                    <ul class="nav nav-pills">
+                        <li class="active"><a href="#datasupir" data-toggle="tab">Data Supir</a></li>
+                        <li><a href="#tambahsupir" data-toggle="tab">Tambah Baru</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-		  <div class="tab-pane fade in active" id="detail">
-	        <div class="panel-body" style="font-size: 12px;">
-              <table class="table table-striped table-bordered table-paginate" cellspacing="0" width="100%" id="dataTables-example">
-                	<thead>
-                    	<tr>
-                        	<th>No.</th>
-							<th>Nama Supir</th>
-							<th>No Ktp</th>
-                        	<th>Alamat</th> 
-							<th>No Telp</th>
-							<th>Keterangan</th>
-                        	<th>Foto</th>
-							<th width ="11%">Action</th>
-                    	</tr>
-                	</thead>
-            	<tbody>
-                	<tr class="odd gradeX">
-                    	<td></td>
-						<td></td>
-                    	<td></td>
-                    	<td></td>
-                    	<td></td>
-                    	<td></td>
-                    	<td><img src=" width="75px" height="120px" alt="Responsive image"></td>
-                    	<td>
-							<button type="submit" class="btn btn-info btn-sm pull-center">Edit</button>
-							<button type="submit" class="btn btn-info btn-sm pull-center">Hapus</button>
-						</td>
-                	</tr>
-                </tbody>
-              </table>	
-     		</div>
-         </div>
-	</div>
+        <hr>
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="datasupir">
+                <div class="panel-body">
+                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Kode</th>
+                                <th>Alamat</th>
+                                <th>No Telpon</th>
+                                <th>No SIM</th>
+                                <th>Aktif</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tambahsupir">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-lg-2" style="margin-left: 10px;">
+                                <label style="padding-bottom: 5px; font-size: 12px;">Nama Supir :</label>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="form-group input-group">
+                                    <input type="text" name="nama_supir" class="form-control form-purchase" placeholder="...">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2" style="margin-left: 10px;">
+                                <label style="padding-bottom: 5px; font-size: 12px;">Kode Supir :</label>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="form-group input-group">
+                                    <input type="text" name="kd_supir" class="form-control form-purchase" placeholder="...">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2" style="margin-left: 10px;">
+                                <label style="padding-bottom: 5px; font-size: 12px;">Alamat :</label>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="form-group input-group">
+                                    <input type="text" name="alamat" class="form-control form-purchase" placeholder="...">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2" style="margin-left: 10px;">
+                                <label style="padding-bottom: 5px; font-size: 10px;">Telpon Supir :</label>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="form-group input-group">
+                                    <input type="number" min="0" name="tlp_supir" class="form-control form-purchase" placeholder="08xxxxxxxx">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2" style="margin-left: 10px;">
+                                <label style="padding-bottom: 5px; font-size: 12px;">No SIM :</label>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="form-group input-group">
+                                    <input type="text" name="no_sim" class="form-control form-purchase" placeholder="....">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-footer">
+        <div class="row">
+            <div class="col-lg-12">
+                <button type="button" class="btn btn-primary pull-right">Submit</button>
+            </div>
+        </div>
+    </div>
 </div>
-
-<!--Modal Tambah Jadwal-->
-<div class="modal fade" id="modalsupir">
-	      <form action="sparepart/proses_modal_supplier.php" method="POST">'
-	      <div class="modal-dialog">
-	          <div class="modal-content">
-	              <div class="modal-header">
-    	                <button type="button" class="close" data-dismiss="modal"></button>
-                        <h4 class="modal-title">Tambah Supir</h4>
-	              </div>
-	              <div class="modal-body">
-	                  <div class="row">
-                        <div class="col-md-2">
-                            <label style="padding-bottom: 4px; font-size: 10.5px;">Nama Supir</label><br><br>
-                            <label style="padding-bottom: 4px; font-size: 10.5px;">No Ktp</label><br>
-            				<label style="padding-bottom: 4px; font-size: 10.5px;">Alamat</label><br>
-                            <label style="padding-bottom: 4px; font-size: 10.5px;">No Telp</label><br><br>
-                            <label style="padding-bottom: 4px; font-size: 10.5px;">Keterangan</label><br>
-                            <label style="padding-bottom: 4px; font-size: 10.5px;">Foto</label><br>
-                        </div>
-                        <div class="col-md-5">
-                            <div class="form-group input-group" style="margin-bottom: 0px">
-                                <input type="text" name="nama_supplier" class="form-control form-purchase" placeholder="Nama Supir">
-                            </div>
-                            <div class="form-group input-group" style="margin-bottom: 2px">
-                                <input type="text" name="npwp_vendor" class="form-control form-purchase" placeholder="No Ktp">
-                            </div>
-        					<div class="form-group input-group" style="margin-bottom: 0px">
-                                <input type="text" name="contact_name" class="form-control form-purchase" placeholder="Alamat">
-                            </div>
-                            <div class="form-group input-group" style="margin-bottom: 0px;">
-                                <input type="text" name="alamat" class="form-control form-purchase" placeholder="No Telp">
-                            </div>
-                            <div class="form-group input-group" style="margin-bottom: 0px;">
-                                <input type="text" name="alamat" class="form-control form-purchase" placeholder="Keterangan">
-                            </div>
-                            
-                        	<div class="form-group input-group" style="margin-bottom: 0px;">
-                        	<input type="file" name="file_foto" class="form-control-file" onchange="PreviewImage();" id="uploadImage" required="" aria-describedby="fileHelp">
-                            <small id="fileHelp" class="form-text text-muted">Maximum File Upload 2MB with extension .jpg .jpeg .gif .png</small>
-                        </div>
-                    </div>
-            			</div>
-            		
-                    </div>
-	              </div>
-	              <div class="modal-footer">
-                    <button type="submit" class="btn btn-default">Submit</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
-                  </div>
-	          </div>
-	      </div>
-	      </form>
-	  </div>
 
 @endsection

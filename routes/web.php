@@ -42,3 +42,11 @@ Route::get('/checkinpaket', 'CheckinpaketController@index');
 
 Route::get('/cso', 'CsoController@index');
 Route::get('/searchDestination', 'CsoController@search');
+
+Route::get('/mastercabang', 'MastercabangController@index');
+
+Route::get('/masterjurusan', 'MasterjurusanController@index');
+
+Route::get('/masteruser', 'MasteruserController@index');
+
+Route::get('/masterarea', 'MasterareaController@index');
