@@ -18,11 +18,18 @@ class CsoController extends Controller
     	$counters = Counter::all();
     	return view('pages/cso_reservasi', ['jadwal' => $jadwals, 'counter' => $counters]);
     }
-    public function destination(Request $request)
+    public function search(Request $request)
     {
-        // console.log($request->id);
-    	$data = Jadwal::select('id_destination','$id')->where('id_origin', $request->id)->get();
+        // dd($request);
+        // $jadwals = Jadwal::all();
+        // $counters = Counter::all();
+    	$datas = Jadwal::select()
+        ->join('counters', 'schedule.id_destination', '=', 'counters.id')
+        ->where('id_origin','=',$request->id)
+        ->get();
 
-    	return response()->json($data);
+        // return view('pages/cso_reservasi', ['data' => $datas]);
+
+    	return response()->json($datas);
     }
 }

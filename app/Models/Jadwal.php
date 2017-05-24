@@ -14,14 +14,14 @@ class Jadwal extends Model
     }
     public function origin()
     {	
-    	return $this->hasOne('App\Models\Counter' , 'id', 'id_origin');
+    	return $this->belongsTo('App\Models\Counter' , 'id', 'id_origin');
     }
     public function destination()
     {	
-    	return $this->hasOne('App\Models\Counter' , 'id', 'id_destination');
+    	return $this->belongsTo('App\Models\Counter' , 'id', 'id_destination');
     }
     public function price()
     {	
-    	return $this->hasOne('App\Models\Price' ,'id', 'id_price');
+    	return $this->belongsTo('App\Models\Price' ,'id', 'id_price');
     }
 }

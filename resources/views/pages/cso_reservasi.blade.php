@@ -30,7 +30,7 @@
                       <select class="form-control" style="width: 100%;" id="asal">
                         <option>Cabang Asal</option>
                         @foreach($counter as $Counter)
-                        <option value="{{$Counter->id}}" data-token="{{ csrf_token() }}">{{$Counter->name}}</option>
+                        <option value="{{$Counter->id}}">{{$Counter->name}}</option>
                         @endforeach
                       </select>
                     </div>
@@ -40,7 +40,7 @@
                   <div class="col-lg-12">
                     <div class="form-group">
                       <!-- <label>Keberangkatan</label> -->
-                      <select class="form-control" style="width: 100%;" id="tujuan">
+                      <select class="form-control" style="width: 100%;" class="ctujuan" id="ctujuan">
                         <option>Cabang Tujuan</option>
                         
                       </select>
@@ -231,26 +231,20 @@
     $('#tgl_kembali').datepicker({
       autoclose: true
     });
+
 <!--Asal Dan Tujuan-->
-$(document).ready(function(){
-    $(document).on('change', '#asal',function(){
-      var id_asal=$(this).val();
-      console.log(id_asal);
-      $.ajax({
-        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-        type: 'get',
-        url: '/searchDestination',
-        data: {_token:$(this).data('token'),'id':id_asal},
-        success: function(data){
-          console.log('sukses');
-          console.log(data);
-        },
-        error: function(){
+$('#asal').on('change', function(e)
+  {
+  var id_asal= e.target.value;
+  console.log(id_asal);
+  $.get('/searchDestination?id=' +id_asal, function(data){
+  console.log(data);
+    $('#ctujuan').empty();
 
-        }
-
-      });
+    $.each(data, function(index, destObj){
+      $('#ctujuan').append('<option value="'+destObj.id_destination+'">'+destObj.name+'</option>');
     });
   });
+});
   
 @endsection

@@ -41,4 +41,4 @@ Route::get('/ubahkursi', 'UbahkursiController@index');
 Route::get('/checkinpaket', 'CheckinpaketController@index');
 
 Route::get('/cso', 'CsoController@index');
-Route::get('/searchDestination', 'CsoController@destination');
+Route::get('/searchDestination', 'CsoController@search');
