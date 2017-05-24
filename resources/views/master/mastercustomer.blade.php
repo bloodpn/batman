@@ -12,97 +12,108 @@
 	      <button class="btn btn-box-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle">Bantuan</button>
 	    </div>
 	</div>
+    <br>
 <!--box header-->
-
-<div class="halaman">
-	<div class="box-body"><br>
-		<div class="col-lg-1">
-            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalkendaraan">Customer Baru</button>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-lg-10" style="margin-left: 10px;">
+                <div class="form-group input-group">
+                    <ul class="nav nav-pills">
+                        <li class="active"><a href="#datacustomers" data-toggle="tab">Data Customers</a></li>
+                        <li><a href="#tambahbaru" data-toggle="tab">Tambah Baru</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-		  <div class="tab-pane fade in active" id="detail">
-	        <div class="panel-body" style="font-size: 12px;">
-              <table class="table table-striped table-bordered table-paginate" cellspacing="0" width="100%" id="dataTables-example">
-                	<thead>
-                    	<tr>
-                        	<th>No.</th>
-							<th>No Body</th>
-							<th>Merk Mobil</th>
-                        	<th>Warna</th> 
-							<th>Tahun</th>
-							<th>No Polisi</th>
-							<th>Keterangan</th>
-							<th width ="11%">Action</th>
-                    	</tr>
-                	</thead>
-            	<tbody>
-                	<tr class="odd gradeX">
-                    	<td></td>
-						<td></td>
-                    	<td></td>
-                    	<td></td>
-                    	<td></td>
-                    	<td></td>
-                    	<td></td>
-                    	<td>
-							<button type="submit" class="btn btn-info btn-sm pull-center">Edit</button>
-							<button type="submit" class="btn btn-info btn-sm pull-center">Hapus</button>
-						</td>
-                	</tr>
-                </tbody>
-              </table>	
-     		</div>
-         </div>
-	</div>
+        <hr>
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="datacustomers">
+                <div class="panel-body">
+                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Alamat</th>
+                                <th>No Telp</th>
+                                <th>Status Pelanggan</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="">Edit</a> |
+                                    <a href="">Delete</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tambahbaru">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-lg-2" style="margin-left: 10px;">
+                                <label style="padding-bottom: 5px; font-size: 12px;">Nama Customers :</label>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="form-group input-group">
+                                    <input type="text" name="nama" class="form-control form-purchase" placeholder=".....">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2" style="margin-left: 10px;">
+                                <label style="padding-bottom: 5px; font-size: 12px;">Alamat :</label>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="form-group input-group">
+                                    <input type="text" name="alamat" class="form-control form-purhcase" placeholder=".....">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2" style="margin-left: 10px;">
+                                <label style="padding-bottom: 5px; font-size: 12px;">No telp :</label>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="form-group input-group">
+                                    <input type="number" min="0" name="telp" class="form-control form-purchase" placeholder="....">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2" style="margin-left: 10px;">
+                                <label style="padding-bottom: 5px; font-size: 12px;">Status Pelanggan :</label>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="form-group input-group">
+                                    <select class="form-control form-purchase" name="status">
+                                        <option>Pelanggan setia</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-footer">
+        <div class="row">
+            <div class="col-lg-12">
+                <button type="button" class="btn btn-primary pull-right">Submit</button>
+            </div>
+        </div>
+    </div>
 </div>
 
-<!--Modal Tambah Jadwal-->
-<div class="modal fade" id="modalkendaraan">
-	      <form action="sparepart/proses_modal_supplier.php" method="POST">'
-	      <div class="modal-dialog">
-	          <div class="modal-content">
-	              <div class="modal-header">
-    	                <button type="button" class="close" data-dismiss="modal"></button>
-                        <h4 class="modal-title">Tambah Customer</h4>
-	              </div>
-	              <div class="modal-body">
-	                  <div class="row">
-                        <div class="col-md-2">
-                            <label style="padding-bottom: 4px; font-size: 10.5px;">No Body</label><br><br>
-                            <label style="padding-bottom: 4px; font-size: 10.5px;">Merk Mobil</label><br>
-            				<label style="padding-bottom: 4px; font-size: 10.5px;">Warna</label><br>
-                            <label style="padding-bottom: 4px; font-size: 10.5px;">Tahun</label><br><br>
-                            <label style="padding-bottom: 4px; font-size: 10.5px;">No Polisi</label><br>
-                            <label style="padding-bottom: 4px; font-size: 10.5px;">Keterangan</label><br>
-                        </div>
-                        <div class="col-md-5">
-                            <div class="form-group input-group" style="margin-bottom: 0px">
-                                <input type="text" name="nama_supplier" class="form-control form-purchase" placeholder="No Body">
-                            </div>
-                            <div class="form-group input-group" style="margin-bottom: 2px">
-                                <input type="text" name="npwp_vendor" class="form-control form-purchase" placeholder="Merk Mobil">
-                            </div>
-        					<div class="form-group input-group" style="margin-bottom: 0px">
-                                <input type="text" name="contact_name" class="form-control form-purchase" placeholder="Warna">
-                            </div>
-                            <div class="form-group input-group" style="margin-bottom: 0px;">
-                                <input type="text" name="alamat" class="form-control form-purchase" placeholder="Tahun">
-                            </div>
-                            <div class="form-group input-group" style="margin-bottom: 0px;">
-                                <input type="text" name="alamat" class="form-control form-purchase" placeholder="No Polisi">
-                            </div>
-                            <div class="form-group input-group" style="margin-bottom: 0px;">
-                                <input type="text" name="keterangan" class="form-control form-purchase" placeholder="Keterangan">
-                            </div>
-            			</div>
-                    </div>
-	              </div>
-	              <div class="modal-footer">
-                    <button type="submit" class="btn btn-default">Submit</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
-                  </div>
-	          </div>
-	      </div>
-	      </form>
-	  </div>
 
 @endsection
