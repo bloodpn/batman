@@ -36,6 +36,7 @@
              <div class="form-group">
                 <label>Keberangkatan</label>
                 <select class="form-control" style="width: 100%;">
+                
                   <option>Pilih Keberangkatan</option>
                   <option>Alabama</option>
                   <option>Alaska</option>
@@ -44,6 +45,7 @@
                   <option>Tennessee</option>
                   <option>Texas</option>
                   <option>Washington</option>
+
                 </select>
               </div>
            </div>

@@ -26,7 +26,7 @@ Route::get('/mastercustomer', 'MastercustomerController@index');
 
 Route::get('/masterkendaraan', 'MasterkendaraanController@index');
 
-Route::get('/masterjadwal', 'MasterjadwalController@index');
+Route::get('/masterjadwal', 'ScheduleController@index');
 
 Route::get('/mastersupir', 'MastersupirController@index');
 
@@ -41,3 +41,4 @@ Route::get('/ubahkursi', 'UbahkursiController@index');
 Route::get('/checkinpaket', 'CheckinpaketController@index');
 
 Route::get('/cso', 'CsoController@index');
+Route::get('/searchDestination', 'CsoController@destination');

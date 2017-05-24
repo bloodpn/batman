@@ -51,12 +51,18 @@
                     <tr class="odd gradeX">
                       <td>{{$no}}</td>
                       <td>{{$jadwal->car->no_body}}</td>
-                      <td>{{$jadwal->origin->name}}</td>
-                      <td>{{$jadwal->destination->name}}</td>
+                      <td>({{$jadwal->origin->city}}) <b>{{$jadwal->origin->name}}</b></td>
+                      <td>({{$jadwal->destination->city}}) <b>{{$jadwal->destination->name}}</b></td>
                       <td>{{date('H:i', strtotime($jadwal->time)) }} WIB</td>
                       <td>{{$jadwal->price->umum}}</td>
                       <td>{{$jadwal ->schedule_type }}</td>
-                      <td>{{$jadwal->id_schedule_utama}}</td>
+                      <td>
+                        @if ($jadwal->id_schedule_utama=" ")
+                          {{"Tidak Ada"}}
+                        @else
+                          {{$jadwal->id_schedule_utama}}
+                        @endif
+                      </td>
                       <td>{{$jadwal ->stats }}</td>
                       <td>
                         <button type="submit" class="btn btn-info btn-sm pull-center">Edit</button>
@@ -84,26 +90,41 @@
                 <div class="modal-body">
                   <div class="row">
                     <div class="col-md-3">
-                      <label style="padding-bottom: 5px; font-size: 10.5px;">No. Body</label><br>
-                      <label style="padding-bottom: 6px; font-size: 10.5px;">Asal</label><br>
-                      <label style="padding-bottom: 5px; font-size: 10.5px;">Tujuan</label><br>
-                      <label style="padding-bottom: 5px; font-size: 10.5px;">Jam Berangkat</label><br>
-                      <label style="padding-bottom: 5px; font-size: 10.5px;">Tipe Jadwal</label><br>
-                      <label style="padding-bottom: 5px; font-size: 10.5px;">Jadwal Utama</label><br>
-                      <label style="padding-bottom: 5px; font-size: 10.5px;">Harga</label><br>
+                      <label style="padding-bottom: 8px; font-size: 13px;">No. Body</label><br>
+                      <label style="padding-bottom: 8px; font-size: 13px;">Asal</label><br>
+                      <label style="padding-bottom: 8px; font-size: 13px;">Tujuan</label><br>
+                      <label style="padding-bottom: 8px; font-size: 13px;">Jam Berangkat</label><br>
+                      <label style="padding-bottom: 8px; font-size: 13px;">Tipe Jadwal</label><br>
+                      <label style="padding-bottom: 8px; font-size: 13px;">Jadwal Utama</label><br>
+                      <label style="padding-bottom: 8px; font-size: 13px;">Harga</label><br>
                     </div>
                     <div class="col-md-9">
                       <div class="form-group" style="margin-bottom: 0px">
-                        <input type="text" name="nama_supplier" class="form-control form-purchase" placeholder="No. Body">
+                        <select class="form-control" style="width: 100%;">
+                          <option>Pilih Mobil</option>
+                          @foreach ($car as $Car)
+                          <option value="{{$Car->id}}">{{$Car->no_body}}</option>
+                          @endforeach
+                        </select>
                       </div>
                       <div class="form-group" style="margin-bottom: 0px">
-                          <input type="text" name="npwp_vendor" class="form-control form-purchase" placeholder="Asal">
+                        <select class="form-control" style="width: 100%;">
+                          <option>Pilih Asal</option>
+                          @foreach ($counter as $Counter)
+                          <option value="{{$Counter->id}}">{{$Counter->name}}</option>
+                          @endforeach
+                        </select>
                       </div>
                       <div class="form-group" style="margin-bottom: 0px">
-                          <input type="text" name="contact_name" class="form-control form-purchase" placeholder="Tujuan">
+                        <select class="form-control" style="width: 100%;">
+                          <option>Pilih Asal</option>
+                          @foreach ($counter as $Counter)
+                          <option value="{{$Counter->id}}">{{$Counter->name}}</option>
+                          @endforeach
+                        </select>
                       </div>
                       <div class="form-group" style="margin-bottom: 0px;">
-                          <input type="text" name="alamat" class="form-control form-purchase" placeholder="Jam Berangkat">
+                            <input type="text" class="form-control timepicker">
                       </div>
                       <div class="form-group" style="margin-bottom: 0px;">
                           <input type="text" name="alamat" class="form-control form-purchase" placeholder="Tipe Jadwal">

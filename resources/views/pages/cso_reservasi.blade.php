@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Home')
+@section('title','Reservasi')
 
 @section('content')
  <div class="content-wrapper">
@@ -27,15 +27,11 @@
                   <div class="col-lg-12">
                     <div class="form-group">
                       <!-- <label>Keberangkatan</label> -->
-                      <select class="form-control" style="width: 100%;">
+                      <select class="form-control" style="width: 100%;" id="asal">
                         <option>Cabang Asal</option>
-                        <option>Alabama</option>
-                        <option>Alaska</option>
-                        <option>California</option>
-                        <option>Delaware</option>
-                        <option>Tennessee</option>
-                        <option>Texas</option>
-                        <option>Washington</option>
+                        @foreach($counter as $Counter)
+                        <option value="{{$Counter->id}}" data-token="{{ csrf_token() }}">{{$Counter->name}}</option>
+                        @endforeach
                       </select>
                     </div>
                  </div>
@@ -44,15 +40,9 @@
                   <div class="col-lg-12">
                     <div class="form-group">
                       <!-- <label>Keberangkatan</label> -->
-                      <select class="form-control" style="width: 100%;">
+                      <select class="form-control" style="width: 100%;" id="tujuan">
                         <option>Cabang Tujuan</option>
-                        <option>Alabama</option>
-                        <option>Alaska</option>
-                        <option>California</option>
-                        <option>Delaware</option>
-                        <option>Tennessee</option>
-                        <option>Texas</option>
-                        <option>Washington</option>
+                        
                       </select>
                     </div>
                  </div>
@@ -65,7 +55,7 @@
                         <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" class="form-control pull-right" id="tgl_kembali" placeholder="Tanggal Berangkat">
+                        <input type="text" class="form-control pull-right" id="tgl_berangkat" placeholder="Tanggal Berangkat">
                       </div>
                       <!-- /.input group -->
                     </div>
@@ -232,4 +222,35 @@
     </section>
     <!-- /.content -->
   </div>
- @endsection
+@endsection
+<!--Date Picker-->
+@section('script')
+ $('#tgl_berangkat').datepicker({
+      autoclose: true
+    });
+    $('#tgl_kembali').datepicker({
+      autoclose: true
+    });
+<!--Asal Dan Tujuan-->
+$(document).ready(function(){
+    $(document).on('change', '#asal',function(){
+      var id_asal=$(this).val();
+      console.log(id_asal);
+      $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        type: 'get',
+        url: '/searchDestination',
+        data: {_token:$(this).data('token'),'id':id_asal},
+        success: function(data){
+          console.log('sukses');
+          console.log(data);
+        },
+        error: function(){
+
+        }
+
+      });
+    });
+  });
+  
+@endsection
