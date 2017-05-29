@@ -10,7 +10,7 @@ class Counter extends Model
     public $timestamp = false;
     public function Jadwal()
     {
-        return $this->hasMany('App/Models/Jadwal');
+        // return $this->hasMany('App/Models/Jadwal');
 
     }
 }
