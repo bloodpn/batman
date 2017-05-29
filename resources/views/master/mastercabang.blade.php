@@ -43,20 +43,24 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
+						<?php $no = 0; ?>
+						@foreach ($counter as $counter)
+						<?php $no++; ?>							
+						<tr>
+								<td>{{$no}}</td>
+								<td>{{$counter->kd_counters}}</td>
+								<td>{{$counter->name}}</td>
+								<td>{{$counter->address}}</td>
+								<td>{{$counter->city}}</td>
+								<td>{{$counter->phone}}</td>
+								<td>{{$counter->fax}}</td>
+								<td>{{$counter->type}}</td>
 								<td>
 									<a href="">edit</a> |
 									<a href="">Delete</a>
 								</td>
 							</tr>
+						@endforeach
 						</tbody>
 					</table>
 				</div>
