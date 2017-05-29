@@ -19,4 +19,8 @@ class ScheduleController extends Controller
     	$counters = Counter::all();
     	return view('master/masterjadwal', ['jadwal' => $jadwals, 'car' => $cars, 'counter' => $counters]);
     }
+    public function insert()
+    {
+    	
+    }
 }

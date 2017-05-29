@@ -27,6 +27,7 @@ Route::get('/mastercustomer', 'MastercustomerController@index');
 Route::get('/masterkendaraan', 'MasterkendaraanController@index');
 
 Route::get('/masterjadwal', 'ScheduleController@index');
+Route::get('/createjadwal', 'ScheduleController@insert');
 
 Route::get('/mastersupir', 'MastersupirController@index');
 
