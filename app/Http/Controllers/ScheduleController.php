@@ -19,8 +19,11 @@ class ScheduleController extends Controller
     	$counters = Counter::all();
     	return view('master/masterjadwal', ['jadwal' => $jadwals, 'car' => $cars, 'counter' => $counters]);
     }
-    public function insert()
+    public function insert(Request $request)
     {
-    	
+    	if ($request->ajax()) {
+    		$jadwal= Jadwal::create($request->all());
+    		return response()->json($jadwal);
+    	}
     }
 }

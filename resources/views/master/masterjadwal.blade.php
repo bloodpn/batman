@@ -80,7 +80,7 @@
 
 <!--Modal Tambah Jadwal-->
         <div class="modal fade" id="modaljadwal">
-          <form action="sparepart/proses_modal_supplier.php" method="POST">'
+          <form action="createjadwal" method="post">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -88,57 +88,55 @@
                     <h4 class="modal-title">Tambah Jadwal</h4>
                 </div>
                 <div class="modal-body">
-                  <form>
-                    <div class="row">
-                      <div class="col-md-3">
-                        <label style="padding-bottom: 8px; font-size: 13px;">No. Body</label><br>
-                        <label style="padding-bottom: 8px; font-size: 13px;">Asal</label><br>
-                        <label style="padding-bottom: 8px; font-size: 13px;">Tujuan</label><br>
-                        <label style="padding-bottom: 8px; font-size: 13px;">Jam Berangkat</label><br>
-                        <label style="padding-bottom: 8px; font-size: 13px;">Tipe Jadwal</label><br>
-                        <label style="padding-bottom: 8px; font-size: 13px;">Jadwal Utama</label><br>
-                        <label style="padding-bottom: 8px; font-size: 13px;">Harga</label><br>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label style="padding-bottom: 8px; font-size: 13px;">No. Body</label><br>
+                      <label style="padding-bottom: 8px; font-size: 13px;">Asal</label><br>
+                      <label style="padding-bottom: 8px; font-size: 13px;">Tujuan</label><br>
+                      <label style="padding-bottom: 8px; font-size: 13px;">Jam Berangkat</label><br>
+                      <label style="padding-bottom: 8px; font-size: 13px;">Tipe Jadwal</label><br>
+                      <label style="padding-bottom: 8px; font-size: 13px;">Jadwal Utama</label><br>
+                      <label style="padding-bottom: 8px; font-size: 13px;">Harga</label><br>
+                    </div>
+                    <div class="col-md-9">
+                      <div class="form-group" style="margin-bottom: 0px">
+                        <select class="form-control" style="width: 100%;">
+                          <option>Pilih Mobil</option>
+                          @foreach ($car as $Car)
+                          <option value="{{$Car->id}}" name="car" id="car">{{$Car->no_body}}</option>
+                          @endforeach
+                        </select>
                       </div>
-                      <div class="col-md-9">
-                        <div class="form-group" style="margin-bottom: 0px">
-                          <select class="form-control" style="width: 100%;">
-                            <option>Pilih Mobil</option>
-                            @foreach ($car as $Car)
-                            <option value="{{$Car->id}}">{{$Car->no_body}}</option>
-                            @endforeach
-                          </select>
-                        </div>
-                        <div class="form-group" style="margin-bottom: 0px">
-                          <select class="form-control" style="width: 100%;">
-                            <option>Pilih Asal</option>
-                            @foreach ($counter as $Counter)
-                            <option value="{{$Counter->id}}">{{$Counter->name}}</option>
-                            @endforeach
-                          </select>
-                        </div>
-                        <div class="form-group" style="margin-bottom: 0px">
-                          <select class="form-control" style="width: 100%;">
-                            <option>Pilih Asal</option>
-                            @foreach ($counter as $Counter)
-                            <option value="{{$Counter->id}}">{{$Counter->name}}</option>
-                            @endforeach
-                          </select>
-                        </div>
-                        <div class="form-group" style="margin-bottom: 0px;">
-                              <input type="text" class="form-control timepicker">
-                        </div>
-                        <div class="form-group" style="margin-bottom: 0px;">
-                            <input type="text" name="alamat" class="form-control form-purchase" placeholder="Tipe Jadwal">
-                        </div>
-                        <div class="form-group" style="margin-bottom: 0px;">
-                            <input type="text" name="keterangan" class="form-control form-purchase" placeholder="Jadwal Utama">
-                        </div>
+                      <div class="form-group" style="margin-bottom: 0px">
+                        <select class="form-control" style="width: 100%;">
+                          <option>Pilih Asal</option>
+                          @foreach ($counter as $Counter)
+                          <option value="{{$Counter->id}}" name="asal" id="asal">{{$Counter->name}}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                      <div class="form-group" style="margin-bottom: 0px">
+                        <select class="form-control" style="width: 100%;">
+                          <option>Pilih Asal</option>
+                          @foreach ($counter as $Counter)
+                          <option value="{{$Counter->id}}" name="tujuan" id="tujuan">{{$Counter->name}}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                      <div class="form-group" style="margin-bottom: 0px;">
+                            <input type="text" name="time" id="time" class="form-control timepicker">
+                      </div>
+                      <div class="form-group" style="margin-bottom: 0px;">
+                          <input type="text" name="tipe_jadwal" id="tipe_jadwal" class="form-control form-purchase" placeholder="Tipe Jadwal">
+                      </div>
+                      <div class="form-group" style="margin-bottom: 0px;">
+                          <input type="text" name="j_utama" id="j_utama" class="form-control form-purchase" placeholder="Jadwal Utama">
                       </div>
                     </div>
-                  </form>
+                  </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="submit" class="btn btn-default">Submit</button>
+                  <button type="submit" class="btn btn-default" value="save" id="save">Submit</button>
                   <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
                 </div>
               </div>
@@ -150,3 +148,20 @@
     </div>
   </section>
  @endsection
+
+@section('script')
+  $('#modaljadwal').on('submit', function(e){
+    e.preventDefault();
+    var form     =$('#modaljadwal');
+    var formData =form.serialize();
+    var url      = form.attr('action');
+    $.ajax({
+      type  : 'post',
+      url   : url,
+      data  : formData,
+      success: function(data){
+        console.log(data);
+      }
+    });
+  });
+@endsection
