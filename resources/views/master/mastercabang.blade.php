@@ -66,6 +66,8 @@
 				</div>
 			</div>
 			<div class="tab-pane fade" id="tambahcabang">
+			<form action="/mastercabang" method="post">
+			{{ csrf_field() }}
 				<div class="row">
 					<div class="col-lg-2" style="margin-left: 10px">
 						<label style="padding-bottom: 5px; font-size: 12px;">Kode Cabang :</label><br><br>
@@ -104,6 +106,7 @@
 						<button class="btn btn-primary pull-right">Submit</button>
 					</div>
 				</div><br>
+				</form>
 			</div>
 		</div>
 	</div>

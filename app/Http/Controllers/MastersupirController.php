@@ -15,4 +15,20 @@ class MastersupirController extends Controller
     	$drivers = Driver::all();
     	return view('master/mastersupir', ['driver' => $drivers ]);
     }
+    public function store(Request $request)
+    {
+    	$drivers = new Driver;
+
+    	$drivers->name = $request->nama_supir;
+    	$drivers->phone = $request->tlp_supir;
+    	$drivers->address = $request->alamat;
+    	$drivers->kd_driver = $request->kd_supir;
+    	$drivers->card_number = $request->no_sim;
+    	$drivers->status = 'Aktif';
+    	$drivers->save();
+    	
+    	$drivers = Driver::all();
+    	return view('master/mastersupir', ['driver' => $drivers]);
+
+    }
 }

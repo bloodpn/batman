@@ -196,6 +196,56 @@
 								</div>
 							</div>
 						</div>
+						<div class="row">
+							<div class="col-lg-3">
+								<label style="padding-bottom: 5px; font-size: 12px;">Silver :</label>
+							</div>
+							<div class="col-lg-5">
+								<div class="form-group input-group">
+									<input type="number" min="0" name="silver" class="form-control form-purchase" placeholder="Rp. xxxx">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-3">
+								<label style="padding-bottom: 5px; font-size: 12px;">Cargo Antar :</label>
+							</div>
+							<div class="col-lg-5">
+								<div class="form-group input-group">
+									<input type="number" min="0" name="cargo_antar" class="form-control form-purchase" placeholder="Rp. xxxx">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-3">
+								<label style="padding-bottom: 5px; font-size: 12px;">Cargo Diambil :</label>
+							</div>
+							<div class="col-lg-5">
+								<div class="form-group input-group">
+									<input type="number" min="0" name="cargo_ambil" class="form-control form-purchase" placeholder="Rp. xxxx">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-3">
+								<label style="padding-bottom: 5px; font-size: 12px;">Motor Kecil :</label>
+							</div>
+							<div class="col-lg-5">
+								<div class="form-group input-group">
+									<input type="number" min="0" name="motor_kecil" class="form-control form-purchase" placeholder="Rp. xxxx">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-3">
+								<label style="padding-bottom: 5px; font-size: 12px;">Motor Besar :</label>
+							</div>
+							<div class="col-lg-5">
+								<div class="form-group input-group">
+									<input type="number" min="0" name="motor_besar" class="form-control form-purchase" placeholder="Rp. xxxx">
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

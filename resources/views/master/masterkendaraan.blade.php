@@ -12,97 +12,142 @@
 	      <button class="btn btn-box-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle">Bantuan</button>
 	    </div>
 	</div>
+    <br>
 <!--box header-->
 
-<div class="halaman">
-	<div class="box-body"><br>
-		<div class="col-lg-1">
-            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalkendaraan">Kendaraan Baru</button>
+	<div class="box-body">
+		<div class="row">
+            <div class="col-lg-10" style="margin-left: 10px;">
+                <div class="form-group input-group">
+                    <ul class="nav nav-pills">
+                        <li class="active"><a href="#datakendaraan" data-toggle="tab">Data Kendaraan</a></li>
+                        <li><a href="#tambahkendaraan" data-toggle="tab">Tambah Baru</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-		  <div class="tab-pane fade in active" id="detail">
-	        <div class="panel-body" style="font-size: 12px;">
-              <table class="table table-striped table-bordered table-paginate" cellspacing="0" width="100%" id="dataTables-example">
-                	<thead>
-                    	<tr>
-                        	<th>No.</th>
-							<th>No Body</th>
-							<th>Merk Mobil</th>
-                        	<th>Warna</th> 
-							<th>Tahun</th>
-							<th>No Polisi</th>
-							<th>Keterangan</th>
-							<th width ="11%">Action</th>
-                    	</tr>
-                	</thead>
-            	<tbody>
-                	<tr class="odd gradeX">
-                    	<td></td>
-						<td></td>
-                    	<td></td>
-                    	<td></td>
-                    	<td></td>
-                    	<td></td>
-                    	<td></td>
-                    	<td>
-							<button type="submit" class="btn btn-info btn-sm pull-center">Edit</button>
-							<button type="submit" class="btn btn-info btn-sm pull-center">Hapus</button>
-						</td>
-                	</tr>
-                </tbody>
-              </table>	
-     		</div>
-         </div>
+        <hr>
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="datakendaraan">
+                <div class="panel-body" style="font-size: 12px;">
+                  <table class="table table-striped table-bordered table-paginate" cellspacing="0" width="100%" id="dataTables-example">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>No Body</th>
+                                <th>Nama Supir</th>
+                                <th>Merk Mobil</th>
+                                <th>Warna</th> 
+                                <th>Tahun</th>
+                                <th>No Polisi</th>
+                                <th>Keterangan</th>
+                                <th width ="11%">Action</th>
+                            </tr>
+                        </thead>
+                    <tbody>
+                    <?php $no = 0; ?>
+                    @foreach ($cars as $cars)
+                    <?php $no++; ?>
+                        <tr class="odd gradeX">
+                            <td>{{$no}}</td>
+                            <td>{{$cars->no_body}}</td>
+                            <td>{{$cars->driver->name}}</td>
+                            <td>{{$cars->merk}}</td>
+                            <td>{{$cars->warna}}</td>
+                            <td>{{$cars->tahun_kendaraan}}</td>
+                            <td>{{$cars->plat_number}}</td>
+                            <td></td>
+                            <td>
+                                <a href="">Edit</a>
+                                <a href="">Delete</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                  </table>  
+                </div>
+             </div>
+             <div class="tab-pane fade" id="tambahkendaraan">
+             <form action="/masterkendaraan" method="post">
+             {{ csrf_field() }}
+                 <div class="row">
+                     <div class="col-lg-12">
+                         <div class="row">
+                             <div class="col-lg-2" style="margin-left: 10px;">
+                                 <label style="padding-bottom: 5px; font-size: 12px;">No Body :</label>
+                             </div>
+                             <div class="col-lg-3">
+                                 <div class="form-group input-group">
+                                     <input type="text" name="no_body" class="form-control form-purchase">
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="row">
+                             <div class="col-lg-2" style="margin-left: 10px;">
+                                 <label style="padding-bottom: 5px; font-size: 12px;">Nama Supir</label>
+                             </div>
+                             <div class="col-lg-3">
+                                 <div class="form-group input-group">
+                                     <select class="form-control form-purchase" name="pengemudi">
+                                         @foreach ($drivers as $drivers)
+                                        <option value="{{$drivers->id}}">{{$drivers->name}}</option>
+                                         @endforeach
+                                     </select>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="row">
+                             <div class="col-lg-2" style="margin-left: 10px;">
+                                 <label style="padding-bottom: 5px; font-size: 12px;">Merk Kendaraan :</label>
+                             </div>
+                             <div class="col-lg-3">
+                                 <div class="form-group input-group">
+                                     <input type="text" name="merk" class="form-control form-purchase">
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="row">
+                             <div class="col-lg-2" style="margin-left: 10px;">
+                                 <label style="padding-bottom: 5px; font-size: 12px;">Warna Kendaraan :</label>
+                             </div>
+                             <div class="col-lg-3">
+                                 <div class="form-group input-group">
+                                     <input type="text" name="warna" class="form-control form-purchase">
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="row">
+                             <div class="col-lg-2" style="margin-left: 10px;">
+                                 <label style="padding-bottom: 5px; font-size: 12px">Tahun Kendaraan :</label>
+                             </div>
+                             <div class="col-lg-3">
+                                 <div class="form-group input-group">
+                                     <input type="text" name="tahun" class="form-control form-purchase">
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="row">
+                             <div class="col-lg-2" style="margin-left: 10px;">
+                                 <label style="padding-bottom: 5px; font-size: 12px;">No Polisi :</label>
+                             </div>
+                             <div class="col-lg-3">
+                                 <div class="form-group input-group">
+                                     <input type="text" name="plat_number" class="form-control form-purchase">
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="row">
+                             <div class="col-lg-12">
+                                 <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                             </div>
+                         </div>
+                         <br>
+                     </div>
+                 </div>
+                 </form>
+             </div>
+        </div>
 	</div>
 </div>
-
-<!--Modal Tambah Jadwal-->
-<div class="modal fade" id="modalkendaraan">
-	      <form action="sparepart/proses_modal_supplier.php" method="POST">'
-	      <div class="modal-dialog">
-	          <div class="modal-content">
-	              <div class="modal-header">
-    	                <button type="button" class="close" data-dismiss="modal"></button>
-                        <h4 class="modal-title">Tambah Kendaraan</h4>
-	              </div>
-	              <div class="modal-body">
-	                  <div class="row">
-                        <div class="col-md-2">
-                            <label style="padding-bottom: 4px; font-size: 10.5px;">No Body</label><br><br>
-                            <label style="padding-bottom: 4px; font-size: 10.5px;">Merk Mobil</label><br>
-            				<label style="padding-bottom: 4px; font-size: 10.5px;">Warna</label><br>
-                            <label style="padding-bottom: 4px; font-size: 10.5px;">Tahun</label><br><br>
-                            <label style="padding-bottom: 4px; font-size: 10.5px;">No Polisi</label><br>
-                            <label style="padding-bottom: 4px; font-size: 10.5px;">Keterangan</label><br>
-                        </div>
-                        <div class="col-md-5">
-                            <div class="form-group input-group" style="margin-bottom: 0px">
-                                <input type="text" name="nama_supplier" class="form-control form-purchase" placeholder="No Body">
-                            </div>
-                            <div class="form-group input-group" style="margin-bottom: 2px">
-                                <input type="text" name="npwp_vendor" class="form-control form-purchase" placeholder="Merk Mobil">
-                            </div>
-        					<div class="form-group input-group" style="margin-bottom: 0px">
-                                <input type="text" name="contact_name" class="form-control form-purchase" placeholder="Warna">
-                            </div>
-                            <div class="form-group input-group" style="margin-bottom: 0px;">
-                                <input type="text" name="alamat" class="form-control form-purchase" placeholder="Tahun">
-                            </div>
-                            <div class="form-group input-group" style="margin-bottom: 0px;">
-                                <input type="text" name="alamat" class="form-control form-purchase" placeholder="No Polisi">
-                            </div>
-                            <div class="form-group input-group" style="margin-bottom: 0px;">
-                                <input type="text" name="keterangan" class="form-control form-purchase" placeholder="Keterangan">
-                            </div>
-            			</div>
-                    </div>
-	              </div>
-	              <div class="modal-footer">
-                    <button type="submit" class="btn btn-default">Submit</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
-                  </div>
-	          </div>
-	      </div>
-	      </form>
-	  </div>
 
 @endsection
