@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Jadwal extends Model
 {
     protected $table = 'schedule';
+    protected $guarded = [];
 
     public function car()
     {

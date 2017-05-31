@@ -80,7 +80,7 @@
 
 <!--Modal Tambah Jadwal-->
         <div class="modal fade" id="modaljadwal">
-          <form action="createjadwal" method="post">
+          <!-- <form action="createjadwal" method="post"> -->
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -90,36 +90,36 @@
                 <div class="modal-body">
                   <div class="row">
                     <div class="col-md-3">
-                      <label style="padding-bottom: 8px; font-size: 13px;">No. Body</label><br>
-                      <label style="padding-bottom: 8px; font-size: 13px;">Asal</label><br>
-                      <label style="padding-bottom: 8px; font-size: 13px;">Tujuan</label><br>
-                      <label style="padding-bottom: 8px; font-size: 13px;">Jam Berangkat</label><br>
-                      <label style="padding-bottom: 8px; font-size: 13px;">Tipe Jadwal</label><br>
-                      <label style="padding-bottom: 8px; font-size: 13px;">Jadwal Utama</label><br>
-                      <label style="padding-bottom: 8px; font-size: 13px;">Harga</label><br>
+                      <label style="padding-top: 5px; padding-bottom: 9px; font-size: 13px;">No. Body</label><br>
+                      <label style="padding-bottom: 9px; font-size: 13px;">Asal</label><br>
+                      <label style="padding-bottom: 9px; font-size: 13px;">Tujuan</label><br>
+                      <label style="padding-bottom: 9px; font-size: 13px;">Jam Berangkat</label><br>
+                      <label style="padding-bottom: 9px; font-size: 13px;">Tipe Jadwal</label><br>
+                      <label style="padding-bottom: 9px; font-size: 13px;">Jadwal Utama</label><br>
+                      <label style="padding-bottom: 9px; font-size: 13px;">Harga</label><br>
                     </div>
                     <div class="col-md-9">
                       <div class="form-group" style="margin-bottom: 0px">
-                        <select class="form-control" style="width: 100%;">
+                        <select class="form-control" style="width: 100%;" name="car" id="car">
                           <option>Pilih Mobil</option>
                           @foreach ($car as $Car)
-                          <option value="{{$Car->id}}" name="car" id="car">{{$Car->no_body}}</option>
+                          <option value="{{$Car->id}}" >{{$Car->no_body}}</option>
                           @endforeach
                         </select>
                       </div>
                       <div class="form-group" style="margin-bottom: 0px">
-                        <select class="form-control" style="width: 100%;">
+                        <select class="form-control" style="width: 100%;" name="asal" id="asal">
                           <option>Pilih Asal</option>
                           @foreach ($counter as $Counter)
-                          <option value="{{$Counter->id}}" name="asal" id="asal">{{$Counter->name}}</option>
+                          <option value="{{$Counter->id}}" >{{$Counter->name}}</option>
                           @endforeach
                         </select>
                       </div>
                       <div class="form-group" style="margin-bottom: 0px">
-                        <select class="form-control" style="width: 100%;">
-                          <option>Pilih Asal</option>
+                        <select class="form-control" style="width: 100%;" name="tujuan" id="tujuan">
+                          <option>Pilih Tujuan</option>
                           @foreach ($counter as $Counter)
-                          <option value="{{$Counter->id}}" name="tujuan" id="tujuan">{{$Counter->name}}</option>
+                          <option value="{{$Counter->id}}" >{{$Counter->name}}</option>
                           @endforeach
                         </select>
                       </div>
@@ -127,21 +127,32 @@
                             <input type="text" name="time" id="time" class="form-control timepicker">
                       </div>
                       <div class="form-group" style="margin-bottom: 0px;">
-                          <input type="text" name="tipe_jadwal" id="tipe_jadwal" class="form-control form-purchase" placeholder="Tipe Jadwal">
+                        <select class="form-control" id="tipe_jadwal">
+                          <option value="utama">Jadwal Utama</option>
+                          <option value="sub jadwal">Sub Jadwal</option>
+                        </select>
                       </div>
                       <div class="form-group" style="margin-bottom: 0px;">
-                          <input type="text" name="j_utama" id="j_utama" class="form-control form-purchase" placeholder="Jadwal Utama">
+                          <input type="text" name="j_utama" id="j_utama" class="form-control form-purchase" placeholder="Jadwal Utama" disabled="">
+                      </div>
+                      <div class="form-group" style="margin-bottom: 0px;">
+                          <select class="form-control" name="price" id="price">
+                            <option>Harga</option>
+                              @foreach($price as $Price)
+                              <option value="{{$Price->id}}" >{{$Price->umum}}</option>
+                              @endforeach
+                          </select>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="submit" class="btn btn-default" value="save" id="save">Submit</button>
+                  <button type="button" class="btn btn-default" value="save" id="cJadwal">Submit</button>
                   <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
                 </div>
               </div>
             </div>
-          </form>
+          <!-- </form> -->
         </div>
 
       </div>
@@ -150,18 +161,35 @@
  @endsection
 
 @section('script')
-  $('#modaljadwal').on('submit', function(e){
-    e.preventDefault();
-    var form     =$('#modaljadwal');
-    var formData =form.serialize();
-    var url      = form.attr('action');
-    $.ajax({
-      type  : 'post',
-      url   : url,
-      data  : formData,
-      success: function(data){
-        console.log(data);
+
+$("#cJadwal").click(function() {
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+  $.ajax({
+    type: 'post',
+    url: '/createjadwal',
+    data: {
+      'car': $('#car').val(),
+      'asal': $('#asal').val(),
+      'tujuan': $('#tujuan').val(),
+      'tipe_jadwal': $('#tipe_jadwal').val(),
+      'price':  $('#price').val()
+    },
+    success: function(data) {
+      if ((data.errors)) {
+        $('.error').removeClass('hidden');
+        $('.error').text(data.errors.title);
+        $('.error').text(data.errors.description);
+      } else {
+        $('.error').remove();
+        $('#table').append("<tr class='item" + data.id + "'><td>" + data.id + "</td><td>" + data.title + "</td><td>" + data.description + "</td><td><button class='edit-modal btn btn-info' data-id='" + data.id + "' data-title='" + data.title + "' data-description='" + data.description + "'><span class='glyphicon glyphicon-edit'></span> Edit</button> <button class='delete-modal btn btn-danger' data-id='" + data.id + "' data-title='" + data.title + "' data-description='" + data.description + "'><span class='glyphicon glyphicon-trash'></span> Delete</button></td></tr>");
       }
-    });
+      console.log(data);
+    },
   });
+});
+  
 @endsection
