@@ -1,6 +1,6 @@
 .kursi{
 	background-image: url(../images/kursi.png);
-  background-size:     cover; 
+  background-size:     cover;
 }
 input[type="checkbox"].cek {
     content: images/kursi.png;
@@ -12,12 +12,59 @@ input[type="checkbox"]:checked.cek {
     content: images/kursimerah.png;
 }
 .class_checkbox {
-    width: 20px;  
+    width: 20px;
     height: 30px;
-    background-size:     cover; 
+    background-size:     cover;
     background-image: url(../images/kursi.png);
 }
 .class_checkbox.checked {
-    background-size:     cover; 
+    background-size:     cover;
     background-image: url(../images/kursikuning.png);
+}
+
+.class_checkbox_cs {
+    width: 40px;
+    height: 60px;
+    background-size:     cover;
+    background-image: url(../images/kursi.png);
+}
+.class_checkbox_cs.checked {
+    background-size:     cover;
+    background-image: url(../images/kursikuning.png);
+}
+
+.header{
+    background-color: #FFDF04;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 100px;
+    padding-left: 100px;
+}
+
+.main{
+    margin: 30px;
+}
+
+.box-body{
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.footer{
+    background-color: #AB0C0C;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.bg-secondary {
+    background-color: #636C72!important;
+}
+
+.progress-bar{
+    padding-top: 10px;
+}
+
+.progress{
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
