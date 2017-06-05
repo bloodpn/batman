@@ -10,16 +10,17 @@ use App\Models\Jadwal;
 use App\Models\Car;
 use App\Models\Counter;
 use App\Models\Price;
-
+use App\Models\Route;
 class ScheduleController extends Controller
 {
     public function index()
     {
     	$jadwals = Jadwal::all();
     	$cars = Car::all();
-    	$counters = Counter::all();
+    	$routes = Route::all();
+        // dd($routes);
         $prices = Price::all();
-    	return view('master/masterjadwal', ['jadwal' => $jadwals, 'car' => $cars, 'counter' => $counters, 'price' => $prices]);
+    	return view('master/masterjadwal', ['jadwal' => $jadwals, 'route' => $routes, 'car' => $cars, 'price' => $prices]);
     }
     public function store(Request $request)
     {

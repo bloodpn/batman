@@ -46,24 +46,23 @@
                   </thead>
                   <tbody>
                   <?php $no = 0;?>
-                  @foreach($jadwal as $jadwal)
-                  <?php $no++ ;?>
+                  @foreach($jadwal as $Jadwal)
+                  <?php $no++;?>
                     <tr class="odd gradeX">
                       <td>{{$no}}</td>
-                      <td>{{$jadwal->car->no_body}}</td>
-                      <td>({{$jadwal->origin->city}}) <b>{{$jadwal->origin->name}}</b></td>
-                      <td>({{$jadwal->destination->city}}) <b>{{$jadwal->destination->name}}</b></td>
-                      <td>{{date('H:i', strtotime($jadwal->time)) }} WIB</td>
-                      <td>{{$jadwal->price->umum}}</td>
-                      <td>{{$jadwal ->schedule_type }}</td>
+                      <td>({{$jadwal->route->origin->city}}) <b>{{$jadwal->route->origin->name}}</b></td>
+                      <!-- <td>({{$jadwal->destination->city}}) <b>{{$jadwal->destination->name}}</b></td> -->
+                      <!-- <td>{{date('H:i', strtotime($jadwal->time)) }} WIB</td> -->
+                      <!-- <td>{{$jadwal->price->umum}}</td> -->
+                      <!-- <td>{{$jadwal ->schedule_type }}</td> -->
                       <td>
-                        @if ($jadwal->id_schedule_utama=" ")
+                        @if ($Jadwal->id_schedule_utama=" ")
                           {{"Tidak Ada"}}
                         @else
                           {{$jadwal->id_schedule_utama}}
                         @endif
                       </td>
-                      <td>{{$jadwal ->stats }}</td>
+                      <td>{{$Jadwal ->stats }}</td>
                       <td>
                         <button type="submit" class="btn btn-info btn-sm pull-center">Edit</button>
                         <!-- <button type="submit" class="btn btn-info btn-sm pull-center">Hapus</button> -->
@@ -103,7 +102,7 @@
                         <select class="form-control" style="width: 100%;" name="car" id="car">
                           <option>Pilih Mobil</option>
                           @foreach ($car as $Car)
-                          <option value="{{$Car->id}}" >{{$Car->no_body}}</option>
+                          <option value="{{$Car->id}}" >{{$Car -> no_body}}</option>
                           @endforeach
                         </select>
                       </div>

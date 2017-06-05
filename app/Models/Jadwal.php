@@ -13,16 +13,13 @@ class Jadwal extends Model
     {
         return $this->belongsTo('App\Models\Car', 'id_car');
     }
-    public function origin()
+    public function route()
     {	
-    	return $this->belongsTo('App\Models\Counter' , 'id_origin');
+    	return $this->hasMany('App\Models\Counter' ,'id_origin' ,'id');
     }
-    public function destination()
-    {	
-    	return $this->belongsTo('App\Models\Counter' , 'id_destination');
-    }
-    public function price()
-    {	
-    	return $this->belongsTo('App\Models\Price' ,'id_price');
-    }
+    
+    // public function price()
+    // {	
+    // 	return $this->belongsTo('App\Models\Price' ,'id_price');
+    // }
 }
