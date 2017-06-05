@@ -66,6 +66,8 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="tambahsupir">
+            <form action="/mastersupir" method="post">
+            {{ csrf_field() }}
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="row">
@@ -126,10 +128,10 @@
     <div class="box-footer">
         <div class="row">
             <div class="col-lg-12">
-                <button type="button" class="btn btn-primary pull-right">Submit</button>
+                <button type="submit" class="btn btn-primary pull-right">Submit</button>
             </div>
         </div>
     </div>
 </div>
-
+</form>
 @endsection

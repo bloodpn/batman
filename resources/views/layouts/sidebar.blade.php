@@ -20,6 +20,8 @@
             <li><a href="masterkendaraan"><i class="fa fa-circle-o text-aqua"></i> Master Kendaraan</a></li>
 			<li><a href="mastersupir"><i class="fa fa-circle-o text-aqua"></i> Master Supir</a></li>
       <li><a href="masteruser"><i class="fa fa-circle-o text-aqua"></i>Master User</a></li>
+      <li><a href="masterkomputer"><i class="fa fa-circle-o text-aqua"></i>Master Komputer</a></li>
+      <li><a href="masterasuransi"><i class="fa fa-circle-o text-aqua"></i>Master Asuransi</a></li>
           </ul>
         </li>
         <li class="treeview">

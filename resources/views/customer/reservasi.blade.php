@@ -1,134 +1,97 @@
-@extends('customer.default')
+@extends('customer.layouts.main')
 
-@section('title','booking')
+@section('title','Booking')
 
 @section('content')
-<div class="box box-primary box-solid direct-chat-primary">
-        <div class="box-header">
-          <a href="/"><i class="fa fa-home fa-lg"></a></i> | 
-          <h3 class="box-title">Cari Keberangkatan |</h3>
-          <a class="box-title" data-toggle="collapse" data-parent="#accordion" href="#caritiket">Check Tiket</a>
-          <div id="caritiket" class="panel-collapse collapse">
+<div class="main">
+  <div class="box box-primary box-solid direct-chat-primary">
+    <div class="box-header">
+      <i class="fa fa-ticket" aria-hidden="true"></i> Cari Tiket
+      <div class="box-tools pull-right">
+        Bantuan
+      </div>
+    </div><!-- /.box-header -->
+    <div class="box-body">
+     <div class="row">
+       <div class="col-5">
+         <div class="form-group">
+            <label>Keberangkatan</label>
+            <select class="form-control" style="width: 100%;" name="">
+            </select>
+          </div>
+       </div>
+        <div class="col-4">
+         <div class="form-group">
+            <label>Tanggal Keberangkatan</label>
+            <div class="input-group date">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <input type="text" class="form-control pull-right" id="tgl_berangkat" placeholder="Tanggal Berangkat">
+            </div>
+            <!-- /.input group -->
+          </div>
+       </div>
+       <div class="col-3">
           <br>
-            <div class="row" style="margin-left: 0px;">
-              <div class="col-lg-4">
-          
-                <div class="input-group input-group-sm">
-                  <input type="text" class="form-control" placeholder="Masukan Kode Tiket">
-                    <span class="input-group-btn">
-                      <a href="cektiket" class="btn btn-info btn-flat">Cari</a>
-                    </span>
-                </div>
-              </div>
-            </div>
-             
+          <div class="form-group">
+            <label class="custom-control custom-radio">
+              <input id="radio1" name="stats" type="radio" class="custom-control-input sj" checked="checked" onchange="sj()">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">Sekali Jalan</span>
+            </label>
+            <label class="custom-control custom-radio">
+              <input id="radio2" name="stats" type="radio" class="custom-control-input pp" onchange="pp()">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">Pulang Pergi</span>
+            </label>
           </div>
-
-          <div class="box-tools pull-right">
-            <button class="btn btn-box-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle">Bantuan</button>
+       </div>
+     </div>
+     <div class="row">
+       <div class="col-5">
+         <div class="form-group">
+            <label>Tujuan</label>
+            <select class="form-control" style="width: 100%;">
+            </select>
           </div>
-        </div><!-- /.box-header -->
-        <div class="box-body">
-        <br>
-        
-         <div class="row"  style="margin-left: 0px;">
-           <div class="col-lg-5">
-             <div class="form-group">
-                <label>Keberangkatan</label>
-                <select class="form-control" style="width: 100%;">
-                
-                  <option>Pilih Keberangkatan</option>
-                  <option>Alabama</option>
-                  <option>Alaska</option>
-                  <option>California</option>
-                  <option>Delaware</option>
-                  <option>Tennessee</option>
-                  <option>Texas</option>
-                  <option>Washington</option>
-
-                </select>
+       </div>
+        <div class="col-4">
+         <div class="form-group tgl" id="tgl1" style="display: none;">
+            <label>Tanggal Kembali</label>
+            <div class="input-group date">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
               </div>
-           </div>
-            <div class="col-lg-4">
-             <div class="form-group">
-                <label>Tanggal Keberangkatan</label>
-                <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control pull-right" id="tgl_berangkat" placeholder="Tanggal Berangkat">
-                </div>
-                <!-- /.input group -->
-              </div>
-           </div>
-           <div class="col-lg-3">
-           <br>
-             <div class="form-group">
-                <label>
-                  Sekali Jalan
-                  <input type="radio" name="r1" class="minimal" checked>
-                </label>
-                <label>
-                  Pulang Pergi
-                  <input type="radio" name="r1" class="minimal">
-                </label>
-              </div>
-           </div>
-         </div>
-         <div class="row"  style="margin-left: 0px;">
-           <div class="col-lg-5">
-             <div class="form-group">
-                <!-- <label>Tujuan</label> -->
-                <select class="form-control" style="width: 100%;">
-                  <option>Pilih Tujuan</option>
-                  <option>Alabama</option>
-                  <option>Alaska</option>
-                  <option>California</option>
-                  <option>Delaware</option>
-                  <option>Tennessee</option>
-                  <option>Texas</option>
-                  <option>Washington</option>
-                </select>
-              </div>
-           </div>
-            <div class="col-sm-4">
-             <div class="form-group">
-                <!-- <label>Tanggal Kembali</label> -->
-                <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control pull-right" id="tgl_kembali" placeholder="Tanggal Kembali">
-                </div>
-                <!-- /.input group -->
-              </div>
-           </div>
-           <div class="col-sm-2">
-           <div class="input-group" >
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <select class="form-control">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                </select>
-              </div>
-           </div>
-         </div>
-
-         <br>
-
-         <div class="row" style="margin-left: 0px;">
-         
-             
-         </div>
-
-        </div><!-- /.box-body -->
-        <div class="box-footer">
-            <div class="input-group pull-right">
-                <!-- <button type="button" class="btn btn-primary btn-flat">Lanjut</button> -->
-                <a href="pilihjadwal" class="btn btn-primary btn-flat">Lanjut</a>
+              <input type="text" class="form-control pull-right" id="tgl_kembali" placeholder="Tanggal Kembali">
             </div>
-        </div><!-- /.box-footer-->
-      </div><!--/.direct-chat -->
+          </div>
+        </div>
+        <div class="col-2">
+          <label>Penumpang</label>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            <select class="form-control">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+       </div>
+     </div>
+    </div><!-- /.box-body -->
+    <div class="box-footer">
+      <div class="row">
+        <div class="col-12" align="right">
+          <a href="pilihjadwal" class="btn btn-primary btn-flat"> Lanjut &nbsp;&nbsp;<i class="fa fa-angle-double-right"></i></a>
+        </div>
+      </div>
+    </div><!-- /.box-footer-->
+  </div><!--/.direct-chat -->
+</div>
+
+<script type="text/javascript">
+
+</script>
 @endsection

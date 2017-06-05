@@ -51,3 +51,13 @@ Route::get('/masterjurusan', 'MasterjurusanController@index');
 Route::get('/masteruser', 'MasteruserController@index');
 
 Route::get('/masterarea', 'MasterareaController@index');
+
+Route::get('/masterkomputer', 'MasterkomputerController@index');
+
+Route::get('/masterasuransi', 'MasterasuransiController@index');
+
+Route::post('/mastersupir', 'MastersupirController@store');
+
+Route::post('/mastercabang', 'MastercabangController@store');
+
+Route::post('/masterkendaraan', 'MasterkendaraanController@store');
