@@ -1,22 +1,21 @@
-@extends('customer.default')
+@extends('customer.layouts.main')
 
-@section('title','Data Penumpang')
+@section('title','Ubah Tempat Duduk')
 
 @section('content')
+<br>
 <div class="box box-solid">
-  <div class="box-header">
-     <div class="row">
-      <div class="col-xs-10">
-        <h1>Asal - Tujuan</h1>
-      </div>
-      <div class="col-xs-2">
-      <br>
-        <h4><i class="fa fa-calendar"></i> 5/10/2017</h4>
-        <!-- <h4><i class="fa fa-money"></i> Rp. 90.000</h4> -->
-      </div>
+  <div class="box-body row">
+    <div class="col-6">
+      <h3>Keberangkatan<br>
+      Tujuan</h3>
     </div>
-  </div><!-- /.box-header -->
-   <hr>
+    <div class="col-6">
+      <h3>
+        <i class="fa fa-calendar"></i> 5/10/2017<br>
+      </h3>
+    </div>
+  </div>
   <div class="box-body">
     <div class="row">
       <div class="col-sm-6" >
@@ -60,86 +59,78 @@
 </div>
 
 <div class="box box-solid">
-  <div class="box-body text-center">
-  <br>
-    <div class="row">
-      <div class="col-md-4 col-md-offset-4">
+  <div class="box-body">
+    <br>
+    <div class="row" align="center">
+      <div class="col-4 offset-4">
         <div class="row">
-          <div class="col-md-4">
-            <input type='checkbox' name='thing' value='valuable' id="1"/>
-            <label for="1"></label>
+          <div class="col-4">
+           <input type="checkbox" class="input_class_checkbox_cs" value="1">
+            <label>1</label>
           </div>
-          <div class="col-md-4">
-            <input type="checkbox" id="2" />
-            <label for="2"></label>
+          <div class="col-4">
+            <input type="checkbox" class="input_class_checkbox_cs" value="2">
+            <label>2</label>
           </div>
-          <div class="col-md-4">
-            <input type="checkbox" id="3" />
-            <label for="3"></label>
+          <div class="col-4">
+            <b class="kursi"></b>
+           <label>Supir</label>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-4">
-            <input type='checkbox' name='thing' value='valuable' id="4"/>
-            <label for="4"></label>
+          <div class="col-4">
+           <input type="checkbox" class="input_class_checkbox_cs" value="1">
+           <label>3</label>
           </div>
-          <div class="col-md-4">
-            <input type="checkbox" id="5" />
-            <label for="5"></label>
+          <div class="col-4">
+            <input type="checkbox" class="input_class_checkbox_cs" value="2">
+            <label>4</label>
           </div>
-          <div class="col-md-4">
-            <input type="checkbox" id="6" />
-            <label for="6"></label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <input type='checkbox' name='thing' value='valuable' id="thing"/>
-            <label for="7"></label>
-          </div>
-          <div class="col-md-4">
-            <input type="checkbox" id="inputOne" />
-            <label for="8"></label>
-          </div>
-          <div class="col-md-4">
-            <input type="checkbox" id="inputOne" />
-            <label for="9"></label>
+          <div class="col-4">
+           <input type="checkbox" class="input_class_checkbox_cs" value="3">
+           <label>5</label>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-4">
-            <input type='checkbox' name='thing' value='valuable' id="thing"/>
-            <label for="10"></label>
+      <div class="row">
+          <div class="col-4">
+           <input type="checkbox" class="input_class_checkbox_cs" value="1">
+           <label>6</label>
           </div>
-          <div class="col-md-4">
-            <input type="checkbox" id="inputOne" />
-            <label for="11"></label>
+          <div class="col-4">
+            <input type="checkbox" class="input_class_checkbox_cs" value="2" disabled="">
+            <label>7</label>
           </div>
-          <div class="col-md-4">
-            <input type="checkbox" id="inputOne" />
-            <label for="12"></label>
+          <div class="col-4">
+           <input type="checkbox" class="input_class_checkbox_cs" value="3">
+           <label>8</label>
           </div>
         </div>
+      <div class="row">
+          <div class="col-4">
+           <input type="checkbox" class="input_class_checkbox_cs" value="1">
+           <label>9</label>
+          </div>
+          <div class="col-4">
+            <input type="checkbox" class="input_class_checkbox_cs" value="2">
+            <label>10</label>
+          </div>
+          <div class="col-4">
+           <input type="checkbox" class="input_class_checkbox_cs" value="3">
+           <label>11</label>
+          </div>
       </div>
     </div>
-    
-  </div><!--/.direct-chat -->
+  </div>
+
   <div class="box-footer">
     <div class="row">
-      <div class="col-sm-2">
-        <div class="input-group">
-            <!-- <button type="button" class="btn btn-primary btn-flat">Lanjut</button> -->
-            <a href="{{ url('/datapenumpang') }}" class="btn btn-primary btn-flat">Kembali</a>
-        </div>
+      <div class="col-6">
+        <a href="{{ url('/ubahjadwal') }}" class="btn btn-primary btn-flat"><i class="fa fa-angle-double-left"></i>&nbsp;&nbsp; Kembali</a>
       </div>
-      <div class="col-sm-2 pull-right">
-        <div class="input-group pull-right">
-            <!-- <button type="button" class="btn btn-primary btn-flat">Lanjut</button> -->
-            <a href="{{ url('/metodepembayaran') }}" class="btn btn-primary btn-flat">Lanjut</a>
-        </div>
+      <div class="col-6" align="right">
+        <a href="{{ url('/cektiket') }}" class="btn btn-primary btn-flat">Lanjut &nbsp;&nbsp;<i class="fa fa-angle-double-right"></i></a>
       </div>
     </div>
   </div><!-- /.box-footer-->
-
 </div>
 @endsection
