@@ -116,6 +116,29 @@
 								</div>
 							</div>
 						</div>
+						<div class="row">
+							<div class="col-lg-2" style="margin-left: 10px;">
+								<label style="padding-bottom: 5px; font-size: 12px;">Password :</label>
+							</div>
+							<div class="col-lg-6">
+								<div class="form-group input-group">
+									<input type="text" name="password" class="form-control form-purchase">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-2" style="margin-left: 10px;">
+								<label style="padding-bottom: 5px; font-size: 12px;">User Level :</label>
+							</div>
+							<div class="col-lg-6">
+								<div class="form-group input-group">
+									<select class="form-control form-purchase" name="privillage">
+										<option value="CSO">CSO</option>
+										<option value="CSO Paket">CSO Paket</option>
+									</select>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -48,7 +48,7 @@
 						<?php $no++; ?>							
 						<tr>
 								<td>{{$no}}</td>
-								<td>{{$counter->kd_counters}}</td>
+								<td>{{$counter->code}}</td>
 								<td>{{$counter->name}}</td>
 								<td>{{$counter->address}}</td>
 								<td>{{$counter->city}}</td>
@@ -56,7 +56,7 @@
 								<td>{{$counter->fax}}</td>
 								<td>{{$counter->type}}</td>
 								<td>
-									<a href="">edit</a> |
+									<a href="/mastercabang/edit/{{$counter->id}}">edit</a> |
 									<a href="">Delete</a>
 								</td>
 							</tr>

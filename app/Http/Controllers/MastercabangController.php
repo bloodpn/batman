@@ -16,13 +16,34 @@ class MastercabangController extends Controller
     	return view('master/mastercabang', ['counter' => $counters]);
     }
 
+    public function edit($id)
+    {
+        $counters = Counter::find($id);
+        return view('master/editmastercabang', ['counter' => $counters]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $counters = Counter::find($id);
+        $counters->code = $request->kd_cabang;
+        $counters->name = $request->nama_cabang;
+        $counters->address = $request->alamat;
+        $counters->city = $request->kota;
+        $counters->phone = $request->telp;
+        $counters->type = $request->tipe;
+        $counters->save();
+
+        $counters = Counter::all();
+        return view('master/mastercabang', ['counter' => $counters]);
+    }
+
 
     public function store(Request $request)
     {
     	// dd($request);
     	$counters = new Counter;
 
-    	$counters->kd_counters = $request->kd_cabang;
+    	$counters->code = $request->kd_cabang;
     	$counters->name = $request->nama_cabang;
     	$counters->address = $request->alamat;
     	$counters->city = $request->kota;
@@ -33,4 +54,5 @@ class MastercabangController extends Controller
     	$counters = Counter::all();
     	return view('master/mastercabang', ['counter' => $counters]);
     }
+
 }

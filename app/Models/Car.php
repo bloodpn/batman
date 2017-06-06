@@ -14,6 +14,10 @@ class Car extends Model
     }
     public function driver()
     {
-    	return $this->belongsTo('App\Models\Driver', 'id_driver');
+    	return $this->belongsTo('App\Models\Driver', 'id');
+    }
+    public function seat()
+    {
+    	return $this->belongsTo('App\Models\Seat', 'id');
     }
 }

@@ -35,12 +35,12 @@
                             <tr>
                                 <th>No.</th>
                                 <th>No Body</th>
+                                <th>Seat</th>
                                 <th>Nama Supir</th>
                                 <th>Merk Mobil</th>
                                 <th>Warna</th> 
                                 <th>Tahun</th>
                                 <th>No Polisi</th>
-                                <th>Keterangan</th>
                                 <th width ="11%">Action</th>
                             </tr>
                         </thead>
@@ -51,19 +51,19 @@
                         <tr class="odd gradeX">
                             <td>{{$no}}</td>
                             <td>{{$cars->no_body}}</td>
-                            <td>{{$cars->driver->name}}</td>
+                            <td>{{$cars->seat->name}} <b> {{$cars->seat->jumlah}}</td>
+                            <td>{{$cars->drivers->name}}</td>
                             <td>{{$cars->merk}}</td>
                             <td>{{$cars->warna}}</td>
                             <td>{{$cars->tahun_kendaraan}}</td>
                             <td>{{$cars->plat_number}}</td>
-                            <td></td>
                             <td>
-                                <a href="">Edit</a>
+                                <a href="/masterkendaraan/edit/{{$cars->id}}">Edit</a> |
                                 <a href="">Delete</a>
                             </td>
                         </tr>
                     @endforeach
-                    </tbody>
+                    </tbody>    
                   </table>  
                 </div>
              </div>
@@ -79,6 +79,20 @@
                              <div class="col-lg-3">
                                  <div class="form-group input-group">
                                      <input type="text" name="no_body" class="form-control form-purchase">
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="row">
+                             <div class="col-lg-2" style="margin-left: 10px;">
+                                 <label style="padding-bottom: 5px; font-size: 12px;">Seat :</label>
+                             </div>
+                             <div class="col-lg-3">
+                                 <div class="form-group input-group">
+                                    <select class="form-control form-purchase" name="seat">
+                                        @foreach ($seat as $seat)
+                                        <option value="{{$seat->id}}">{{$seat->name}} <b> {{$seat->jumlah}}</option>
+                                        @endforeach
+                                    </select>
                                  </div>
                              </div>
                          </div>

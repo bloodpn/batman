@@ -18,7 +18,7 @@
 			<div class="col-lg-10" style="margin-left: 10px;">
 				<div class="form-group input-group">
 					<ul class="nav nav-pills">
-						<li class="active"><a href="#datarea" data-toggle="tab">Data Area</a></li>
+						<li class="active"><a href="#dataarea" data-toggle="tab">Data Area</a></li>
 						<li><a href="#tambaharea" data-toggle="tab">Tambah Baru</a></li>
 					</ul>
 				</div>
@@ -38,17 +38,26 @@
 							</tr>
 						</thead>
 						<tbody>
+						<?php $no = 0; ?>
+						@foreach ($area as $area)
+						<?php $no++; ?>
 							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td>{{$no}}</td>
+								<td>{{$area->kode}}</td>
+								<td>{{$area->name}}</td>
+								<td>
+									<a href="/masterarea/edit/{{$area->id}}">Edit</a> |
+									<a href="">Delete</a>
+								</td>
 							</tr>
+						@endforeach
 						</tbody>
 					</table>
 				</div>
 			</div>
 			<div class="tab-pane fade" id="tambaharea">
+			<form action="/masterarea" method="post">
+			{{ csrf_field() }}
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="row">
@@ -57,7 +66,7 @@
 							</div>
 							<div class="col-lg-5">
 								<div class="form-group input-group">
-									<input type="text" name="kd_area" class="form-control form-purchase" placeholder="...">
+									<input type="text" name="kode" class="form-control form-purchase" placeholder="...">
 								</div>
 							</div>
 						</div>
@@ -67,19 +76,18 @@
 							</div>
 							<div class="col-lg-5">
 								<div class="form-group input-group">
-									<input type="text" name="area_name" class="form-control form-purchase" placeholder="...">
+									<input type="text" name="name" class="form-control form-purchase" placeholder="...">
 								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-10" style="margin-left: 30px;">
+								<button type="submit" class="btn btn-primary pull-right">Submit</button>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	</div>
-	<div class="box-footer">
-		<div class="row">
-			<div class="col-lg-12">
-				<button type="button" class="btn btn-primary pull-right">Submit</button>
+			</form>
 			</div>
 		</div>
 	</div>

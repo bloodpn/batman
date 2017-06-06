@@ -15,6 +15,27 @@ class MastersupirController extends Controller
     	$drivers = Driver::all();
     	return view('master/mastersupir', ['driver' => $drivers ]);
     }
+
+    public function edit($id)
+    {
+        $drivers = Driver::find($id);
+        return view('master/editmastersupir', [ 'driver' => $drivers ]);
+    }
+
+    public function update(Request $request,$id)
+    {
+        $drivers = Driver::find($id);
+        $drivers->name = $request->nama_supir;
+        $drivers->phone = $request->tlp_supir;
+        $drivers->address = $request->alamat;
+        $drivers->kode = $request->kd_supir;
+        $drivers->license = $request->no_sim;
+        $drivers->save();
+
+        $drivers = Driver::all();
+        return view('master/mastersupir', [ 'driver' => $drivers ]);
+    }
+
     public function store(Request $request)
     {
     	$drivers = new Driver;
@@ -22,9 +43,9 @@ class MastersupirController extends Controller
     	$drivers->name = $request->nama_supir;
     	$drivers->phone = $request->tlp_supir;
     	$drivers->address = $request->alamat;
-    	$drivers->kd_driver = $request->kd_supir;
-    	$drivers->card_number = $request->no_sim;
-    	$drivers->status = 'Aktif';
+    	$drivers->kode = $request->kd_supir;
+    	$drivers->license = $request->no_sim;
+    	$drivers->stat = 'aktif';
     	$drivers->save();
     	
     	$drivers = Driver::all();
