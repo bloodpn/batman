@@ -52,6 +52,19 @@
     $('.class_checkbox_cs').on('click',function(){
         $(this).toggleClass('checked').prev().prop('checked',$(this).is('.checked'))
     });
+
+    $('#departure1').on('change', function(e){
+      var id_counter= e.target.value;
+      console.log(id_counter);
+      $.get('/search-destination?id=' +id_counter, function(data){
+      console.log(data);
+        $('#destination1').empty();
+
+        $.each(data, function(index, destObj){
+          $('#destination1').append('<option value="'+destObj.id_destination+'">'+destObj.name+'</option>');
+        });
+      });
+    });
 </script>
 
 <!-- <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script> -->

@@ -22,18 +22,18 @@
     </div>
     <div class="col-3">
       <h3>
-        <i class="fa fa-calendar"></i> 5/10/2017<br>
-        <i class="fa fa-clock-o"></i> 20.00 WIB
+        <i class="fa fa-calendar"></i> {{ Session::get('depart_date')}}<br>
+        <i class="fa fa-clock-o"></i> {{ Session::get('time')}} WIB
       </h3>
     </div>
     <div class="col-3">
       <h3>
-        <i class="fa fa-user"></i> 1
+        <i class="fa fa-user"></i> {{ Session::get('person')}}
       </h3>
     </div>
     <div class="col-3">
       <h3>
-        <i class="fa fa-money"></i> Rp. 90.000
+        <i class="fa fa-money"></i> Rp. {{ Session::get('ticket')}}
       </h3>
     </div>
   </div>

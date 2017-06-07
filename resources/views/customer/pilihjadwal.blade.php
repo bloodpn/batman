@@ -100,41 +100,20 @@
       </div>
       <table class="table table-striped">
         <tr>
-          <th style="width: 10px"></th>
           <th>Jam Keberangkatan</th>
           <th>Tersedia</th>
           <th>Harga</th>
           <th></th>
         </tr>
-        <tr>
-          <td>1.</td>
-          <td>09.00 WIB</td>
-          <td>3 Kursi</td>
-          <td>Rp. 90.000</td>
-          <td><a href="{{ url('/datapenumpang') }}" class="btn btn-primary btn-flat">Pilih</a></td>
-          <!-- <td><button type="button" class="btn btn-primary btn-flat">Pilih</button></td> -->
-        </tr>
-        <tr>
-          <td>2.</td>
-          <td>12.00 WIB</td>
-          <td>3 Kursi</td>
-          <td>Rp. 90.000</td>
-          <td><a href="{{ url('/datapenumpang') }}" class="btn btn-primary btn-flat">Pilih</a></td>
-        </tr>
-        <tr>
-          <td>3.</td>
-          <td>15.00 WIB</td>
-          <td>3 Kursi</td>
-          <td>Rp. 90.000</td>
-          <td><a href="{{ url('/datapenumpang') }}" class="btn btn-primary btn-flat">Pilih</a></td>
-        </tr>
-        <tr>
-          <td>4.</td>
-          <td>20.00 WIB</td>
-          <td>3 Kursi</td>
-          <td>Rp. 100.000</td>
-          <td><a href="{{ url('/datapenumpang') }}" class="btn btn-primary btn-flat">Pilih</a></td>
-        </tr>
+        @foreach($ticket as $tickets)
+          <tr>
+            <td>{{ $tickets->time }} WIB</td>
+            <td>{{ $seat }} Kursi</td>
+            <td>Rp.{{ $tickets->ticket }}</td>
+            <td><a href="/datapenumpang/{{ $tickets->id }}" class="btn btn-primary btn-flat">Pilih</a></td>
+            <!-- <td><button type="button" class="btn btn-primary btn-flat">Pilih</button></td> -->
+          </tr>
+        @endforeach
       </table>
     </div>
   </div><!--/.direct-chat -->
