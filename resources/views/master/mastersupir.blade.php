@@ -50,13 +50,13 @@
                             <tr>
                                 <td>{{$no}}</td>
                                 <td>{{$driver->name}}</td>
-                                <td>{{$driver->kd_driver}}</td>
+                                <td>{{$driver->kode}}</td>
                                 <td>{{$driver->address}}</td>
                                 <td>{{$driver->phone}}</td>
-                                <td>{{$driver->card_number}}</td>
-                                <td>{{$driver->status}}</td>
+                                <td>{{$driver->license}}</td>
+                                <td>{{$driver->stat}}</td>
                                 <td>
-                                    <a href="">Edit</a> |
+                                    <a href="/mastersupir/edit/{{ $driver->id }}">Edit</a> |
                                     <a href="">Delete</a>
                                 </td>
                             </tr>

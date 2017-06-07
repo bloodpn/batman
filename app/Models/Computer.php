@@ -4,12 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Counter extends Model
+class Computer extends Model
 {
-	protected $table = 'counters';
-    public $timestamps = false;
+	protected $table = 'computers';
 
-    public function computer()
+	public function counter()
 	{
 		return $this->hasMany('App\Models\Counter', 'id');
 	}

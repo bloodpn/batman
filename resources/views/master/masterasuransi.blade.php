@@ -1,6 +1,6 @@
 @extends('customer.default')
 
-@section('title','Master Komputer')
+@section('title','Master Asuransi')
 
 @section('content')
 
@@ -39,18 +39,27 @@
 							</tr>
 						</thead>
 						<tbody>
+						<?php $no = 0; ?>
+						@foreach ($insurance as $insurance)
+						<?php $no++; ?>
 							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td>{{$no}}</td>
+								<td>{{$insurance->name}}</td>
+								<td>{{$insurance->premi}}</td>
+								<td>{{$insurance->description}}</td>
+								<td>
+									<a href="/masterasuransi/edit/{{$insurance->id}}">Edit</a> |
+									<a href="">Delete</a>
+								</td>
 							</tr>
+						@endforeach
 						</tbody>
 					</table>
 				</div>
 			</div>
 			<div class="tab-pane fade" id="tambahasuransi">
+			<form action="/masterasuransi" method="post">
+			{{ csrf_field() }}
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="row">
@@ -59,7 +68,7 @@
 							</div>
 							<div class="col-lg-5">
 								<div class="form-group input-group">
-									<input type="text" name="nama_plan" class="form-control form-purchase" placeholder="PLan xxx">
+									<input type="text" name="name" class="form-control form-purchase" placeholder="PLan xxx">
 								</div>
 							</div>
 						</div>
@@ -79,21 +88,21 @@
 							</div>
 							<div class="col-lg-5">
 								<div class="form-group input-group">
-									<input type="text" name="keterangan" class="form-control form-purchase" placeholder=".....">
+									<input type="text" name="description" class="form-control form-purchase" placeholder=".....">
 								</div>
 							</div>
 						</div>
+						<div class="row">
+							<div class="col-lg-10" style="margin-left: 30px;">
+								<button type="submit" class="btn btn-primary pull-right">Submit</button>
+							</div>
+						</div>
+						<br>
 					</div>
 				</div>
+			</form>
 			</div>
 		</div>
-	</div>
-	<div class="box-footer">
-		<div class="row">
-            <div class="col-lg-12">
-                <button type="button" class="btn btn-primary pull-right">Submit</button>
-            </div>
-        </div>
 	</div>
 </div>
 

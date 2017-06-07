@@ -35,24 +35,28 @@
 								<th>Mac Address</th>
 								<th>Nama Komputer</th>
 								<th>Cabang</th>
-								<th>Status</th>
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
+						<?php $no = 0; ?>
+						@foreach ($computer as $computers)
 							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td>{{$no}}</td>
+								<td>{{$computers->mac_address}}</td>
+								<td>{{$computers->name}}</td>
+								<td>{{$computers->name}}</td>
 								<td></td>
 							</tr>
+						@endforeach
 						</tbody>
 					</table>
 				</div>
 			</div>
 			<div class="tab-pane fade" id="tambahkomputer">
+			<form action="/masterkomputer" method="post">
+			{{ csrf_field() }}
+			
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="row">
@@ -61,7 +65,7 @@
 							</div>
 							<div class="col-lg-5">
 								<div class="form-group input-group">
-									<input type="text" name="name_pc" class="form-control form-purchase" placeholder="USER-PC">
+									<input type="text" name="name" class="form-control form-purchase" placeholder="USER-PC">
 								</div>
 							</div>
 						</div>
@@ -81,27 +85,25 @@
 							</div>
 							<div class="col-lg-5">
 								<div class="form-group input-group">
-									<select class="form-control form-purchase" name="cabang">
-										<option>Blora</option>
-										<option>BSD</option>
-										<option>Bintaro</option>
-										<option>WTC</option>
+									<select class="form-control form-purchase" name="counter">
+									@foreach ($counter as $counters)
+										<option value="{{$counters->id}}">{{$counters->name}}</option>
+									@endforeach
 									</select>
 								</div>
 							</div>
 						</div>
+						<div class="row">
+							<div class="col-lg-10" style="margin-left: 30px;">
+								<button class="btn btn-primary pull-right" type="submit">Submit</button>
+							</div>
+						</div>
 					</div>
 				</div>
+				</form>
 			</div>
 		</div>
 	</div>
-	<div class="box-footer">
-        <div class="row">
-            <div class="col-lg-12">
-                <button type="button" class="btn btn-primary pull-right">Submit</button>
-            </div>
-        </div>
-    </div>
 </div>
 
 @endsection

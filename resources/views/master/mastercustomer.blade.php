@@ -37,26 +37,36 @@
                                 <th>Alamat</th>
                                 <th>No Telp</th>
                                 <th>Status Pelanggan</th>
+                                <th>Tanggal Bergabung</th>
+                                <th>Tanggal Expired</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                        <?php $no = 0; ?>
+                        @foreach ($customer as $customers)
+                        <?php $no++; ?>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{$no}}</td>
+                                <td>{{$customers->name}}</td>
+                                <td>{{$customers->address}}</td>
+                                <td>{{$customers->phone}}</td>
+                                <td>{{$customers->customer_type}}</td>
+                                <td>{{$customers->join_date}}</td>
+                                <td>{{$customers->expired}}</td>
                                 <td>
-                                    <a href="">Edit</a> |
+                                    <a href="/mastercustomer/edit/{{$customers->id}}">Edit</a> |
                                     <a href="">Delete</a>
                                 </td>
                             </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
             <div class="tab-pane fade" id="tambahbaru">
+            <form action="/mastercustomer" method="post">
+            {{ csrf_field() }}
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="row">
@@ -65,7 +75,7 @@
                             </div>
                             <div class="col-lg-5">
                                 <div class="form-group input-group">
-                                    <input type="text" name="nama" class="form-control form-purchase" placeholder=".....">
+                                    <input type="text" name="name" class="form-control form-purchase" placeholder=".....">
                                 </div>
                             </div>
                         </div>
@@ -75,7 +85,7 @@
                             </div>
                             <div class="col-lg-5">
                                 <div class="form-group input-group">
-                                    <input type="text" name="alamat" class="form-control form-purhcase" placeholder=".....">
+                                    <input type="text" name="address" class="form-control form-purhcase" placeholder=".....">
                                 </div>
                             </div>
                         </div>
@@ -85,7 +95,7 @@
                             </div>
                             <div class="col-lg-5">
                                 <div class="form-group input-group">
-                                    <input type="number" min="0" name="telp" class="form-control form-purchase" placeholder="....">
+                                    <input type="number" min="0" name="phone" class="form-control form-purchase" placeholder="....">
                                 </div>
                             </div>
                         </div>
@@ -95,21 +105,40 @@
                             </div>
                             <div class="col-lg-5">
                                 <div class="form-group input-group">
-                                    <select class="form-control form-purchase" name="status">
-                                        <option>Pelanggan setia</option>
+                                    <select class="form-control form-purchase" name="customer_type">
+                                        <option value="umum">Umum</option>
+                                        <option value="anak-anak">Anak-anak</option>
+                                        <option value="lansia">Lansia</option>
+                                        <option value="pelanggan-setia">Pelanggan Setia</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-lg-2" style="margin-left: 10px;">
+                                <label style="padding-bottom: 5px; font-size: 12px;">Tanggal Bergabung :</label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="date" name="join_date" class="form-control form-purchase">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2" style="margin-left: 10px;">
+                                <label style="padding-bottom: 5px; font-size: 12px;">Expired :</label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="date" name="expired" class="form-control form-purchase">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-10" style="margin-left: 30px;">
+                                <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                            </div>
+                        </div>
+                        <br>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="box-footer">
-        <div class="row">
-            <div class="col-lg-12">
-                <button type="button" class="btn btn-primary pull-right">Submit</button>
+            </form>
             </div>
         </div>
     </div>
