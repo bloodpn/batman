@@ -11,17 +11,41 @@ use App\Models\Car;
 use App\Models\Counter;
 use App\Models\Price;
 use App\Models\Route;
+use App\Models\Seat;
+
+use Response;
 class ScheduleController extends Controller
 {
     public function index()
     {
-    	$jadwals = Jadwal::all();
-    	$cars = Car::all();
-    	$routes = Route::all();
-        // dd($routes);
-        $prices = Price::all();
-    	return view('master/masterjadwal', ['jadwal' => $jadwals, 'route' => $routes, 'car' => $cars, 'price' => $prices]);
+    	// $jadwals = Jadwal::all();
+        $cars       = Car::all();
+        $counters   = Counter::all();
+        $routes     = Route::all();
+        $seats      = Seat::all();
+
+    	$datas  = Jadwal::select('schedule.id','code_schedule','kd_route','time', 'seat.name','schedule.stats','via')
+                ->join('routes', 'schedule.id_route', '=', 'routes.id')
+                ->join('counters', 'routes.id_origin', '=', 'counters.id')
+                ->join('seat', 'schedule.id_seat', '=', 'seat.id')
+                ->get();
+        
+        return view('master/masterjadwal', ['data_' => $datas, 'car' => $cars, 'counter' => $counters, 'route' => $routes, 'seat' => $seats]);
     }
+
+    public function edit(Request $request)
+    {
+        $data_jadwal = Jadwal::select()
+                    ->where('schedule.id','=',$request->id)
+                    ->get();
+        return response()->json($data_jadwal);
+    }
+
+    public function update(Request $request)
+    {
+        //
+    }
+
     public function store(Request $request)
     {
         // dd($request);

@@ -28,6 +28,8 @@ Route::get('/masterkendaraan', 'MasterkendaraanController@index');
 
 Route::get('/masterjadwal', 'ScheduleController@index');
 Route::post('/createjadwal', 'ScheduleController@store');
+Route::get('/editjadwal', 'ScheduleController@edit');
+Route::get('/updatejadwal', 'ScheduleController@update');
 
 Route::get('/mastersupir', 'MastersupirController@index');
 

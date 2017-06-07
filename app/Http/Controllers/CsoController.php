@@ -21,10 +21,12 @@ class CsoController extends Controller
     public function search(Request $request)
     {
         
-    	$data = Jadwal::select()
+    	$data = Jadwal::select('counters.id','counters.name')
         ->join('counters', 'schedule.id_destination', '=', 'counters.id')
         ->where('id_origin','=',$request->id)
         ->get();
+
+        dd($data);
 
     	return response()->json($data);
     }
