@@ -22,7 +22,7 @@ Route::get('/invoice', 'InvoiceController@index');
 
 Route::get('/reservasi', 'ReservasiController@index');
 
-Route::get('/mastercustomer', 'MastercustomerController@index');
+Route::get('/mastercustomer', 'CustomerController@index');
 
 Route::get('/masterkendaraan', 'MasterkendaraanController@index');
 
@@ -54,9 +54,9 @@ Route::get('/masteruser', 'MasteruserController@index');
 
 Route::get('/masterarea', 'MasterareaController@index');
 
-Route::get('/masterkomputer', 'MasterkomputerController@index');
+Route::get('/masterkomputer', 'ComputerController@index');
 
-Route::get('/masterasuransi', 'MasterasuransiController@index');
+Route::get('/masterasuransi', 'InsuranceController@index');
 
 Route::get('/mastercabang/edit/{id}', 'MastercabangController@edit');
 
@@ -67,6 +67,10 @@ Route::get('/masterseat/edit/{id}', 'MasterseatController@edit');
 Route::get('/masterkendaraan/edit/{id}', 'MasterkendaraanController@edit');
 
 Route::get('/masterarea/edit/{id}', 'MasterareaController@edit');
+
+Route::get('/masterasuransi/edit/{id}', 'InsuranceController@edit');
+
+Route::get('/mastercustomer/edit/{id}', 'CustomerController@edit');
 
 /* post */
 Route::post('/mastersupir', 'MastersupirController@store');
@@ -79,6 +83,12 @@ Route::post('/masterseat', 'MasterseatController@store');
 
 Route::post('/masterarea', 'MasterareaController@store');
 
+Route::post('/masterasuransi', 'InsuranceController@store');
+
+Route::post('/mastercustomer', 'CustomerController@store');
+
+Route::post('/masterkomputer', 'ComputerController@store');
+
 /* Put */
 Route::put('/editmastercabang/{id}', 'MastercabangController@update');
 
@@ -89,3 +99,7 @@ Route::put('/editmasterseat/{id}', 'MasterseatController@update');
 Route::put('/editmasterkendaraan/{id}', 'MasterkendaraanController@update');
 
 Route::put('/editmasterarea/{id}', 'MasterareaController@update');
+
+Route::put('/editmasterasuransi/{id}', 'InsuranceController@update');
+
+Route::put('/editmastercustomer/{id}', 'CustomerController@update');
