@@ -3,7 +3,7 @@
 @section('title','Master Jadwal')
 
 @section('content')
- <div class="content-wrapper">
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -33,39 +33,29 @@
                   <thead>
                     <tr>
                         <th>No.</th>
-                        <th class="col-md-1">No. Body</th>
-                        <th class="col-md-2">Asal</th>
-                        <th class="col-md-2">Tujuan</th> 
+                        <th class="col-md-3">Kode Jadwal</th>
+                        <th class="col-md-2">Jurusan</th>
                         <th class="col-md-1">Jam</th>
-                        <th class="col-md-1">Harga</th>
-                        <th class="col-md-1">Tipe</th>
-                        <th class="col-md-2">Jadwal Utama</th>
-                        <th class="col-md-1">status</th>
+                        <th class="col-md-1">Kursi</th>
+                        <th class="col-md-1">Status</th>
+                        <th class="col-md-2">Online</th>
                         <th class="col-md-1">Action</th>
                     </tr>
                   </thead>
                   <tbody>
                   <?php $no = 0;?>
-                  @foreach($jadwal as $jadwal)
-                  <?php $no++ ;?>
+                  @foreach($data_ as $data)
+                  <?php $no++;?>
                     <tr class="odd gradeX">
                       <td>{{$no}}</td>
-                      <td>{{$jadwal->car->no_body}}</td>
-                      <td>({{$jadwal->origin->city}}) <b>{{$jadwal->origin->name}}</b></td>
-                      <td>({{$jadwal->destination->city}}) <b>{{$jadwal->destination->name}}</b></td>
-                      <td>{{date('H:i', strtotime($jadwal->time)) }} WIB</td>
-                      <td>{{$jadwal->price->umum}}</td>
-                      <td>{{$jadwal ->schedule_type }}</td>
+                      <td>{{$data->code_schedule}}</td>
+                      <td>{{$data->kd_route}}</td>
+                      <td>{{date('H:i', strtotime($data->time)) }} WIB</td>
+                      <td>{{$data->name}}</td>
+                      <td>{{$data->stats}}</td>
+                      <td>{{$data->via}}</td>
                       <td>
-                        @if ($jadwal->id_schedule_utama=" ")
-                          {{"Tidak Ada"}}
-                        @else
-                          {{$jadwal->id_schedule_utama}}
-                        @endif
-                      </td>
-                      <td>{{$jadwal ->stats }}</td>
-                      <td>
-                        <button type="submit" class="btn btn-info btn-sm pull-center">Edit</button>
+                         <button class="btn btn-default btn-detail edit_jadwal" value="{{$data->id}}">Edit</button>
                         <!-- <button type="submit" class="btn btn-info btn-sm pull-center">Hapus</button> -->
                       </td>
                     </tr>
@@ -78,90 +68,156 @@
         </div>
       </div>
 
-<!--Modal Tambah Jadwal-->
-        <div class="modal fade" id="modaljadwal">
-          <form action="createjadwal" method="post">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">x</button>
-                    <h4 class="modal-title">Tambah Jadwal</h4>
-                </div>
-                <div class="modal-body">
-                  <div class="row">
-                    <div class="col-md-3">
-                      <label style="padding-bottom: 8px; font-size: 13px;">No. Body</label><br>
-                      <label style="padding-bottom: 8px; font-size: 13px;">Asal</label><br>
-                      <label style="padding-bottom: 8px; font-size: 13px;">Tujuan</label><br>
-                      <label style="padding-bottom: 8px; font-size: 13px;">Jam Berangkat</label><br>
-                      <label style="padding-bottom: 8px; font-size: 13px;">Tipe Jadwal</label><br>
-                      <label style="padding-bottom: 8px; font-size: 13px;">Jadwal Utama</label><br>
-                      <label style="padding-bottom: 8px; font-size: 13px;">Harga</label><br>
+    <!--Modal Tambah Jadwal-->
+     <div class="modal fade" id="createjadwal">
+        <!-- <form action="createjadwal" method="post"> -->
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">x</button>
+                  <h4 class="modal-title">Tambah Jadwal</h4>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label style="padding-top: 5px; padding-bottom: 9px; font-size: 13px;">Pilih Jurusan</label><br>
+                    <label style="padding-bottom: 9px; font-size: 13px;">Nama Jurusan</label><br>
+                    <label style="padding-bottom: 9px; font-size: 13px;">Jam</label><br>
+                    <label style="padding-bottom: 9px; font-size: 13px;">Kursi</label><br>
+                    <label style="padding-bottom: 9px; font-size: 13px;">Online</label><br>
+                    <label style="padding-bottom: 9px; font-size: 13px;">Status</label><br>
+                  </div>
+                  <div class="col-md-9">
+                    <div class="form-group" style="margin-bottom: 0px">
+                      <select class="form-control" style="width: 100%;" name="car" id="car">
+                        <option value="0">Pilih Jurusan</option>
+                        @foreach ($route as $Route)
+                        <option value="{{$Route->id}}" >{{$Route -> kd_route}}</option>
+                        @endforeach
+                      </select>
                     </div>
-                    <div class="col-md-9">
-                      <div class="form-group" style="margin-bottom: 0px">
-                        <select class="form-control" style="width: 100%;">
-                          <option>Pilih Mobil</option>
-                          @foreach ($car as $Car)
-                          <option value="{{$Car->id}}" name="car" id="car">{{$Car->no_body}}</option>
-                          @endforeach
-                        </select>
-                      </div>
-                      <div class="form-group" style="margin-bottom: 0px">
-                        <select class="form-control" style="width: 100%;">
-                          <option>Pilih Asal</option>
-                          @foreach ($counter as $Counter)
-                          <option value="{{$Counter->id}}" name="asal" id="asal">{{$Counter->name}}</option>
-                          @endforeach
-                        </select>
-                      </div>
-                      <div class="form-group" style="margin-bottom: 0px">
-                        <select class="form-control" style="width: 100%;">
-                          <option>Pilih Asal</option>
-                          @foreach ($counter as $Counter)
-                          <option value="{{$Counter->id}}" name="tujuan" id="tujuan">{{$Counter->name}}</option>
-                          @endforeach
-                        </select>
-                      </div>
-                      <div class="form-group" style="margin-bottom: 0px;">
-                            <input type="text" name="time" id="time" class="form-control timepicker">
-                      </div>
-                      <div class="form-group" style="margin-bottom: 0px;">
-                          <input type="text" name="tipe_jadwal" id="tipe_jadwal" class="form-control form-purchase" placeholder="Tipe Jadwal">
-                      </div>
-                      <div class="form-group" style="margin-bottom: 0px;">
-                          <input type="text" name="j_utama" id="j_utama" class="form-control form-purchase" placeholder="Jadwal Utama">
-                      </div>
+                    <div class="form-group" style="margin-bottom: 0px;">
+                          <input type="text" name="time" class="form-control">
+                    </div>
+                     <div class="form-group" style="margin-bottom: 0px;">
+                          <input type="text" name="time" id="time" class="form-control timepicker">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0px">
+                      <select class="form-control" style="width: 100%;" name="asal" id="asal">
+                        <option>Pilih Kursi</option>
+                        @foreach ($seat as $Seat)
+                        <option value="{{$Seat->id}}" >{{$Seat->name}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0px;">
+                      <select class="form-control" id="tipe_jadwal">
+                        <option value="on jadwal">Online</option>
+                        <option value="off">Offline</option>
+                      </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0px;">
+                      <select class="form-control" id="tipe_jadwal">
+                        <option value="on jadwal">Aktif</option>
+                        <option value="off">Non Aktif</option>
+                      </select>
                     </div>
                   </div>
                 </div>
-                <div class="modal-footer">
-                  <button type="submit" class="btn btn-default" value="save" id="save">Submit</button>
-                  <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
-                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" value="save" id="cJadwal">Submit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
               </div>
             </div>
-          </form>
-        </div>
-
+          </div>
+        <!-- </form> -->
       </div>
-    </div>
-  </section>
+    <!--end Modal-->
+
+    <!--Modal Edit Jadwal-->
+     <div class="modal fade" id="editjadwal">
+        <!-- <form action="createjadwal" method="post"> -->
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">x</button>
+                  <h4 class="modal-title" id="modalTitle"></h4>
+              </div>
+              <div class="modal-body" id="bodyEdit">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label style="padding-top: 5px; padding-bottom: 9px; font-size: 13px;">Pilih Jurusan</label><br>
+                    <label style="padding-bottom: 9px; font-size: 13px;">Nama Jurusan</label><br>
+                    <label style="padding-bottom: 9px; font-size: 13px;">Jam</label><br>
+                    <label style="padding-bottom: 9px; font-size: 13px;">Kursi</label><br>
+                    <label style="padding-bottom: 9px; font-size: 13px;">Online</label><br>
+                    <label style="padding-bottom: 9px; font-size: 13px;">Status</label><br>
+                  </div>
+                  <div class="col-md-9">
+                    <div class="form-group" style="margin-bottom: 0px">
+                      <select class="form-control" style="width: 100%;" name="car" id="car">
+                        <option value="0">Pilih Jurusan</option>
+                        @foreach ($route as $Route)
+                        <option value="{{$Route->id}}" >{{$Route -> kd_route}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0px;">
+                          <input type="text" name="times" id="codeSche" class="form-control">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0px">
+                      <select class="form-control" style="width: 100%;" name="asal" id="asal">
+                        <option>Pilih Kursi</option>
+                        @foreach ($seat as $Seat)
+                        <option value="{{$Seat->id}}" >{{$Seat->name}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0px;">
+                      <select class="form-control" id="tipe_jadwal">
+                        <option value="on jadwal">Online</option>
+                        <option value="off">Offline</option>
+                      </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0px;">
+                      <select class="form-control" id="tipe_jadwal">
+                        <option value="on jadwal">Aktif</option>
+                        <option value="off">Non Aktif</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" value="save" id="cJadwal">Submit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+              </div>
+            </div>
+          </div>
+        <!-- </form> -->
+      </div>
+    <!--end Modal-->
+
+    </section>
+</div>
  @endsection
 
 @section('script')
-  $('#modaljadwal').on('submit', function(e){
-    e.preventDefault();
-    var form     =$('#modaljadwal');
-    var formData =form.serialize();
-    var url      = form.attr('action');
-    $.ajax({
-      type  : 'post',
-      url   : url,
-      data  : formData,
-      success: function(data){
-        console.log(data);
-      }
+
+
+//Edit Schedule  
+$(document).on('click','.edit_jadwal',function(){
+        var id_jadwal = $(this).val();
+       
+        $.get('/editjadwal?id=' +id_jadwal, function(index, jadwaObj) {
+           
+           console.log(data_jadwal);
+            //$('#modalTitle').val($(this).jadwal_edit('code_schedule'));
+            $('#codeSche').val(jadwaObj.code_schedule);
+            //$('#times').html(data_jadwal.time);
+            $('#editjadwal').modal('show');
+           
+        }) 
     });
-  });
 @endsection

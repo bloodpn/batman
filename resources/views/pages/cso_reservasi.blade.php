@@ -236,7 +236,6 @@
 $('#asal').on('change', function(e)
   {
   var id_asal= e.target.value;
-  console.log(id_asal);
   $.get('/searchDestination?id=' +id_asal, function(data){
   console.log(data);
     $('#ctujuan').empty();
