@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Jadwal extends Model
+class Schedule extends Model
 {
-    protected $table = 'schedule';
     protected $guarded = [];
 
     public function car()

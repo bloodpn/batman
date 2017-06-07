@@ -6,27 +6,27 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use App\Http\Controllers\Controller;
-use App\Models\Jadwal;
+use App\Models\Schedule;
 use App\Models\Car;
 use App\Models\Counter;
+use App\Models\ROute;
 
 class CsoController extends Controller
 {
     public function index()
     {
-    	$jadwals = Jadwal::all();
+    	$schedules = Schedule::all();
     	$counters = Counter::all();
-    	return view('pages/cso_reservasi', ['jadwal' => $jadwals, 'counter' => $counters]);
+    	return view('pages/cso_reservasi', ['jadwal' => $schedules, 'counter' => $counters]);
     }
     public function search(Request $request)
     {
         
-    	$data = Jadwal::select('counters.id','counters.name')
-        ->join('counters', 'schedule.id_destination', '=', 'counters.id')
+    	$data = Route::select('id_destination','counters.name')
+        ->join('counters', 'routes.id_destination', '=', 'counters.id')
         ->where('id_origin','=',$request->id)
+        ->where('routes.stat','aktif')
         ->get();
-
-        dd($data);
 
     	return response()->json($data);
     }

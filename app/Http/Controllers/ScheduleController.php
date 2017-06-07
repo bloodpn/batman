@@ -6,25 +6,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use App\Http\Controllers\Controller;
-use App\Models\Jadwal;
+use App\Models\Schedule;
 use App\Models\Car;
 use App\Models\Counter;
 use App\Models\Price;
 use App\Models\Route;
 use App\Models\Seat;
 
-use Response;
 class ScheduleController extends Controller
 {
     public function index()
     {
-    	// $jadwals = Jadwal::all();
+    	// $Schedules = Schedule::all();
         $cars       = Car::all();
         $counters   = Counter::all();
         $routes     = Route::all();
         $seats      = Seat::all();
 
-    	$datas  = Jadwal::select('schedule.id','code_schedule','kd_route','time', 'seat.name','schedule.stats','via')
+    	$datas  = Schedule::select('schedules.id','code_schedule','kd_route','time', 'seat.name','schedules.stats','via')
                 ->join('routes', 'schedule.id_route', '=', 'routes.id')
                 ->join('counters', 'routes.id_origin', '=', 'counters.id')
                 ->join('seat', 'schedule.id_seat', '=', 'seat.id')
@@ -35,7 +34,7 @@ class ScheduleController extends Controller
 
     public function edit(Request $request)
     {
-        $data_jadwal = Jadwal::select()
+        $data_jadwal = schedule::select()
                     ->where('schedule.id','=',$request->id)
                     ->get();
         return response()->json($data_jadwal);
@@ -51,7 +50,7 @@ class ScheduleController extends Controller
         // dd($request);
 		// $jadwal= Jadwal::create($request->all());
 		// return response()->json($jadwal);
-        $data = new Jadwal;
+        $data = new Schedule;
         // dd($request->car);
         $data->id_car = $request->car;
         $data->id_origin = $request->asal;
