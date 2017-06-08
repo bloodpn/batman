@@ -57,5 +57,15 @@
 	  showInputs: false
 	});
 
+	function pepe(){
+        if($('.pp').is(":checked"))
+        $("#tgl11").show();
+    }
+
+    function seje(){
+        if($('.sj').is(":checked"))
+        $("#tgl11").hide();
+    }
+
 </script>
 <!-- <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script> -->
