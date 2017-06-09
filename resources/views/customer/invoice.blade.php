@@ -83,7 +83,7 @@
   <div class="box-footer">
     <div class="row">
       <div class="col-12" align="right">
-        <a href="carijadwal" class="btn btn-primary btn-flat">Selesai &nbsp;&nbsp;<i class="fa fa-angle-double-right"></i></a>
+        <a href="reservasi" class="btn btn-primary btn-flat">Selesai &nbsp;&nbsp;<i class="fa fa-angle-double-right"></i></a>
       </div>
     </div>
   </div>

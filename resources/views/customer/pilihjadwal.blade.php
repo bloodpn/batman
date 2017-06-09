@@ -105,7 +105,7 @@
           <th>Harga</th>
           <th></th>
         </tr>
-        @foreach($ticket as $tickets)
+        @foreach($schedule as $tickets)
           <tr>
             <td>{{ $tickets->time }} WIB</td>
             <td>{{ $seat }} Kursi</td>
