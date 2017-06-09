@@ -78,10 +78,9 @@ class CsoController extends Controller
                     }
                     else if ($ticket>0)
                     {
-                        dd('hahahah');
-                        // $list[] = Departure::select()
-                        // ->where ('id_schedule', '=' , $id_schedule)
-                        // ->get();
+                        $list[] = Departure::select()
+                        ->where ('id_schedule', '=' , $id_schedule)
+                        ->get();
                     }
                 }
 
