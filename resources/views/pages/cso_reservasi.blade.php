@@ -82,7 +82,7 @@
                         <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" class="form-control pull-right"  placeholder="Tanggal Kembali">
+                        <input type="text" class="form-control pull-right" id="tgl_kembali"  placeholder="Tanggal Kembali">
                       </div>
                       <!-- /.input group -->
                     </div>
@@ -111,16 +111,8 @@
                       </tr>
                     </thead>
                       <tbody id="scheduleList">
-                        <tr>
-                          <td>1.</td>
-                          <td>09.00 WIB</td>
-                          <td>3 Kursi</td>
-                          <td>Rp. 90.000</td>
-                          <td><a href="{{ url('/datapenumpang') }}" class="btn btn-primary btn-flat">Pilih</a></td>
-                          <!-- <td><button type="button" class="btn btn-primary btn-flat">Pilih</button></td> -->
-                        </tr>
-                      </tbody>
-                      
+            
+                      </tbody>          
                     </table>
                   </div>
                 </div>
@@ -266,12 +258,13 @@ $("#next1").click(function (e) {
             data: formData,
             dataType: 'json',
             success: function (data) {
+            var a=1;
             $.each(data, function(index, desObj){
-            //console.log(data);
-              var list = '<tr>$i<td></td><td>'+desObj[0].time+'</td><td>'+desObj[0].jumlah+'</td><td>'+desObj[0].ticket+'</td></tr>';
+            console.log(data.length);
+              var list = '<tr><td>'+a+'</td><td>'+desObj[0].time+'</td><td>'+desObj[0].jumlah+' '+"Kursi"+'</td><td>'+"Rp"+' '+desObj[0].ticket+'</td><td><a href="#" class="btn btn-primary btn-flat">Pilih</a></td></tr>';
                $('#scheduleList').append(list);
+               a=a+1;
               });
-            console.log(data);
             },
             error: function (data) {
                 console.log('Error:', data);

@@ -15,6 +15,7 @@ class ReservationController extends Controller
     {
         $counter = Counter::all();
 
+        dd($counter;
     	return view('customer/reservasi',['counter'=>$counter]);
     }
 
