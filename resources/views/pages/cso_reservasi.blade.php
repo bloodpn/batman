@@ -145,12 +145,12 @@
                   <div class="col-md-4 col-md-offset-4">
                     <div class="row">
                       <div class="col-md-4">
-                       <input type="checkbox" class="input_class_checkbox" value="1">
-                        <label>1</label>
+                       <input id="1" type="checkbox" class="input_class_checkbox" value="1">
+                        <label id="1">1</label>
                       </div>
                       <div class="col-md-4">
-                        <input type="checkbox" class="input_class_checkbox" value="2">
-                        <label>2</label>
+                        <input type="checkbox" id="0" class="input_class_checkbox" value="0">
+                        <label id="0">0</label>
                       </div>
                       <div class="col-md-4">
                         <b class="kursi"></b>
@@ -159,44 +159,58 @@
                     </div>
                   <div class="row">
                       <div class="col-md-4">
-                       <input type="checkbox" class="input_class_checkbox" value="1">
-                       <label>3</label>
+                       <input type="checkbox" id="2" class="input_class_checkbox" value="2">
+                       <label id="2">2</label>
                       </div>
                       <div class="col-md-4">
-                        <input type="checkbox" class="input_class_checkbox" value="2">
-                        <label>4</label>
+                        <input type="checkbox" id="3" class="input_class_checkbox" value="3">
+                        <label id="3">3</label>
                       </div>
                       <div class="col-md-4">
-                       <input type="checkbox" class="input_class_checkbox" value="3">
-                       <label>5</label>
-                      </div>
-                    </div>
-                  <div class="row">
-                      <div class="col-md-4">
-                       <input type="checkbox" class="input_class_checkbox" value="1">
-                       <label>6</label>
-                      </div>
-                      <div class="col-md-4">
-                        <input type="checkbox" class="input_class_checkbox" value="2" disabled="">
-                        <label>7</label>
-                      </div>
-                      <div class="col-md-4">
-                       <input type="checkbox" class="input_class_checkbox" value="3">
-                       <label>8</label>
+                       <input type="checkbox" id="4" class="input_class_checkbox" value="3">
+                       <label id="4">4</label>
                       </div>
                     </div>
                   <div class="row">
                       <div class="col-md-4">
-                       <input type="checkbox" class="input_class_checkbox" value="1">
-                       <label>9</label>
+                       <input type="checkbox"  id="5"class="input_class_checkbox" value="5">
+                       <label id="5">5</label>
                       </div>
                       <div class="col-md-4">
-                        <input type="checkbox" class="input_class_checkbox" value="2">
-                        <label>10</label>
+                        <input type="checkbox" id="6" class="input_class_checkbox" value="6">
+                        <label id="6">6</label>
                       </div>
                       <div class="col-md-4">
-                       <input type="checkbox" class="input_class_checkbox" value="3">
-                       <label>11</label>
+                       <input type="checkbox" id="7" class="input_class_checkbox" value="7">
+                       <label id="7">7</label>
+                      </div>
+                    </div>
+                  <div class="row">
+                      <div class="col-md-4">
+                       <input type="checkbox" id="8" class="input_class_checkbox" value="8">
+                       <label id="8">8</label>
+                      </div>
+                      <div class="col-md-4">
+                        <input type="checkbox" id="9" class="input_class_checkbox" value="9">
+                        <label id="9">9</label>
+                      </div>
+                      <div class="col-md-4">
+                       <input type="checkbox" id="10" class="input_class_checkbox" value="10">
+                       <label id="10">10</label>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-4">
+                       <input type="checkbox" id="11" class="input_class_checkbox" value="11">
+                       <label id="11">11</label>
+                      </div>
+                      <div class="col-md-4">
+                        <input type="checkbox" id="12" class="input_class_checkbox" value="12">
+                        <label id="12">12</label>
+                      </div>
+                      <div class="col-md-4">
+                       <input type="checkbox" id="13" class="input_class_checkbox" value="13">
+                       <label id="13">13</label>
                       </div>
                   </div>
                 </div>
