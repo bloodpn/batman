@@ -105,13 +105,27 @@
           <th>Harga</th>
           <th></th>
         </tr>
-        @foreach($schedule as $tickets)
+        @foreach($ticket as $tickets)
           <tr>
-            <td>{{ $tickets->time }} WIB</td>
-            <td>{{ $seat }} Kursi</td>
-            <td>Rp.{{ $tickets->ticket }}</td>
-            <td><a href="/datapenumpang/{{ $tickets->id }}" class="btn btn-primary btn-flat">Pilih</a></td>
-            <!-- <td><button type="button" class="btn btn-primary btn-flat">Pilih</button></td> -->
+            <form action="/datapenumpang" method="post" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            <td>
+              {{ $tickets->time }} WIB
+              <input type="hidden" name="time" value="{{ $tickets->time }}">
+            </td>
+            <td>
+              {{ $tickets->jumlah }} Kursi
+              <input type="hidden" name="available" value="{{ $tickets->jumlah }}">
+            </td>
+            <td>
+              Rp.{{ $tickets->ticket }}
+              <input type="hidden" name="price" value="{{ $tickets->ticket }}">
+            </td>
+            <td>
+              <button class="btn btn-primary btn-flat" type="submit">Pilih</button>
+              <input type="hidden" name="id_schedule" value="{{ $tickets->id_sche }}">
+            </td>
+            </form>
           </tr>
         @endforeach
       </table>

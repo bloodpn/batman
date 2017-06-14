@@ -39,6 +39,8 @@
   </div>
 </div>
 
+<form method="post" action="/pilihkursi" enctype="multipart/form-data">
+{{ csrf_field() }}
 <div class="box box-primary box-solid">
   <div class="box-header">
     <h3 class="box-title">Data Pemesan dan Penumpang</h3>
@@ -48,69 +50,154 @@
       <div class="col-3">
         <div class="form-group">
           <label>Nama Pemesan</label>
-          <input type="text" name="q" class="form-control" placeholder="Nama">
+          <input type="text" name="nama_pemesan" class="form-control" placeholder="Nama" id="nama_pemesan">
         </div>
       </div>
       <div class="col-3">
         <div class="form-group">
           <label>No. Telepon</label>
-          <input type="text" name="q" class="form-control" placeholder="No. Telepon">
+          <input type="text" name="phone" class="form-control" placeholder="No. Telepon">
         </div>
       </div>
       <div class="col-3">
         <div class="form-group">
           <label>Email</label>
-          <input type="text" name="q" class="form-control" placeholder="Alamat Email">
+          <input type="text" name="email" class="form-control" placeholder="Alamat Email">
         </div>
       </div>
       <div class="col-3">
         <br><br>
         <div class="form-group">
           <label class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input">
+            <input type="checkbox" class="custom-control-input" id="is_penumpang">
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">Pemesan adalah penumpang</span>
           </label>
         </div>
       </div>
     </div>
-
+    @if(Session::get('person') == 1)
+      <div class="row">
+        <div class="col-3">
+          <div class="form-group">
+            <label>Penumpang 1</label>
+            <input type="text" name="nama_penumpang_1" class="form-control" placeholder="Nama" id="nama_penumpang_1">
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-group">
+            <label>Penumpang 2</label>
+            <input type="text" name="nama_penumpang_2" class="form-control" placeholder="Nama" readonly="">
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-group">
+            <label>Penumpang 3</label>
+            <input type="text" name="nama_penumpang_3" class="form-control" placeholder="Nama" readonly="">
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-group">
+            <label>Penumpang 4</label>
+            <input type="text" name="nama_penumpang_4" class="form-control" placeholder="Nama" readonly="">
+          </div>
+        </div>
+      </div>
+    @elseif (Session::get('person') == 2)
     <div class="row">
       <div class="col-3">
         <div class="form-group">
           <label>Penumpang 1</label>
-          <input type="text" name="q" class="form-control" placeholder="Nama">
+          <input type="text" name="nama_penumpang_1" class="form-control" placeholder="Nama" id="nama_penumpang_1">
         </div>
       </div>
       <div class="col-3">
         <div class="form-group">
           <label>Penumpang 2</label>
-          <input type="text" name="q" class="form-control" placeholder="Nama" readonly="">
+          <input type="text" name="nama_penumpang_2" class="form-control" placeholder="Nama">
         </div>
       </div>
       <div class="col-3">
         <div class="form-group">
           <label>Penumpang 3</label>
-          <input type="text" name="q" class="form-control" placeholder="Nama" readonly="">
+          <input type="text" name="nama_penumpang_3" class="form-control" placeholder="Nama" readonly="">
         </div>
       </div>
       <div class="col-3">
         <div class="form-group">
-          <label>Penumpang 3</label>
-          <input type="text" name="q" class="form-control" placeholder="Nama" readonly="">
+          <label>Penumpang 4</label>
+          <input type="text" name="nama_penumpang_4" class="form-control" placeholder="Nama" readonly="">
         </div>
       </div>
     </div>
+
+    @elseif (Session::get('person') == 3)
+    <div class="row">
+      <div class="col-3">
+        <div class="form-group">
+          <label>Penumpang 1</label>
+          <input type="text" name="nama_penumpang_1" class="form-control" placeholder="Nama" id="nama_penumpang_1">
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+          <label>Penumpang 2</label>
+          <input type="text" name="nama_penumpang_2" class="form-control" placeholder="Nama" >
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+          <label>Penumpang 3</label>
+          <input type="text" name="nama_penumpang_3" class="form-control" placeholder="Nama" >
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+          <label>Penumpang 4</label>
+          <input type="text" name="nama_penumpang_4" class="form-control" placeholder="Nama" readonly="">
+        </div>
+      </div>
+    </div>
+    @elseif (Session::get('person') == 4)
+    <div class="row">
+      <div class="col-3">
+        <div class="form-group">
+          <label>Penumpang 1</label>
+          <input type="text" name="nama_penumpang_1" class="form-control" placeholder="Nama" id="nama_penumpang_1">
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+          <label>Penumpang 2</label>
+          <input type="text" name="nama_penumpang_2" class="form-control" placeholder="Nama" >
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+          <label>Penumpang 3</label>
+          <input type="text" name="nama_penumpang_3" class="form-control" placeholder="Nama" >
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+          <label>Penumpang 4</label>
+          <input type="text" name="nama_penumpang_4" class="form-control" placeholder="Nama" >
+        </div>
+      </div>
+    </div>
+    @endif
+
   </div>
   <div class="box-footer">
     <div class="row">
       <div class="col-6">
-        <a href="{{ url('/pilihjadwal') }}" class="btn btn-primary btn-flat"><i class="fa fa-angle-double-left"></i>&nbsp;&nbsp; Kembali </a>
+        <a href="{{ url('/backpilihjadwal') }}" class="btn btn-primary btn-flat"><i class="fa fa-angle-double-left"></i>&nbsp;&nbsp; Kembali </a>
       </div>
       <div class="col-6" align="right">
-        <a href="{{ url('/pilihkursi') }}" class="btn btn-primary btn-flat">Lanjut &nbsp;&nbsp;<i class="fa fa-angle-double-right"></i></a>
+        <button class="btn btn-primary btn-flat" type="submit">Lanjut &nbsp;&nbsp;<i class="fa fa-angle-double-right"></i></button>
       </div>
     </div>
   </div>
+  </form>
 </div>
 @endsection

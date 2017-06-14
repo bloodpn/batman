@@ -61,10 +61,36 @@
         $('#destination1').empty();
 
         $.each(data, function(index, destObj){
-          $('#destination1').append('<option value="'+destObj.id_destination+'">'+destObj.name+'</option>');
+          $('#destination1').append('<option value="'+destObj.id_route+'">'+destObj.counter_name+'</option>');
         });
       });
     });
+
+    $("#is_penumpang").change(function() {
+        if(this.checked) {
+          var nama_pemesan = $("#nama_pemesan").val();
+
+          $("#nama_penumpang_1").val(nama_pemesan);
+        } else{
+          $("#nama_penumpang_1").val("");
+        }
+    });
+
+
+
+    // $('.seat').each(function(){
+    var seat = $('#fourteen').val();
+    var el = document.getElementsByName("class_checkbox_cs");
+
+
+
+    if (seat == "0") {
+      // $(".").hide();
+      el.classList.add("tes");
+    }
+
+    // });
+
 </script>
 
 <!-- <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script> -->

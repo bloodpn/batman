@@ -7,6 +7,7 @@ use App\Models\Counter;
 use App\Models\Route;
 use App\Models\Schedule;
 use App\Models\Departure;
+use App\Models\Seat;
 use Session;
 
 class ReservationController extends Controller
@@ -14,18 +15,17 @@ class ReservationController extends Controller
     public function index()
     {
         $counter = Counter::all();
-
-        dd($counter;
+        // dd($counter;
     	return view('customer/reservasi',['counter'=>$counter]);
     }
 
     public function search_destination(Request $request)
     {
-        $datas = Counter::select()
+        $datas = Counter::select('routes.id as id_route', 'counters.name as counter_name')
         ->join('routes', 'counters.id', '=', 'routes.id_destination')
         ->where('routes.id_origin','=',$request->id)
         ->get();
-
+        // dd($datas);
         return response()->json($datas);
     }
 
@@ -67,6 +67,7 @@ class ReservationController extends Controller
         if ($stats == 'sk') {
             $day = date('l', strtotime($depart_date));
             $format_departure = date('Y-m-d', strtotime($depart_date));
+            $format = $format_departure.'%';
 
             // Lowercase day
             $lower_day = strtolower($day);
@@ -77,140 +78,90 @@ class ReservationController extends Controller
                 // $route = Route::where('id_origin', $id_origin)->where('id_destination', $id_destination)->firstOrFail();
                 // $id_route = $route->id;
 
-                //Get ID Schedule berdasarkan hari
-                // $schedule = Schedule::where('sunday','1')->where('id_route', $id_route)->get();
-
-                //Get ID Route berdasarkan id_origin dan id_destination
-                $route = Route::where('id_origin', $id_origin)->where('id_destination', $id_destination)->firstOrFail();
-                $id_route = $route->id;
-
-                //Get ID Schedule berdasarkan hari
-                $schedule = Schedule::where('sunday','1')->where('id_route', $id_route)->firstOrFail();
-                $id_schedule  = $schedule->id;
-
-                //Get Jadwal
-                $ticket = Schedule::select('schedules.id','jumlah','total_passenger','ticket','time')
-                ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
-                ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
-                ->leftjoin('seats', 'seats.id', '=', 'schedules.id_seat')
-                ->where('schedules.id_route','=', $id_route)
+                $searchShedule = Schedule::select('id')
+                ->where('id_route', '=' , $id_destination)
+                ->where('sunday', '<>', '0')
                 ->get();
 
-                //Get Available Seat
-                foreach ($ticket as $value) {
 
-                    if (empty($value['total_passengers'])) {
-                        $seat = $value['jumlah'];
-                    } else {
-                        $seat = $value['jumlah'] - $value['total_passengers'];
+                foreach ($searchShedule as $value)
+                {
+                    $id_schedule  = $value['id'];
+
+                    $ticket = Departure::select()
+                    ->where('departures.id_schedule','=', $id_schedule)
+                    ->where('departure_date','like', $format)
+                    ->count();
+
+                    if ($ticket == 0 )
+                    {
+                        $list= Schedule::select()
+                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
+                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
+                        ->leftjoin('seats', 'seats.id', '=', 'schedules.id_seat')
+                        ->where ('schedules.id', '=' , $id_schedule)
+                        ->get();
                     }
-
-                    Session::put('ticket',$value['ticket']);
-                    Session::put('time',$value['time']);
+                    else if ($ticket > 0)
+                    {
+                        $list= Departure::select()
+                        ->where ('id_schedule', '=' , $id_schedule)
+                        ->get();
+                    }
                 }
 
+                //Return data to view
+                 // return ($list);
 
                 //Return data to view
-                return view('customer/pilihjadwal', ['ticket' => $ticket, 'seat' => $seat]);
-
-                // foreach ($schedule as $value) {
-                //     $id_schedule  = $value['id'];
-
-                //     $ticket = Departure::select()
-                //     ->where('departures.id_schedule','=', $id_schedule)
-                //     ->where('departure_date','=', $format_departure)
-                //     ->count();
-
-                //     if ($ticket == 0 ) {
-                //         //Get Jadwal
-                //         $schedule = Schedule::select('schedules.id','jumlah','ticket','total_passenger','time')
-                //         ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
-                //         ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
-                //         ->leftjoin('seats', 'seats.id', '=', 'schedules.id_seat')
-                //         ->where('schedules.id_route','=', $id_route)
-                //         // ->where('departure_date','=', $depart_date)
-                //         ->get();
-
-                //     } else {
-                //         //Get Jadwal
-                //         $schedule = Departure::select('departures.id_schedule','available','total_passenger','ticket','time')
-                //         ->leftjoin('schedules', 'schedules.id', '=', 'departures.id_schedule')
-                //         ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
-                //         ->leftjoin('seats', 'seats.id', '=', 'schedules.id_seat')
-                //         ->where('schedules.id_route','=', $id_route)
-                //         // ->where('departure_date','=', $depart_date)
-                //         ->get();
-                //     }
-                // }
-
-                //Get Jadwal
-                // $ticket = Schedule::select('schedules.id','jumlah','available','ticket','time')
-                // ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
-                // ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
-                // ->leftjoin('seats', 'seats.id', '=', 'schedules.id_seat')
-                // ->where('schedules.id','=', $id_schedule)
-                // ->where('departure_date','=', $depart_date)
-                // ->get();
-                // dd($ticket);
-
-                // $ticket = Departure::select()
-                // ->where('departures.id_schedule','=', $id_schedule)
-                // ->where('departure_date','=', $depart_date)
-                // ->count();
-
-
-
-                // dd($schedule);
-
-                //Get Available Seat
-                // foreach ($schedule as $value) {
-
-                //     if (empty($value['total_passenger'])) {
-                //         $seat = $value['jumlah'];
-                //     } else {
-                //         $seat = $value['available'];
-                //     }
-
-                //     Session::put('ticket',$value['ticket']);
-                //     Session::put('time',$value['time']);
-                // }
-                //Return data to view
-                // return view('customer/pilihjadwal', ['schedule' => $schedule, 'seat' => $seat]);
+                // return view('customer/pilihjadwal', ['ticket' => $list]);
+                dd($list);
 
             } elseif ($lower_day == 'monday') {
 
                 //Get ID Route berdasarkan id_origin dan id_destination
-                $route = Route::where('id_origin', $id_origin)->where('id_destination', $id_destination)->firstOrFail();
-                $id_route = $route->id;
+                // $route = Route::where('id_origin', $id_origin)->where('id_destination', $id_destination)->firstOrFail();
+                // $id_route = $route->id;
 
-                //Get ID Schedule berdasarkan hari
-                $schedule = Schedule::where('monday','1')->where('id_route', $id_route)->firstOrFail();
-                $id_schedule  = $schedule->id;
-
-                //Get Jadwal
-                $ticket = Schedule::select('schedules.id','jumlah','total_passenger','ticket','time')
-                ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
-                ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
-                ->leftjoin('seats', 'seats.id', '=', 'schedules.id_seat')
-                ->where('schedules.id_route','=', $id_route)
+                $searchShedule = Schedule::select('id')
+                ->where('id_route', '=' , $id_destination)
+                ->where('monday', '<>', '0')
                 ->get();
 
-                //Get Available Seat
-                foreach ($ticket as $value) {
 
-                    if (empty($value['total_passengers'])) {
-                        $seat = $value['jumlah'];
-                    } else {
-                        $seat = $value['jumlah'] - $value['total_passengers'];
+                foreach ($searchShedule as $value)
+                {
+                    $id_schedule  = $value['id'];
+
+                    $ticket = Departure::select()
+                    ->where('departures.id_schedule','=', $id_schedule)
+                    ->where('departure_date','like', $format)
+                    ->count();
+
+
+
+                    if ($ticket == 0 )
+                    {
+                        $list = Schedule::select('schedules.id as id_sche','ticket','time','jumlah')
+                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
+                        // ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
+                        ->leftjoin('seats', 'seats.id', '=', 'schedules.id_seat')
+                        ->where ('schedules.id_route', '=' , $id_destination)
+                        ->get();
                     }
-
-                    Session::put('ticket',$value['ticket']);
-                    Session::put('time',$value['time']);
+                    else if ($ticket > 0)
+                    {
+                        // $list= Departure::select()
+                        // ->where ('id_schedule', '=' , $id_schedule)
+                        // ->get();
+                        dd("lala");
+                    }
                 }
 
 
                 //Return data to view
-                return view('customer/pilihjadwal', ['ticket' => $ticket, 'seat' => $seat]);
+                return view('customer/pilihjadwal', ['ticket' => $list]);
+
 
             } elseif ($lower_day == 'tuesday') {
 
@@ -387,10 +338,87 @@ class ReservationController extends Controller
                 return view('customer/pilihjadwal', ['ticket' => $ticket, 'seat' => $seat]);
 
             }
-        } 
-        elseif ($stats == 'pp') 
+        }
+        elseif ($stats == 'pp')
         {
             dd($depart_date, $round_trip_date);
         }
     }
+
+    public function save_id_schedule(Request $request)
+    {
+        $value=$request->input();
+
+        if (!empty($value['time'])) {
+            Session::put('time',$value['time']);
+        }
+
+        if (!empty($value['available'])) {
+            Session::put('available',$value['available']);
+        }
+
+        if (!empty($value['price'])) {
+            Session::put('price',$value['price']);
+        }
+
+        if (!empty($value['id_schedule'])) {
+            Session::put('id_schedule',$value['id_schedule']);
+        }
+
+        return view('customer/datapenumpang');
+    }
+
+    public function save_passanger(Request $request)
+    {
+        $value=$request->input();
+
+        if (!empty($value['nama_pemesan'])) {
+            Session::put('nama_pemesan',$value['nama_pemesan']);
+        }
+
+        if (!empty($value['phone'])) {
+            Session::put('phone',$value['phone']);
+        }
+
+        if (!empty($value['email'])) {
+            Session::put('email',$value['email']);
+        }
+
+        if (!empty($value['nama_penumpang_1'])) {
+            Session::put('nama_penumpang_1',$value['nama_penumpang_1']);
+        }
+
+        if (!empty($value['nama_penumpang_2'])) {
+            Session::put('nama_penumpang_2',$value['nama_penumpang_2']);
+        }
+
+        if (!empty($value['nama_penumpang_3'])) {
+            Session::put('nama_penumpang_3',$value['nama_penumpang_3']);
+        }
+
+        if (!empty($value['nama_penumpang_4'])) {
+            Session::put('nama_penumpang_4',$value['nama_penumpang_4']);
+        }
+
+        $id_schedule = Session::get('id_schedule');
+        $depart_date = Session::get('depart_date');
+
+        $departure = Departure::select('id')
+        ->where('departures.id_schedule', $id_schedule)
+        ->where('departures.departure_date', $depart_date)
+        ->count();
+
+        if ($departure == 0) {
+            $id_seat = Schedule::select('id_seat')
+            ->where('schedules.id', $id_schedule)
+            ->firstOrFail();
+
+            $id_seat->id_seat;
+            $seat = Seat::select()->where('id', $id_seat->id_seat)->firstOrFail();
+
+        }
+
+        return view('customer/pilihkursi',['seat'=>$seat]);
+    }
+
 }

@@ -40,16 +40,14 @@
   <div class="box-body">
     <table class="table table-bordered">
       <tr>
-        <td class="col-2">Pemesan</td>
-        <td class="col-2">Telepon</td>
-        <td class="col-2">Email</td>
-        <td class="col-6">Alamat</td>
+        <td >Pemesan</td>
+        <td >Telepon</td>
+        <td >Email</td>
       </tr>
       <tr>
-        <td class="col-2">Adam</td>
-        <td class="col-2">0899876421</td>
-        <td class="col-2">adam21@mail.com</td>
-        <td class="col-6">Jl. sukabumi 2 no 19</td>
+        <td >{{ Session::get('nama_pemesan')}}</td>
+        <td >{{ Session::get('phone')}}</td>
+        <td >{{ Session::get('email')}}</td>
       </tr>
     </table>
   </div>
@@ -68,59 +66,91 @@
       <div class="col-4 offset-4">
         <div class="row">
           <div class="col-4">
-           <input type="checkbox" class="input_class_checkbox_cs" value="1">
+            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->one }}">
             <label>1</label>
           </div>
           <div class="col-4">
-            <input type="checkbox" class="input_class_checkbox_cs" value="2">
-            <label>2</label>
+            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->zero }}">
+            <label>0</label>
           </div>
           <div class="col-4">
             <b class="kursi"></b>
-           <label>Supir</label>
+            <label>Supir</label>
           </div>
         </div>
         <div class="row">
           <div class="col-4">
-           <input type="checkbox" class="input_class_checkbox_cs" value="1">
-           <label>3</label>
+            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->two }}">
+            <label>2</label>
           </div>
           <div class="col-4">
-            <input type="checkbox" class="input_class_checkbox_cs" value="2">
+            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->three }}">
+            <label>3</label>
+          </div>
+          <div class="col-4">
+            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->four }}">
             <label>4</label>
           </div>
-          <div class="col-4">
-           <input type="checkbox" class="input_class_checkbox_cs" value="3">
-           <label>5</label>
-          </div>
         </div>
-      <div class="row">
+        <div class="row">
           <div class="col-4">
-           <input type="checkbox" class="input_class_checkbox_cs" value="1">
-           <label>6</label>
+            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->five }}">
+            <label>5</label>
           </div>
           <div class="col-4">
-            <input type="checkbox" class="input_class_checkbox_cs" value="2" disabled="">
+            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->six }}">
+            <label>6</label>
+          </div>
+          <div class="col-4">
+            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->seven }}">
             <label>7</label>
           </div>
-          <div class="col-4">
-           <input type="checkbox" class="input_class_checkbox_cs" value="3">
-           <label>8</label>
-          </div>
         </div>
-      <div class="row">
+        <div class="row">
           <div class="col-4">
-           <input type="checkbox" class="input_class_checkbox_cs" value="1">
-           <label>9</label>
+            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->eight }}">
+            <label>8</label>
           </div>
           <div class="col-4">
-            <input type="checkbox" class="input_class_checkbox_cs" value="2">
+            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->nine }}">
+            <label>9</label>
+          </div>
+          <div class="col-4">
+            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->ten }}">
             <label>10</label>
           </div>
+        </div>
+        <div class="row">
           <div class="col-4">
-           <input type="checkbox" class="input_class_checkbox_cs" value="3">
-           <label>11</label>
+            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->eleven }}">
+            <label>11</label>
           </div>
+          <div class="col-4">
+            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->twelve }}">
+            <label>12</label>
+          </div>
+          <div class="col-4">
+            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->thirteen }}">
+            <label>13</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <input type="checkbox" class="input_class_checkbox_cs" value="" >
+            <input type="hidden" name="seat" value="{{ $seat->fourteen }}" class="seat">
+            <label>14</label>
+          </div>
+          <div class="col-4">
+            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->fifteen }}">
+            <input type="hidden" name="seat" value="{{ $seat->fifteen }}" class="seat">
+            <label>15</label>
+          </div>
+          <div class="col-4">
+            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->sixteen }}">
+            <input type="hidden" name="seat" value="{{ $seat->sixteen }}" class="seat">
+            <label>16</label>
+          </div>
+        </div>
       </div>
     </div>
   </div><!--/.direct-chat -->
@@ -136,4 +166,8 @@
   </div><!-- /.box-footer-->
 
 </div>
+
+<script type="text/javascript">
+
+</script>
 @endsection

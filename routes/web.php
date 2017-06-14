@@ -106,3 +106,12 @@ Route::put('/editmasterarea/{id}', 'MasterareaController@update');
 Route::put('/editmasterasuransi/{id}', 'InsuranceController@update');
 
 Route::put('/editmastercustomer/{id}', 'CustomerController@update');
+
+// TICKET ONLINE
+
+Route::get('/reservasi', 'ReservationController@index');
+Route::get('/search-destination', 'ReservationController@search_destination');
+Route::post('/pilihjadwal', 'ReservationController@search_schedule');
+Route::get('/backpilihjadwal', 'ReservationController@view_pilih_jadwal');
+Route::post('/datapenumpang','ReservationController@save_id_schedule');
+Route::post('/pilihkursi','ReservationController@save_passanger');
