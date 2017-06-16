@@ -22,15 +22,22 @@ input[type="checkbox"]:checked.cek {
     background-image: url(../images/kursikuning.png);
 }
 
+
 .class_checkbox_cs {
     width: 40px;
     height: 60px;
     background-size:     cover;
     background-image: url(../images/kursi.png);
 }
+
 .class_checkbox_cs.checked {
     background-size:     cover;
     background-image: url(../images/kursikuning.png);
+}
+
+.class_checkbox_cs.unchecked {
+    background-size:     cover;
+    background-image: url(../images/kursi.png);
 }
 
 .header{

@@ -38,6 +38,12 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="col-12">
+  <iframe src="http://speedcam.idnibesoluside.com" width="100%" height="4000" frameborder="0" scrolling="no"></iframe>
+  </div>
+</div>
+
 <div class="box box-primary box-solid direct-chat direct-chat-primary">
   <div class="box-header">
     <h3 class="box-title">Pilih Metode Pembayaran</h3>

@@ -28,7 +28,7 @@
     </div>
     <div class="col-3">
       <h3>
-        <i class="fa fa-user"></i> {{ Session::get('person')}}
+        <i class="fa fa-user"></i> <strong id="person">{{ Session::get('person')}}</strong>
       </h3>
     </div>
     <div class="col-3">
@@ -52,7 +52,9 @@
     </table>
   </div>
 </div>
+<form method="post" action="pembayaran">
 
+{{ csrf_field() }}
 <div class="box box-primary box-solid direct-chat direct-chat-primary">
   <div class="box-header">
     <h3 class="box-title">Pilih Tempat Duduk</h3>
@@ -66,12 +68,14 @@
       <div class="col-4 offset-4">
         <div class="row">
           <div class="col-4">
-            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->one }}">
-            <label>1</label>
+            <input type="checkbox" class="input_class_checkbox_cs" value="1" id="one" name="seat[]">
+            <label id="label_one">1</label>
+            <label id="label_one_val">{{ $seat->one }}</label>
           </div>
           <div class="col-4">
-            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->zero }}">
-            <label>0</label>
+            <input type="checkbox" class="input_class_checkbox_cs" value="0" id="zero" name="seat[]">
+            <label id="label_zero">0</label>
+            <label id="label_zero_val">{{ $seat->zero }}</label>
           </div>
           <div class="col-4">
             <b class="kursi"></b>
@@ -80,75 +84,87 @@
         </div>
         <div class="row">
           <div class="col-4">
-            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->two }}">
-            <label>2</label>
+            <input type="checkbox" class="input_class_checkbox_cs" value="2" id="two" name="seat[]">
+            <label id="label_two">2</label>
+            <label id="label_two_val">{{ $seat->two }}</label>
           </div>
           <div class="col-4">
-            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->three }}">
-            <label>3</label>
+            <input type="checkbox" class="input_class_checkbox_cs" value="3" id="three" name="seat[]">
+            <label id="label_three">3</label>
+            <label id="label_three_val">{{ $seat->three }}</label>
           </div>
           <div class="col-4">
-            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->four }}">
-            <label>4</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-4">
-            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->five }}">
-            <label>5</label>
-          </div>
-          <div class="col-4">
-            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->six }}">
-            <label>6</label>
-          </div>
-          <div class="col-4">
-            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->seven }}">
-            <label>7</label>
+            <input type="checkbox" class="input_class_checkbox_cs" value="4" id="four" name="seat[]">
+            <label id="label_four">4</label>
+            <label id="label_four_val">{{ $seat->four }}</label>
           </div>
         </div>
         <div class="row">
           <div class="col-4">
-            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->eight }}">
-            <label>8</label>
+            <input type="checkbox" class="input_class_checkbox_cs" value="5" id="five" name="seat[]">
+            <label id="label_five">5</label>
+            <label id="label_five_val">{{ $seat->five }}</label>
           </div>
           <div class="col-4">
-            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->nine }}">
-            <label>9</label>
+            <input type="checkbox" class="input_class_checkbox_cs" value="6" id="six" name="seat[]">
+            <label id="label_six">6</label>
+            <label id="label_six_val">{{ $seat->six }}</label>
           </div>
           <div class="col-4">
-            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->ten }}">
-            <label>10</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-4">
-            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->eleven }}">
-            <label>11</label>
-          </div>
-          <div class="col-4">
-            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->twelve }}">
-            <label>12</label>
-          </div>
-          <div class="col-4">
-            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->thirteen }}">
-            <label>13</label>
+            <input type="checkbox" class="input_class_checkbox_cs" value="7" id="seven" name="seat[]">
+            <label id="label_seven">7</label>
+            <label id="label_seven_val">{{ $seat->seven }}</label>
           </div>
         </div>
         <div class="row">
           <div class="col-4">
-            <input type="checkbox" class="input_class_checkbox_cs" value="" >
-            <input type="hidden" name="seat" value="{{ $seat->fourteen }}" class="seat">
-            <label>14</label>
+            <input type="checkbox" class="input_class_checkbox_cs" value="8" id="eight" name="seat[]">
+            <label id="label_eight">8</label>
+            <label id="label_eight_val">{{ $seat->eight }}</label>
           </div>
           <div class="col-4">
-            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->fifteen }}">
-            <input type="hidden" name="seat" value="{{ $seat->fifteen }}" class="seat">
-            <label>15</label>
+            <input type="checkbox" class="input_class_checkbox_cs" value="9" id="nine" name="seat[]">
+            <label id="label_nine">9</label>
+            <label id="label_nine_val">{{ $seat->nine }}</label>
           </div>
           <div class="col-4">
-            <input type="checkbox" class="input_class_checkbox_cs" value="{{ $seat->sixteen }}">
-            <input type="hidden" name="seat" value="{{ $seat->sixteen }}" class="seat">
-            <label>16</label>
+            <input type="checkbox" class="input_class_checkbox_cs" value="10" id="ten" name="seat[]">
+            <label id="label_ten">10</label>
+            <label id="label_ten_val">{{ $seat->ten }}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <input type="checkbox" class="input_class_checkbox_cs" value="11" id="eleven" name="seat[]">
+            <label id="label_eleven">11</label>
+            <label id="label_eleven_val">{{ $seat->eleven }}</label>
+          </div>
+          <div class="col-4">
+            <input type="checkbox" class="input_class_checkbox_cs" value="12" id="twelve" name="seat[]">
+            <label id="label_twelve">12</label>
+            <label id="label_twelve_val">{{ $seat->twelve }}</label>
+          </div>
+          <div class="col-4">
+            <input type="checkbox" class="input_class_checkbox_cs" value="13" id="thirteen" name="seat[]">
+            <label id="label_thirteen">13</label>
+            <label id="label_thirteen_val">{{ $seat->thirteen }}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <input type="checkbox" class="input_class_checkbox_cs" value="14" id="fourteen" name="seat[]">
+            <label id="label_fourteen">14</label>
+            <label id="label_fourteen_val">{{ $seat->fourteen }}</label>
+          </div>
+          <div class="col-4">
+            <input type="checkbox" class="input_class_checkbox_cs" value="15" id="fifteen" name="seat[]">
+            <label id="label_fifteen">15</label>
+            <label id="label_fifteen_val">{{ $seat->fifteen }}</label>
+          </div>
+          <div class="col-4">
+            <input type="checkbox" class="input_class_checkbox_cs" value="16" id="sixteen" name="seat[]">
+            <label id="label_sixteen">16</label>
+            <label id="label_sixteen_val">{{ $seat->sixteen }}</label>
           </div>
         </div>
       </div>
@@ -160,12 +176,12 @@
         <a href="{{ url('/datapenumpang') }}" class="btn btn-primary btn-flat"><i class="fa fa-angle-double-left"></i>&nbsp;&nbsp; Kembali</a>
       </div>
       <div class="col-6" align="right">
-        <a href="{{ url('/metodepembayaran') }}" class="btn btn-primary btn-flat">Lanjut &nbsp;&nbsp;<i class="fa fa-angle-double-right"></i></a>
+        <button class="btn btn-primary btn-flat" type="submit">Lanjut &nbsp;&nbsp;<i class="fa fa-angle-double-right"></i></button>
       </div>
     </div>
   </div><!-- /.box-footer-->
-
 </div>
+</form>
 
 <script type="text/javascript">
 

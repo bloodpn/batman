@@ -115,3 +115,4 @@ Route::post('/pilihjadwal', 'ReservationController@search_schedule');
 Route::get('/backpilihjadwal', 'ReservationController@view_pilih_jadwal');
 Route::post('/datapenumpang','ReservationController@save_id_schedule');
 Route::post('/pilihkursi','ReservationController@save_passanger');
+Route::post('/pembayaran','ReservationController@save_seat');

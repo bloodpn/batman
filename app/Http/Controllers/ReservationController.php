@@ -421,4 +421,17 @@ class ReservationController extends Controller
         return view('customer/pilihkursi',['seat'=>$seat]);
     }
 
+    public function save_seat(Request $request)
+    {
+        $value=$request->input();
+
+        // dd($value['seat']);
+
+        if (!empty($value['seat'])) {
+            Session::put('seat',$value['seat']);
+        }
+
+        return view('customer/pilihpembayaran');
+    }
+
 }
