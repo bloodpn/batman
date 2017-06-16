@@ -19,7 +19,7 @@
          <div class="form-group">
             <label>Keberangkatan</label>
             <select class="form-control" style="width: 100%;" name="departure" id="departure1">
-                <option>Pilih Tujuan</option>
+                <option>Pilih Asal</option>
               @foreach($counter as $count)
                 <option value="{{ $count->id }}">{{ $count->name }}</option>
               @endforeach
@@ -99,11 +99,5 @@
 </form>
 
 <script type="text/javascript">
-var limit = 1;
-  $('input.single-checkbox').on('change', function(evt) {
-     if($(this).siblings(':checked').length >= limit) {
-         this.checked = false;
-     }
-  });
 </script>
 @endsection
