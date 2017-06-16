@@ -14,4 +14,9 @@ class Counter extends Model
 		return $this->hasMany('App\Models\Counter', 'id');
 	}
     
+    public function routes()
+    {
+        return $this->hasMany('App\Models\Route');
+
+    }
 }

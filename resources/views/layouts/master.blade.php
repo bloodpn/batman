@@ -51,6 +51,20 @@
 	$('.class_checkbox').on('click',function(){
 	    $(this).toggleClass('checked').prev().prop('checked',$(this).is('.checked'))
 	});
+
+	// Asal Dan Tujuan
+	$('#asal').on('change', function(e){
+      var id_counter= e.target.value;
+      console.log(id_counter);
+      $.get('/search-destination-package?id=' +id_counter, function(data){
+      console.log(data);
+        $('#ctujuan').empty();
+
+        $.each(data, function(index, destObj){
+          $('#ctujuan').append('<option value="'+destObj.id_destination+'">'+destObj.name+'</option>');
+        });
+      });
+    });
 	
 	 //Timepicker
 	$(".timepicker").timepicker({

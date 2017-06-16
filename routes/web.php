@@ -36,6 +36,7 @@ Route::get('/updatejadwal', 'ScheduleController@update');
 Route::get('/mastersupir', 'MastersupirController@index');
 
 Route::get('/paket', 'PaketController@index');
+Route::get('/search-destination-package', 'PaketController@search_destination_package');
 
 Route::get('/datapaket', 'DatapaketController@index');
 

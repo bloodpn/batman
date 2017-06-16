@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Schedule;
 use App\Models\Car;
 use App\Models\Counter;
-use App\Models\ROute;
+use App\Models\Route;
 use App\Models\Departure;
 
 class CsoController extends Controller
@@ -23,13 +23,13 @@ class CsoController extends Controller
     public function search(Request $request)
     {
         
-    	$data = Route::select('id_destination','counters.name', 'routes.id')
+    	$data = Route::select('id_destination','counters.name')
         ->join('counters', 'routes.id_destination', '=', 'counters.id')
         ->where('id_origin','=',$request->id)
         ->where('routes.stat','aktif')
         ->get();
 
-    	return response()->json($data);
+        return response()->json($data);
     }
     public function search_list(Request $request)
     {
