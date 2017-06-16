@@ -274,8 +274,8 @@ $("#next1").click(function (e) {
             success: function (data) {
             var a=1;
             $.each(data, function(index, desObj){
-            console.log(data.length);
-              var list = '<tr><td>'+a+'</td><td>'+desObj[0].time+'</td><td>'+desObj[0].jumlah+' '+"Kursi"+'</td><td>'+"Rp"+' '+desObj[0].ticket+'</td><td><a href="#" class="btn btn-primary btn-flat">Pilih</a></td></tr>';
+           // console.log(data.length);
+              var list = '<tr><td>'+a+' <input type="hidden" value="'+desObj[0].id+'" name="" id="listJadwal.'+desObj[0].id+'"></td><td>'+desObj[0].time+'</td><td>'+desObj[0].jumlah+' '+"Kursi"+'</td><td>'+"Rp"+' '+desObj[0].ticket+'</td><td><button class="btn btn-primary btn-flat" onclick="pJadwal('+desObj[0].id+')">Pilih</button></td></tr>';
                $('#scheduleList').append(list);
                a=a+1;
               });
@@ -287,4 +287,11 @@ $("#next1").click(function (e) {
 
 });
 
+<!-- Search Seat -->
+ function pJadwal(id)
+    {
+      var id_schedule = $("#listJadwal.(id)").val();
+      console.log(id_schedule);
+      console.log(id);
+    }
 @endsection

@@ -69,7 +69,7 @@ class CsoController extends Controller
                     
                     if ($ticket == 0 )
                     {
-                        $list[] = Schedule::select()
+                        $list[] = Schedule::select('schedules.id','time','jumlah','ticket')
                         ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
                         ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
                         ->leftjoin('seats', 'seats.id', '=', 'schedules.id_seat')
