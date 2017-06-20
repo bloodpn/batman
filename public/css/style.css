@@ -2,30 +2,31 @@
 	background-image: url(../images/kursi.png);
   background-size:     cover;
 }
+input[type="checkbox"].cekKursi  {
+    /*display: none;*/
+    /*display: block;*/
+    background-image: url(../images/kursi.png);
+    width: 20px;
+    height: 20px;
+    background-size:     cover;
+    
+}
 input[type="checkbox"].cek {
     content: images/kursi.png;
     display: block;
     width: 200px;
     height: 200px;
 }
-input[type="checkbox"]:checked.cek {
-    content: images/kursimerah.png;
-}
-.class_checkbox {
-    width: 20px;
-    height: 30px;
-    background-size:     cover;
-    background-image: url(../images/kursi.png);
-}
-.class_checkbox.checked {
-    background-size:     cover;
-    background-image: url(../images/kursikuning.png);
-}
-
-
 .class_checkbox_cs {
     width: 40px;
     height: 60px;
+    background-size:     cover;
+    background-image: url(../images/kursi.png);
+}
+
+.class_checkbox_cso {
+    width: 20px;
+    height: 30px;
     background-size:     cover;
     background-image: url(../images/kursi.png);
 }
@@ -40,6 +41,15 @@ input[type="checkbox"]:checked.cek {
     background-image: url(../images/kursi.png);
 }
 
+.class_checkbox.checked_cso {
+    background-size:     cover;
+    background-image: url(../images/kursikuning.png);
+}
+
+.class_checkbox.unchecked_cso {
+    background-size:     cover;
+    background-image: url(../images/kursi.png);
+}
 .header{
     background-color: #FFDF04;
     padding-top: 20px;

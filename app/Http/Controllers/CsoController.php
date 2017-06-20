@@ -131,4 +131,28 @@ class CsoController extends Controller
         //dd($searchCust);
         return response()->json($searchCust);
     }
+    public function search_seat(Request $request)
+    {
+       $depart_date = $request->depart_date;
+        $format_departure = date('Y-m-d', strtotime($depart_date));
+        $format = $format_departure.'%';
+
+        $id_sce = $request->schedule;
+        $departure = Departure::select()
+            ->where('departures.id_schedule', $id_sce)
+            ->where('departure_date','like', $format)
+            ->count();
+        if ($departure == '0')
+        {
+            $searchSeat = Schedule::select()
+            ->where('schedules.id' , $id_sce)
+            ->join('seats', 'seats.id', '=', 'schedules.id_seat')
+            ->get();
+        } else 
+        {
+            dd('hahah');
+        }
+
+        return response()->json($searchSeat);
+    }
 }
