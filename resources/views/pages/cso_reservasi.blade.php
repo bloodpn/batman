@@ -123,14 +123,14 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <input type="text" name="q" class="form-control" placeholder="Telepon">
+                      <input type="number" name="phone" id="phoneCustomer" class="form-control" placeholder="Telepon">
                     </div>
                   </div>  
                 </div>
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <input type="text" name="q" class="form-control" placeholder="Nama">
+                      <input type="text" name="q" id="nameCustomer" class="form-control" placeholder="Nama">
                     </div>
                   </div>  
                 </div>
@@ -141,83 +141,10 @@
                     </div>
                   </div>  
                 </div>
-                <div class="row">
-                  <div class="col-md-4 col-md-offset-4">
-                    <div class="row">
-                      <div class="col-md-4">
-                       <input id="1" type="checkbox" class="input_class_checkbox" value="1">
-                        <label id="1">1</label>
-                      </div>
-                      <div class="col-md-4">
-                        <input type="checkbox" id="0" class="input_class_checkbox" value="0">
-                        <label id="0">0</label>
-                      </div>
-                      <div class="col-md-4">
-                        <b class="kursi"></b>
-                       <label>Supir</label>
-                      </div>
-                    </div>
-                  <div class="row">
-                      <div class="col-md-4">
-                       <input type="checkbox" id="2" class="input_class_checkbox" value="2">
-                       <label id="2">2</label>
-                      </div>
-                      <div class="col-md-4">
-                        <input type="checkbox" id="3" class="input_class_checkbox" value="3">
-                        <label id="3">3</label>
-                      </div>
-                      <div class="col-md-4">
-                       <input type="checkbox" id="4" class="input_class_checkbox" value="3">
-                       <label id="4">4</label>
-                      </div>
-                    </div>
-                  <div class="row">
-                      <div class="col-md-4">
-                       <input type="checkbox"  id="5"class="input_class_checkbox" value="5">
-                       <label id="5">5</label>
-                      </div>
-                      <div class="col-md-4">
-                        <input type="checkbox" id="6" class="input_class_checkbox" value="6">
-                        <label id="6">6</label>
-                      </div>
-                      <div class="col-md-4">
-                       <input type="checkbox" id="7" class="input_class_checkbox" value="7">
-                       <label id="7">7</label>
-                      </div>
-                    </div>
-                  <div class="row">
-                      <div class="col-md-4">
-                       <input type="checkbox" id="8" class="input_class_checkbox" value="8">
-                       <label id="8">8</label>
-                      </div>
-                      <div class="col-md-4">
-                        <input type="checkbox" id="9" class="input_class_checkbox" value="9">
-                        <label id="9">9</label>
-                      </div>
-                      <div class="col-md-4">
-                       <input type="checkbox" id="10" class="input_class_checkbox" value="10">
-                       <label id="10">10</label>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-4">
-                       <input type="checkbox" id="11" class="input_class_checkbox" value="11">
-                       <label id="11">11</label>
-                      </div>
-                      <div class="col-md-4">
-                        <input type="checkbox" id="12" class="input_class_checkbox" value="12">
-                        <label id="12">12</label>
-                      </div>
-                      <div class="col-md-4">
-                       <input type="checkbox" id="13" class="input_class_checkbox" value="13">
-                       <label id="13">13</label>
-                      </div>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>
-        </div>
         <!-- /.box-footer-->
       </div>
       <!-- /.box -->
@@ -226,72 +153,121 @@
     <!-- /.content -->
   </div>
 @endsection
-<!--Date Picker-->
+
 @section('script')
- $('#tgl_berangkat').datepicker({
+
+<!--Date Picker-->
+  $('#tgl_berangkat').datepicker({
       autoclose: true
     });
     $('#tgl_kembali').datepicker({
       autoclose: true
     });
+<!-- end date -->
+
+
+<!-- Pulang pergi -->
+  $('.input_class_checkbox').each(function(){
+    $(this).hide().after('<div class="class_checkbox" />');
+
+  });
+
+  $('.class_checkbox').on('click',function(){
+      $(this).toggleClass('checked').prev().prop('checked',$(this).is('.checked'))
+  });
+
+  function pepe(){
+        if($('.pp').is(":checked"))
+        $("#tgl11").show();
+    }
+
+    function seje(){
+        if($('.sj').is(":checked"))
+        $("#tgl11").hide();
+    }
+<!-- end pulang Pergi -->
 
 <!--Asal Dan Tujuan-->
-$('#asal').on('change', function(e)
-  {
-  var id_asal= e.target.value;
-  $.get('/searchDestination?id=' +id_asal, function(data){
-  //console.log(data);
-    $('#ctujuan').empty();
+  $('#asal').on('change', function(e){
+    var id_asal= e.target.value;
+    //console.log(id_asal);
+    $.get('/search-destination?id=' +id_asal, function(data){
+    //console.log(data);
+      $('#ctujuan').empty();
 
-    $.each(data, function(index, destObj){
-      $('#ctujuan').append('<option value="'+destObj.id+'">'+destObj.name+'</option>');
+      $.each(data, function(index, destObj){
+        $('#ctujuan').append('<option value="'+destObj.id_route+'">'+destObj.counter_name+'</option>');
+      });
     });
+  });
+<!-- end asal -->
+
+<!-- Search list -->
+$(document).ready(function() {
+  $("#next1").click(function (e) {
+      $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+          }
+      })
+      e.preventDefault(); 
+      var formData = {
+          rute: $('#ctujuan').val(),
+          depart_date: $('#tgl_berangkat').val(),
+          stats: $('.pilihan1').val()
+      }
+      $.ajax({
+          type: 'get',
+          url: '/searchDeparture',
+          data: formData,
+          dataType: 'json',
+          success: function (data) {
+          var a=1;
+          $.each(data, function(index, desObj){
+          console.log(data.length);
+            var list = '<tr><td>'+a+' <input type="hidden" value="'+desObj[0].id+'" name="" id="listJadwal.'+desObj[0].id+'"></td><td>'+desObj[0].time+'</td><td>'+desObj[0].jumlah+' '+"Kursi"+'</td><td>'+"Rp"+' '+desObj[0].ticket+'</td><td><button class="btn btn-primary btn-flat" onclick="pJadwal('+desObj[0].id+')">Pilih</button></td></tr>';
+             $('#scheduleList').append(list);
+             a=a+1;
+            });
+          },
+          error: function (data) {
+              console.log('Error:', data);
+          }
+      });
   });
 });
 
-<!-- Search list -->
-$("#next1").click(function (e) {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-            }
-        })
-
-        e.preventDefault(); 
-
-        var formData = {
-            rute: $('#ctujuan').val(),
-            depart_date: $('#tgl_berangkat').val(),
-            stats: $('.pilihan1').val()
-        }
-
+<!-- search customer -->
+$('document').ready(function(){
+  $('#phoneCustomer').on('change', function () {
+        var phone = $('#phoneCustomer').val();
         $.ajax({
-
-            type: 'get',
-            url: '/searchDeparture',
-            data: formData,
+            type: 'GET',
+            url: '/searchCustomer',
+            data : 'phone='+ phone,
             dataType: 'json',
             success: function (data) {
-            var a=1;
-            $.each(data, function(index, desObj){
-           // console.log(data.length);
-              var list = '<tr><td>'+a+' <input type="hidden" value="'+desObj[0].id+'" name="" id="listJadwal.'+desObj[0].id+'"></td><td>'+desObj[0].time+'</td><td>'+desObj[0].jumlah+' '+"Kursi"+'</td><td>'+"Rp"+' '+desObj[0].ticket+'</td><td><button class="btn btn-primary btn-flat" onclick="pJadwal('+desObj[0].id+')">Pilih</button></td></tr>';
-               $('#scheduleList').append(list);
-               a=a+1;
-              });
-            },
-            error: function (data) {
-                console.log('Error:', data);
+              if (data== ""){
+                alert("adasdasd");
+              }else{
+                $('#nameCustomer').val(data[0].name);
+              }
             }
-        });
-
+        })
+    });
+  
 });
 
+<!-- end search customer -->
+
 <!-- Search Seat -->
- function pJadwal(id)
-    {
-      var id_schedule = $("#listJadwal.(id)").val();
-      console.log(id_schedule);
-      console.log(id);
-    }
+  function pJadwal($i){
+      var schedule = $('#listJadwal'+$i).val();
+
+      console.log(schedule);
+  }
+  <!-- seat -->
+
+  
+
 @endsection

@@ -11,6 +11,8 @@ use App\Models\Car;
 use App\Models\Counter;
 use App\Models\Route;
 use App\Models\Departure;
+use App\Models\Seat;
+use App\Models\Customer;
 
 class CsoController extends Controller
 {
@@ -18,17 +20,18 @@ class CsoController extends Controller
     {
     	$schedules = Schedule::all();
     	$counters = Counter::all();
+        $seats = Seat::all();
+        //dd($seats);
     	return view('pages/cso_reservasi', ['jadwal' => $schedules, 'counter' => $counters]);
     }
     public function search(Request $request)
     {
         
     	$data = Route::select('id_destination','counters.name')
-        ->join('counters', 'routes.id_destination', '=', 'counters.id')
-        ->where('id_origin','=',$request->id)
+        ->join('counters', 'routes.id_destination', 'counters.id')
+        ->where('id_origin',$request->id)
         ->where('routes.stat','aktif')
         ->get();
-
         return response()->json($data);
     }
     public function search_list(Request $request)
@@ -54,7 +57,7 @@ class CsoController extends Controller
 
                 $searchShedule = Schedule::select('id')
                 ->where('id_route', '=' , $rute)
-                ->where('monday', '<>', '0')
+                ->where('monday', '=', '1')
                 ->get();
 
 
@@ -118,5 +121,14 @@ class CsoController extends Controller
         {
             dd($depart_date, $round_trip_date);
         }
+    }
+
+    public function search_customer(Request $request)
+    {
+        $searchCust = Customer::select()
+        ->where('phone' , $request->phone)
+        ->get();
+        //dd($searchCust);
+        return response()->json($searchCust);
     }
 }

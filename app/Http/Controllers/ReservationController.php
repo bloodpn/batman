@@ -233,7 +233,7 @@ class ReservationController extends Controller
                 //Return data to view
                 return view('customer/pilihjadwal', ['ticket' => $ticket, 'seat' => $seat]);
 
-            } elseif ($lower_day == 'thrusday') {
+            } elseif ($lower_day == 'thursday') {
 
                 //Get ID Route berdasarkan id_origin dan id_destination
                 $route = Route::where('id_origin', $id_origin)->where('id_destination', $id_destination)->firstOrFail();

@@ -80,3 +80,19 @@
 </div>
 
 @endsection
+
+@section('script')
+	<!-- Asal Dan Tujuan -->
+	$('#asal').on('change', function(e){
+      var id_counter= e.target.value;
+      console.log(id_counter);
+      $.get('/search-destination-package?id=' +id_counter, function(data){
+      console.log(data);
+        $('#ctujuan').empty();
+
+        $.each(data, function(index, destObj){
+          $('#ctujuan').append('<option value="'+destObj.id_destination+'">'+destObj.name+'</option>');
+        });
+      });
+    });
+@endsection

@@ -49,6 +49,8 @@ Route::get('/checkinpaket', 'CheckinpaketController@index');
 Route::get('/cso', 'CsoController@index');
 Route::get('/searchDestination', 'CsoController@search');
 Route::get('/searchDeparture', 'CsoController@search_list');
+Route::get('/searchCustomer', 'CsoController@search_customer');
+
 
 Route::get('/mastercabang', 'MastercabangController@index');
 

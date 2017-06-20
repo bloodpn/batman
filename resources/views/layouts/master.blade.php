@@ -36,50 +36,9 @@
 <script src="/js/bootstrap-datepicker.js"></script>
 <script src="/js/bootstrap-timepicker.min.js"></script>
 <script type="text/javascript">
-
-            $(document).ready(function() {
-                @yield('script')
-            });
-	
-</script>
+     @yield('script')
+</script><!-- 
 <script type="text/javascript">
-	$('.input_class_checkbox').each(function(){
-    $(this).hide().after('<div class="class_checkbox" />');
-
-	});
-
-	$('.class_checkbox').on('click',function(){
-	    $(this).toggleClass('checked').prev().prop('checked',$(this).is('.checked'))
-	});
-
-	// Asal Dan Tujuan
-	$('#asal').on('change', function(e){
-      var id_counter= e.target.value;
-      console.log(id_counter);
-      $.get('/search-destination-package?id=' +id_counter, function(data){
-      console.log(data);
-        $('#ctujuan').empty();
-
-        $.each(data, function(index, destObj){
-          $('#ctujuan').append('<option value="'+destObj.id_destination+'">'+destObj.name+'</option>');
-        });
-      });
-    });
 	
-	 //Timepicker
-	$(".timepicker").timepicker({
-	  showInputs: false
-	});
-
-	function pepe(){
-        if($('.pp').is(":checked"))
-        $("#tgl11").show();
-    }
-
-    function seje(){
-        if($('.sj').is(":checked"))
-        $("#tgl11").hide();
-    }
-
-</script>
+</script> -->
 <!-- <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script> -->
