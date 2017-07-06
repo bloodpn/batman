@@ -24,31 +24,31 @@
             <div class="col-md-6">
              <table class="table table-striped">
                 <tr>
-                  <th class="text-center" colspan="2">Asal - Tujuan</th>
+                  <th class="text-center" colspan="2">{{$origin->name}} - {{$destination->name}}</th>
                 </tr>
                 <tr>
                   <td class="col-md-5">Tanggal Keberangkatan</td>
-                  <td>Budi</td>
+                  <td>{{$depart_date}}</td>
                 </tr>
                 <tr>
                   <td class="col-md-5">Nama</td>
-                  <td>Budi</td>
+                  <td>{{$name}}</td>
                 </tr>
                 <tr>
                   <td>No. Telepon</td>
-                  <td>Budi</td>
+                  <td>{{$phone}}</td>
                 </tr>
                 <tr>
                   <td>Jumlah Penumpang</td>
-                  <td>Budi</td>
+                  <td>{{$jumlah}}</td>
                 </tr>
                 <tr>
                   <td>Harga Tiket</td>
-                  <td>Budi</td>
+                  <td>{{$price}}</td>
                 </tr>
                 <tr>
                   <td class="col-md-5">Total Harga</td>
-                  <td>105000</td>
+                  <td>{{$total_price}}</td>
                 </tr>
                 <tr></tr>
               </table>
@@ -72,6 +72,7 @@
                   <td>Voucher</td>
                   <td>
                     <input type="number" name="phone" id="phoneCustomer" class="form-control" placeholder="Telepon" required="">
+                    <input type="hidden" name="id_reservation" value="{{$id_reservation}}">
                   </td>
                   <td><button class="btn btn-primary btn-flat">Cek</button></td>
                 </tr>

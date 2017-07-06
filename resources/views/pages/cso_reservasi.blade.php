@@ -27,10 +27,10 @@
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="form-group">
-                      <select class="form-control" style="width: 100%;" id="asal">
+                      <select class="form-control" style="width: 100%;" id="asal" name="origin">
                         <option>Cabang Asal</option>
                         @foreach($counter as $Counter)
-                        <option value="{{$Counter->id}}" name="origin">{{$Counter->name}}</option>
+                        <option value="{{$Counter->id}}">{{$Counter->name}}</option>
                         @endforeach
                       </select>
                     </div>
@@ -40,7 +40,7 @@
                   <div class="col-lg-12">
                     <div class="form-group">
                       <!-- <label>Keberangkatan</label> -->
-                      <select class="form-control" style="width: 100%;" class="ctujuan" id="ctujuan">
+                      <select class="form-control" style="width: 100%;" class="ctujuan" id="ctujuan"  name="counter_tujuan">
                         <option>Cabang Tujuan</option>
                       </select>
                     </div>
@@ -315,7 +315,7 @@
       $('#ctujuan').empty();
 
       $.each(data, function(index, destObj){
-        $('#ctujuan').append('<option value="'+destObj.id_route+'" name="counter_tujuan">'+destObj.counter_name+'</option>');
+        $('#ctujuan').append('<option value="'+destObj.id_route+'">'+destObj.counter_name+'</option>');
       });
     });
   });
@@ -351,7 +351,7 @@
             var a=1;
               $.each(data, function(index, desObj){
 
-                var list = '<tr><td>'+a+' <input type="hidden" value="'+desObj[0].id+'" name="schedule" id="listJadwal'+desObj[0].id+'"><input type="hidden" value="'+desObj[0].seat+'" name="jumlah"></td><td>'+desObj[0].time+'</td><td>'+desObj[0].seat+' '+"Kursi"+'</td><td>'+"Rp"+' '+desObj[0].ticket+'</td><td><input type="button" class="btn btn-primary btn-flat" onclick="pJadwal('+desObj[0].id+')" value="Pilih" /></td></tr>';
+                var list = '<tr><td>'+a+' <input type="hidden" value="'+desObj[0].id+'" name="schedule" id="listJadwal'+desObj[0].id+'"><input type="hidden" value="'+desObj[0].seat+'" name="jumlah"><input type="hidden" value="'+desObj[0].ticket+'" name="price"></td><td>'+desObj[0].time+'</td><td>'+desObj[0].seat+' '+"Kursi"+'</td><td>'+"Rp"+' '+desObj[0].ticket+'</td><td><input type="button" class="btn btn-primary btn-flat" onclick="pJadwal('+desObj[0].id+')" value="Pilih" /></td></tr>';
                  $('#scheduleList').append(list);
                  a=a+1;
               

@@ -140,7 +140,7 @@ class CsoController extends Controller
 
                  $searchShedule = Schedule::select('id')
                 ->where('id_route', '=' , $rute)
-                ->where('monday', '=', '1')
+                ->where('tuesday', '=', '1')
                 ->where('onsite' , 'yes')
                 ->get();
                
@@ -182,7 +182,7 @@ class CsoController extends Controller
             {
                  $searchShedule = Schedule::select('id')
                 ->where('id_route', '=' , $rute)
-                ->where('monday', '=', '1')
+                ->where('wednesday', '=', '1')
                 ->where('onsite' , 'yes')
                 ->get();
                
@@ -220,11 +220,11 @@ class CsoController extends Controller
                 //Return data to view
                  return ($list);
             } 
-            elseif ($lower_day == 'thrusday') 
+            elseif ($lower_day == 'thursday') 
             {
                  $searchShedule = Schedule::select('id')
                 ->where('id_route', '=' , $rute)
-                ->where('monday', '=', '1')
+                ->where('thursday', '=', '1')
                 ->where('onsite' , 'yes')
                 ->get();
                
@@ -267,7 +267,7 @@ class CsoController extends Controller
             {
                  $searchShedule = Schedule::select('id')
                 ->where('id_route', '=' , $rute)
-                ->where('monday', '=', '1')
+                ->where('friday', '=', '1')
                 ->where('onsite' , 'yes')
                 ->get();
                
@@ -311,7 +311,7 @@ class CsoController extends Controller
 
                  $searchShedule = Schedule::select('id')
                 ->where('id_route', '=' , $rute)
-                ->where('monday', '=', '1')
+                ->where('saturday', '=', '1')
                 ->where('onsite' , 'yes')
                 ->get();
                
@@ -395,9 +395,27 @@ class CsoController extends Controller
     }
     public function store(Request $request)
     {
+
+       // dd($request);
         $name = $request->name;
         $phone = $request->phone;
         $jumlah = $request->jumlah;
+        $price = $request->price;
+        $total_price = $price * $jumlah;
+        $id_origin = $request->origin;
+        $origin = Counter::select('name')
+        ->where('id',$id_origin)
+        ->firstOrFail();
+        
+
+        $id_routes = $request->counter_tujuan;
+        $destination = Route::select('counters.name as name')
+        ->join('counters', 'routes.id_destination', 'counters.id')
+        ->where('routes.id', '=' ,$id_routes)
+        ->firstOrFail();
+
+        // $destination = $destinations;
+
         $seat_passanger = $request->seat_passanger;
         $total_passanger = count($request->seat_passanger);
         $depart_date = $request->departure_date;
@@ -497,10 +515,15 @@ class CsoController extends Controller
                 $listpass->save();            
             }
         }
-        return redirect('payment-cso');
+        $departure = Departure::select('id','available','total_passenger')
+                ->where('departures.id_schedule', $id_schedule)
+                ->where('departure_date','=', $format_departure)
+                ->get();
+
+        return view('pages/cso_pembayaran', ['id_reservation' => $id_reservation, 'origin' => $origin, 'destination' => $destination, 'depart_date' => $depart_date, 'name' => $name, 'phone' => $phone, 'jumlah' => $jumlah, 'price' => $price, 'total_price' => $total_price]);
     }
     public function paymentcso(Request $request)
     {
-        return view('pages/cso_pembayaran');
+        return redirect('cso');
     }
 }
