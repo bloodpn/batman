@@ -47,9 +47,11 @@ Route::get('/ubahkursi', 'UbahkursiController@index');
 Route::get('/checkinpaket', 'CheckinpaketController@index');
 
 Route::get('/cso', 'CsoController@index');
+Route::post('/reservasiCso', 'CsoController@store');
 Route::get('/searchDestination', 'CsoController@search');
 Route::get('/searchDeparture', 'CsoController@search_list');
 Route::get('/searchSeat', 'CsoController@search_seat');
+Route::get('/payment-cso', 'CsoController@paymentcso');
 
 Route::get('/searchCustomer', 'CsoController@search_customer');
 

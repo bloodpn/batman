@@ -1,16 +1,12 @@
-.kursi{
-	background-image: url(../images/kursi.png);
-  background-size:     cover;
+input[type=checkbox].cekKursi + label {
+    display:inline-block;
+    padding: 0 0 0 0px;
+    background:url(../images/kursi.png) no-repeat;
+    height: 125px;
+    width: 125px;;
+    background-size: 50%;
 }
-input[type="checkbox"].cekKursi  {
-    /*display: none;*/
-    /*display: block;*/
-    background-image: url(../images/kursi.png);
-    width: 20px;
-    height: 20px;
-    background-size:     cover;
-    
-}
+
 input[type="checkbox"].cek {
     content: images/kursi.png;
     display: block;
@@ -31,7 +27,7 @@ input[type="checkbox"].cek {
     background-image: url(../images/kursi.png);
 }
 
-.class_checkbox_cs.checked {
+.class_checkbox_cso.checked {
     background-size:     cover;
     background-image: url(../images/kursikuning.png);
 }
