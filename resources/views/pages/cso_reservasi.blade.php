@@ -374,9 +374,8 @@
               data : 'phone='+ phone,
               dataType: 'json',
               success: function (data) {
-                if (data== ""){
-                  alert("adasdasd");
-                }else{
+                if (data != ""){
+                  alert(data[0].name);
                   $('#nameCustomer').val(data[0].name);
                 }
               }

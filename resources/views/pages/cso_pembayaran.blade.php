@@ -71,7 +71,7 @@
                 <tr>
                   <td>Voucher</td>
                   <td>
-                    <input type="number" name="phone" id="phoneCustomer" class="form-control" placeholder="Telepon" required="">
+                    <input type="number" name="phone" id="phoneCustomer" class="form-control" placeholder="Kode Voucher" required="">
                     <input type="hidden" name="id_reservation" value="{{$id_reservation}}">
                   </td>
                   <td><button class="btn btn-primary btn-flat">Cek</button></td>
