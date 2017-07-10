@@ -111,8 +111,8 @@
                       </tr>
                     </thead>
                       <tbody id="scheduleList">
-
-                      </tbody>
+            
+                      </tbody>          
                     </table>
                   </div>
                 </div>
@@ -125,14 +125,14 @@
                     <div class="form-group">
                       <input type="number" name="phone" id="phoneCustomer" class="form-control" placeholder="Telepon" required="">
                     </div>
-                  </div>
+                  </div>  
                 </div>
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
                       <input type="text" name="name" id="nameCustomer" class="form-control" placeholder="Nama" required="">
                     </div>
-                  </div>
+                  </div>  
                 </div>
               <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
@@ -236,19 +236,19 @@
                       <td>
                         <div class="EmpatBelas">
                           <input type="checkbox" name="seat_passanger[]" value="14" class="cekKursi" id="kEmpatbelas">
-                          <label id="label_one">14</label>
+                          <label id="label_one">14</label> 
                         </div>
                       </td>
                       <td>
                         <div class="LimaBelas">
                           <input type="checkbox" name="seat_passanger[]" value="15" class="cekKursi" id="kLimabelas">
-                          <label id="label_sixteen">15</label>
+                          <label id="label_sixteen">15</label>  
                         </div>
                       </td>
                       <td>
                         <div class="EnamBelas">
                           <input type="checkbox" name="seat_passanger[]" value="16" class="cekKursi" id="kEnambelas">
-                          <label id="label_sixteen">16</label>
+                          <label id="label_sixteen">16</label>  
                         </div>
                       </td>
                     </tr>
@@ -257,7 +257,7 @@
               </div>
               </div>
             </div>
-          </div>
+          </div> 
           <!-- /.box-footer-->
           <div class="col-lg-offset-10 col-lg-2 ">
             <input type="submit" class="btn btn-primary btn-flat btn-lg" name="Submit" value="create">
@@ -265,8 +265,8 @@
           </div>
         </div>
       <!-- /.box -->
-
-
+      
+        
       </form>
       </div>
     </section>
@@ -330,14 +330,14 @@
                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
             }
         })
-        e.preventDefault();
+        e.preventDefault(); 
         var formData = {
             rute: $('#ctujuan').val(),
             depart_date: $('#tgl_berangkat').val(),
             stats: $('.pilihan1').val()
         }
         var banyak = $('#scheduleList tr').length;
-        if (banyak > 0)
+        if (banyak > 0) 
         {
         $('#scheduleList tr').remove();
         }
@@ -354,7 +354,7 @@
                 var list = '<tr><td>'+a+' <input type="hidden" value="'+desObj[0].id+'" name="schedule" id="listJadwal'+desObj[0].id+'"><input type="hidden" value="'+desObj[0].seat+'" name="jumlah"><input type="hidden" value="'+desObj[0].ticket+'" name="price"><input type="hidden" value="'+desObj[0].time+'" name="time"></td><td>'+desObj[0].time+'</td><td>'+desObj[0].seat+' '+"Kursi"+'</td><td>'+"Rp"+' '+desObj[0].ticket+'</td><td><input type="button" class="btn btn-primary btn-flat" onclick="pJadwal('+desObj[0].id+')" value="Pilih" /></td></tr>';
                  $('#scheduleList').append(list);
                  a=a+1;
-
+              
               });
             },
             error: function (data) {
@@ -381,7 +381,7 @@
               }
           })
       });
-
+    
   })
 <!-- end search customer -->
 
@@ -398,7 +398,7 @@
             data : dataJadwal,
             dataType: 'json',
             success: function (data) {
-            for ($i=0; $i < data.length ; $i++) {
+            for ($i=0; $i < data.length ; $i++) { 
               if (data[$i].one == 0){
                 $('.kSatu').hide();
               }
@@ -414,7 +414,7 @@
                 $('.kDua').hide();
               }
               else if (data[$i].two == 1){
-                $('.kDua').show();
+                $('.kDua').show(); 
                   if (data[$i].seat_number == '2')
                   {
                    console.log('dua');
@@ -522,7 +522,7 @@
                 $('.EmpatBelas').hide();
               }
               else if (data[$i].fourteen == 1){
-                $('.EmpatBelas').show();
+                $('.EmpatBelas').hide();
               }
 
               if (data[$i].fifteen == 0){
@@ -540,8 +540,8 @@
               }
             }
           }
-
-
+            
+        
         })
 
   }
