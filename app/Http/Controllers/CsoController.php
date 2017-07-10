@@ -28,7 +28,7 @@ class CsoController extends Controller
     }
     public function search(Request $request)
     {
-        
+
     	$data = Route::select('id_destination','counters.name')
         ->join('counters', 'routes.id_destination', 'counters.id')
         ->where('id_origin',$request->id)
@@ -48,274 +48,15 @@ class CsoController extends Controller
 
             // Lowercase day
             $lower_day = strtolower($day);
-            if ($lower_day == 'sunday') 
+            if ($lower_day == 'sunday')
             {
                  $searchShedule = Schedule::select('id')
                 ->where('id_route', '=' , $rute)
                 ->where('monday', '=', '1')
                 ->where('onsite' , 'yes')
                 ->get();
-               
-                foreach ($searchShedule as $value) 
-                {
-                    $id_schedule  = $value['id'];
 
-                    $ticket = Departure::select()
-                    ->where('departures.id_schedule','=', $id_schedule)
-                    ->where('departure_date','like', $format)
-                    ->count();
-
-                    if ($ticket == 0 )
-                    {
-                        $list[] = Schedule::select('schedules.id','time','jumlah as seat','ticket')
-                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
-                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
-                        ->leftjoin('seats', 'seats.id', '=', 'schedules.id_seat')
-                        ->where ('schedules.id', '=' , $id_schedule)
-                        ->get();
-                    }
-                    else
-                    {
-                        $list[] = schedule::select('schedules.id','time','available as seat','ticket')
-                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
-                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
-                        ->where ('schedules.id', '=' , $id_schedule)
-                        ->get();
-
-                        //dd($carilist);
-
-                    }
-                }
-
-                //Return data to view
-                 return ($list);
-            } 
-            elseif ($lower_day == 'monday') 
-            {
-
-                $searchShedule = Schedule::select('id')
-                ->where('id_route', '=' , $rute)
-                ->where('monday', '=', '1')
-                ->where('onsite' , 'yes')
-                ->get();
-               
-                foreach ($searchShedule as $value) 
-                {
-                    $id_schedule  = $value['id'];
-
-                    $ticket = Departure::select()
-                    ->where('departures.id_schedule','=', $id_schedule)
-                    ->where('departure_date','like', $format)
-                    ->count();
-
-                    if ($ticket == 0 )
-                    {
-                        $list[] = Schedule::select('schedules.id','time','jumlah as seat','ticket')
-                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
-                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
-                        ->leftjoin('seats', 'seats.id', '=', 'schedules.id_seat')
-                        ->where ('schedules.id', '=' , $id_schedule)
-                        ->get();
-                    }
-                    else
-                    {
-                        $list[] = schedule::select('schedules.id','time','available as seat','ticket')
-                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
-                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
-                        ->where ('schedules.id', '=' , $id_schedule)
-                        ->get();
-
-                        //dd($carilist);
-
-                    }
-                }
-
-                //Return data to view
-                 return ($list);
-
-
-            } 
-            elseif ($lower_day == 'tuesday') 
-            {
-
-                 $searchShedule = Schedule::select('id')
-                ->where('id_route', '=' , $rute)
-                ->where('monday', '=', '1')
-                ->where('onsite' , 'yes')
-                ->get();
-               
-                foreach ($searchShedule as $value) 
-                {
-                    $id_schedule  = $value['id'];
-
-                    $ticket = Departure::select()
-                    ->where('departures.id_schedule','=', $id_schedule)
-                    ->where('departure_date','like', $format)
-                    ->count();
-
-                    if ($ticket == 0 )
-                    {
-                        $list[] = Schedule::select('schedules.id','time','jumlah as seat','ticket')
-                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
-                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
-                        ->leftjoin('seats', 'seats.id', '=', 'schedules.id_seat')
-                        ->where ('schedules.id', '=' , $id_schedule)
-                        ->get();
-                    }
-                    else
-                    {
-                        $list[] = schedule::select('schedules.id','time','available as seat','ticket')
-                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
-                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
-                        ->where ('schedules.id', '=' , $id_schedule)
-                        ->get();
-
-                        //dd($carilist);
-
-                    }
-                }
-
-                //Return data to view
-                 return ($list);
-            } 
-            elseif ($lower_day == 'wednesday') 
-            {
-                 $searchShedule = Schedule::select('id')
-                ->where('id_route', '=' , $rute)
-                ->where('monday', '=', '1')
-                ->where('onsite' , 'yes')
-                ->get();
-               
-                foreach ($searchShedule as $value) 
-                {
-                    $id_schedule  = $value['id'];
-
-                    $ticket = Departure::select()
-                    ->where('departures.id_schedule','=', $id_schedule)
-                    ->where('departure_date','like', $format)
-                    ->count();
-
-                    if ($ticket == 0 )
-                    {
-                        $list[] = Schedule::select('schedules.id','time','jumlah as seat','ticket')
-                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
-                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
-                        ->leftjoin('seats', 'seats.id', '=', 'schedules.id_seat')
-                        ->where ('schedules.id', '=' , $id_schedule)
-                        ->get();
-                    }
-                    else
-                    {
-                        $list[] = schedule::select('schedules.id','time','available as seat','ticket')
-                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
-                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
-                        ->where ('schedules.id', '=' , $id_schedule)
-                        ->get();
-
-                        //dd($carilist);
-
-                    }
-                }
-
-                //Return data to view
-                 return ($list);
-            } 
-            elseif ($lower_day == 'thrusday') 
-            {
-                 $searchShedule = Schedule::select('id')
-                ->where('id_route', '=' , $rute)
-                ->where('monday', '=', '1')
-                ->where('onsite' , 'yes')
-                ->get();
-               
-                foreach ($searchShedule as $value) 
-                {
-                    $id_schedule  = $value['id'];
-
-                    $ticket = Departure::select()
-                    ->where('departures.id_schedule','=', $id_schedule)
-                    ->where('departure_date','like', $format)
-                    ->count();
-
-                    if ($ticket == 0 )
-                    {
-                        $list[] = Schedule::select('schedules.id','time','jumlah as seat','ticket')
-                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
-                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
-                        ->leftjoin('seats', 'seats.id', '=', 'schedules.id_seat')
-                        ->where ('schedules.id', '=' , $id_schedule)
-                        ->get();
-                    }
-                    else
-                    {
-                        $list[] = schedule::select('schedules.id','time','available as seat','ticket')
-                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
-                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
-                        ->where ('schedules.id', '=' , $id_schedule)
-                        ->get();
-
-                        //dd($carilist);
-
-                    }
-                }
-
-                //Return data to view
-                 return ($list);
-
-            } 
-            elseif ($lower_day == 'friday') 
-            {
-                 $searchShedule = Schedule::select('id')
-                ->where('id_route', '=' , $rute)
-                ->where('monday', '=', '1')
-                ->where('onsite' , 'yes')
-                ->get();
-               
-                foreach ($searchShedule as $value) 
-                {
-                    $id_schedule  = $value['id'];
-
-                    $ticket = Departure::select()
-                    ->where('departures.id_schedule','=', $id_schedule)
-                    ->where('departure_date','like', $format)
-                    ->count();
-
-                    if ($ticket == 0 )
-                    {
-                        $list[] = Schedule::select('schedules.id','time','jumlah as seat','ticket')
-                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
-                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
-                        ->leftjoin('seats', 'seats.id', '=', 'schedules.id_seat')
-                        ->where ('schedules.id', '=' , $id_schedule)
-                        ->get();
-                    }
-                    else
-                    {
-                        $list[] = schedule::select('schedules.id','time','available as seat','ticket')
-                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
-                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
-                        ->where ('schedules.id', '=' , $id_schedule)
-                        ->get();
-
-                        //dd($carilist);
-
-                    }
-                }
-
-                //Return data to view
-                 return ($list);
-
-            } 
-            elseif ($lower_day == 'saturday') 
-            {
-
-                 $searchShedule = Schedule::select('id')
-                ->where('id_route', '=' , $rute)
-                ->where('monday', '=', '1')
-                ->where('onsite' , 'yes')
-                ->get();
-               
-                foreach ($searchShedule as $value) 
+                foreach ($searchShedule as $value)
                 {
                     $id_schedule  = $value['id'];
 
@@ -349,8 +90,267 @@ class CsoController extends Controller
                 //Return data to view
                  return ($list);
             }
-        } 
-        elseif ($stats == 'pp') 
+            elseif ($lower_day == 'monday')
+            {
+
+                $searchShedule = Schedule::select('id')
+                ->where('id_route', '=' , $rute)
+                ->where('monday', '=', '1')
+                ->where('onsite' , 'yes')
+                ->get();
+
+                foreach ($searchShedule as $value)
+                {
+                    $id_schedule  = $value['id'];
+
+                    $ticket = Departure::select()
+                    ->where('departures.id_schedule','=', $id_schedule)
+                    ->where('departure_date','like', $format)
+                    ->count();
+
+                    if ($ticket == 0 )
+                    {
+                        $list[] = Schedule::select('schedules.id','time','jumlah as seat','ticket')
+                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
+                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
+                        ->leftjoin('seats', 'seats.id', '=', 'schedules.id_seat')
+                        ->where ('schedules.id', '=' , $id_schedule)
+                        ->get();
+                    }
+                    else
+                    {
+                        $list[] = schedule::select('schedules.id','time','available as seat','ticket')
+                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
+                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
+                        ->where ('schedules.id', '=' , $id_schedule)
+                        ->get();
+
+                        //dd($carilist);
+
+                    }
+                }
+
+                //Return data to view
+                 return ($list);
+
+
+            }
+            elseif ($lower_day == 'tuesday')
+            {
+
+                 $searchShedule = Schedule::select('id')
+                ->where('id_route', '=' , $rute)
+                ->where('monday', '=', '1')
+                ->where('onsite' , 'yes')
+                ->get();
+
+                foreach ($searchShedule as $value)
+                {
+                    $id_schedule  = $value['id'];
+
+                    $ticket = Departure::select()
+                    ->where('departures.id_schedule','=', $id_schedule)
+                    ->where('departure_date','like', $format)
+                    ->count();
+
+                    if ($ticket == 0 )
+                    {
+                        $list[] = Schedule::select('schedules.id','time','jumlah as seat','ticket')
+                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
+                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
+                        ->leftjoin('seats', 'seats.id', '=', 'schedules.id_seat')
+                        ->where ('schedules.id', '=' , $id_schedule)
+                        ->get();
+                    }
+                    else
+                    {
+                        $list[] = schedule::select('schedules.id','time','available as seat','ticket')
+                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
+                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
+                        ->where ('schedules.id', '=' , $id_schedule)
+                        ->get();
+
+                        //dd($carilist);
+
+                    }
+                }
+
+                //Return data to view
+                 return ($list);
+            }
+            elseif ($lower_day == 'wednesday')
+            {
+                 $searchShedule = Schedule::select('id')
+                ->where('id_route', '=' , $rute)
+                ->where('monday', '=', '1')
+                ->where('onsite' , 'yes')
+                ->get();
+
+                foreach ($searchShedule as $value)
+                {
+                    $id_schedule  = $value['id'];
+
+                    $ticket = Departure::select()
+                    ->where('departures.id_schedule','=', $id_schedule)
+                    ->where('departure_date','like', $format)
+                    ->count();
+
+                    if ($ticket == 0 )
+                    {
+                        $list[] = Schedule::select('schedules.id','time','jumlah as seat','ticket')
+                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
+                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
+                        ->leftjoin('seats', 'seats.id', '=', 'schedules.id_seat')
+                        ->where ('schedules.id', '=' , $id_schedule)
+                        ->get();
+                    }
+                    else
+                    {
+                        $list[] = schedule::select('schedules.id','time','available as seat','ticket')
+                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
+                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
+                        ->where ('schedules.id', '=' , $id_schedule)
+                        ->get();
+
+                        //dd($carilist);
+
+                    }
+                }
+
+                //Return data to view
+                 return ($list);
+            }
+            elseif ($lower_day == 'thrusday')
+            {
+                 $searchShedule = Schedule::select('id')
+                ->where('id_route', '=' , $rute)
+                ->where('monday', '=', '1')
+                ->where('onsite' , 'yes')
+                ->get();
+
+                foreach ($searchShedule as $value)
+                {
+                    $id_schedule  = $value['id'];
+
+                    $ticket = Departure::select()
+                    ->where('departures.id_schedule','=', $id_schedule)
+                    ->where('departure_date','like', $format)
+                    ->count();
+
+                    if ($ticket == 0 )
+                    {
+                        $list[] = Schedule::select('schedules.id','time','jumlah as seat','ticket')
+                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
+                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
+                        ->leftjoin('seats', 'seats.id', '=', 'schedules.id_seat')
+                        ->where ('schedules.id', '=' , $id_schedule)
+                        ->get();
+                    }
+                    else
+                    {
+                        $list[] = schedule::select('schedules.id','time','available as seat','ticket')
+                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
+                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
+                        ->where ('schedules.id', '=' , $id_schedule)
+                        ->get();
+
+                        //dd($carilist);
+
+                    }
+                }
+
+                //Return data to view
+                 return ($list);
+
+            }
+            elseif ($lower_day == 'friday')
+            {
+                 $searchShedule = Schedule::select('id')
+                ->where('id_route', '=' , $rute)
+                ->where('monday', '=', '1')
+                ->where('onsite' , 'yes')
+                ->get();
+
+                foreach ($searchShedule as $value)
+                {
+                    $id_schedule  = $value['id'];
+
+                    $ticket = Departure::select()
+                    ->where('departures.id_schedule','=', $id_schedule)
+                    ->where('departure_date','like', $format)
+                    ->count();
+
+                    if ($ticket == 0 )
+                    {
+                        $list[] = Schedule::select('schedules.id','time','jumlah as seat','ticket')
+                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
+                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
+                        ->leftjoin('seats', 'seats.id', '=', 'schedules.id_seat')
+                        ->where ('schedules.id', '=' , $id_schedule)
+                        ->get();
+                    }
+                    else
+                    {
+                        $list[] = schedule::select('schedules.id','time','available as seat','ticket')
+                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
+                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
+                        ->where ('schedules.id', '=' , $id_schedule)
+                        ->get();
+
+                        //dd($carilist);
+
+                    }
+                }
+
+                //Return data to view
+                 return ($list);
+
+            }
+            elseif ($lower_day == 'saturday')
+            {
+
+                 $searchShedule = Schedule::select('id')
+                ->where('id_route', '=' , $rute)
+                ->where('monday', '=', '1')
+                ->where('onsite' , 'yes')
+                ->get();
+
+                foreach ($searchShedule as $value)
+                {
+                    $id_schedule  = $value['id'];
+
+                    $ticket = Departure::select()
+                    ->where('departures.id_schedule','=', $id_schedule)
+                    ->where('departure_date','like', $format)
+                    ->count();
+
+                    if ($ticket == 0 )
+                    {
+                        $list[] = Schedule::select('schedules.id','time','jumlah as seat','ticket')
+                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
+                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
+                        ->leftjoin('seats', 'seats.id', '=', 'schedules.id_seat')
+                        ->where ('schedules.id', '=' , $id_schedule)
+                        ->get();
+                    }
+                    else
+                    {
+                        $list[] = schedule::select('schedules.id','time','available as seat','ticket')
+                        ->leftjoin('routes', 'routes.id', '=', 'schedules.id_route')
+                        ->leftjoin('departures', 'departures.id_schedule', '=', 'schedules.id')
+                        ->where ('schedules.id', '=' , $id_schedule)
+                        ->get();
+
+                        //dd($carilist);
+
+                    }
+                }
+
+                //Return data to view
+                 return ($list);
+            }
+        }
+        elseif ($stats == 'pp')
         {
             dd($depart_date, $round_trip_date);
         }
@@ -381,7 +381,7 @@ class CsoController extends Controller
             ->join('seats', 'seats.id', '=', 'schedules.id_seat')
             ->get();
             // dd($searchSeat);
-        } else 
+        } else
         {
             $searchSeat = Schedule::select()
             ->where('schedules.id' , $id_sce)
@@ -403,10 +403,11 @@ class CsoController extends Controller
         $depart_date = $request->departure_date;
         $format_departure = date('Y-m-d', strtotime($depart_date));
         $format = $format_departure.'%';
+
         $search_customer = Customer::select('id')
             ->where('phone' , $phone)
             ->count();
-        
+
             if ($search_customer == 0)
             {
                 $customer = new Customer;
@@ -417,7 +418,7 @@ class CsoController extends Controller
                 $id_customer =  Customer::select('id')
                     ->where('phone' , $phone)
                     ->firstOrFail();
-            } 
+            }
             else
             {
                 $id_customer =  Customer::select('id')
@@ -430,6 +431,7 @@ class CsoController extends Controller
             ->where('departures.id_schedule', $id_schedule)
             ->where('departure_date','=', $format_departure)
             ->count();
+
         if ($departure == '0')
         {
             $departure = new Departure;
@@ -454,14 +456,14 @@ class CsoController extends Controller
                 ->orderBy('id', 'desc')
                 ->firstOrFail();
 
-            for ($i=0; $i < $total_passanger ; $i++) { 
+            for ($i=0; $i < $total_passanger ; $i++) {
                 $listpass = new ListPassenger;
                 $listpass->id_reservation = $id_reservation->id;
                 $listpass->name_passanger = $name;
                 $listpass->seat_number = $seat_passanger[$i];
                 $listpass->save();
             }
-            
+
         }
         else
         {
@@ -489,12 +491,12 @@ class CsoController extends Controller
                 ->orderBy('id', 'desc')
                 ->firstOrFail();
 
-            for ($i=0; $i < $total_passanger ; $i++) { 
+            for ($i=0; $i < $total_passanger ; $i++) {
                 $listpass = new ListPassenger;
                 $listpass->id_reservation = $id_reservation->id;
                 $listpass->name_passanger = $name;
                 $listpass->seat_number = $seat_passanger[$i];
-                $listpass->save();            
+                $listpass->save();
             }
         }
         return redirect('payment-cso');
