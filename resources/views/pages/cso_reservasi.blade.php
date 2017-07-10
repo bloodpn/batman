@@ -16,7 +16,7 @@
 
       <!-- Default box -->
       <div class="box">
-      <form action="/reservasiCso" method="POST">
+      <form action="/payment_cso" method="POST">
         <div class="box-header with-border">
            <h3 class="box-title">Hello Rob!</h3>
         </div>
@@ -27,10 +27,10 @@
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="form-group">
-                      <select class="form-control" style="width: 100%;" id="asal">
+                      <select class="form-control" style="width: 100%;" id="asal" name="origin">
                         <option>Cabang Asal</option>
                         @foreach($counter as $Counter)
-                        <option value="{{$Counter->id}}" name="origin">{{$Counter->name}}</option>
+                        <option value="{{$Counter->id}}">{{$Counter->name}}</option>
                         @endforeach
                       </select>
                     </div>
@@ -40,7 +40,7 @@
                   <div class="col-lg-12">
                     <div class="form-group">
                       <!-- <label>Keberangkatan</label> -->
-                      <select class="form-control" style="width: 100%;" class="ctujuan" id="ctujuan">
+                      <select class="form-control" style="width: 100%;" class="ctujuan" id="ctujuan"  name="counter_tujuan">
                         <option>Cabang Tujuan</option>
                       </select>
                     </div>
@@ -140,13 +140,13 @@
                     <tr>
                       <td>
                         <div class="kSatu">
-                            <input type="checkbox" name="seat_passanger[]" value="one" class="cekKursi" id="kSatu">
+                            <input type="checkbox" name="seat_passanger[]" value="1" class="cekKursi" id="kSatu">
                             <label id="label_one">1</label>
                             <label id="label_one_val"></label>
                         </div>
                       </td>
                       <td>
-                        <input type="checkbox" name="seat_passanger[]" value="zero" class="cekKursi" id="kNol">
+                        <input type="checkbox" name="seat_passanger[]" value="0" class="cekKursi" id="kNol">
                         <label id="label_one">0</label>
                         <label id="label_one_val"></label>
                       </td>
@@ -155,19 +155,19 @@
                     <tr>
                       <td>
                         <div class="kDua">
-                          <input type="checkbox" name="seat_passanger[]" value="two" class="cekKursi" id="kDua">
+                          <input type="checkbox" name="seat_passanger[]" value="2" class="cekKursi" id="kDua">
                           <label id="label_one">2</label>
                         </div>
                       </td>
                       <td>
                         <div class="kTiga">
-                          <input type="checkbox" name="seat_passanger[]" value="three" class="cekKursi" id="kTiga">
+                          <input type="checkbox" name="seat_passanger[]" value="3" class="cekKursi" id="kTiga">
                           <label id="label_one">3</label>
                         </div>
                       </td>
                       <td>
                         <div class="kEmpat">
-                          <input type="checkbox" name="seat_passanger[]" value="four" class="cekKursi" id="kEmpat">
+                          <input type="checkbox" name="seat_passanger[]" value="4" class="cekKursi" id="kEmpat">
                           <label id="label_one">4</label>
                         </div>
                       </td>
@@ -175,19 +175,19 @@
                      <tr>
                       <td>
                         <div class="kLima">
-                          <input type="checkbox" name="seat_passanger[]" value="five" class="cekKursi" id="kLima">
+                          <input type="checkbox" name="seat_passanger[]" value="5" class="cekKursi" id="kLima">
                           <label id="label_one">5</label>
                         </div>
                       </td>
                       <td>
                         <div class="kEnam">
-                          <input type="checkbox" name="seat_passanger[]" value="six" class="cekKursi" id="kEnam">
+                          <input type="checkbox" name="seat_passanger[]" value="6" class="cekKursi" id="kEnam">
                           <label id="label_one">6</label>
                         </div>
                       </td>
                       <td>
                         <div class="kTujuh">
-                          <input type="checkbox" name="seat_passanger[]" value="seven" class="cekKursi" id="kTujuh">
+                          <input type="checkbox" name="seat_passanger[]" value="7" class="cekKursi" id="kTujuh">
                           <label id="label_one">7</label>
                         </div>
                       </td>
@@ -195,19 +195,19 @@
                     <tr>
                       <td>
                         <div class="kDelapan">
-                          <input type="checkbox" name="seat_passanger[]" value="eight" class="cekKursi" id="kDelapan">
+                          <input type="checkbox" name="seat_passanger[]" value="8" class="cekKursi" id="kDelapan">
                           <label id="label_one">8</label>
                         </div>
                       </td>
                       <td>
                         <div class="kSembilan">
-                          <input type="checkbox" name="seat_passanger[]" value="nine" class="cekKursi" id="kSembilan">
+                          <input type="checkbox" name="seat_passanger[]" value="9" class="cekKursi" id="kSembilan">
                           <label id="label_one">9</label>
                         </div>
                       </td>
                       <td>
                         <div class="kSepuluh">
-                          <input type="checkbox" name="seat_passanger[]" value="ten" class="cekKursi" id="kSepuluh">
+                          <input type="checkbox" name="seat_passanger[]" value="10" class="cekKursi" id="kSepuluh">
                           <label id="label_one">10</label>
                         </div>
                       </td>
@@ -215,19 +215,19 @@
                      <tr>
                       <td>
                         <div class="kSebelas">
-                          <input type="checkbox" name="seat_passanger[]" value="eleven" class="cekKursi" id="kSebelas">
+                          <input type="checkbox" name="seat_passanger[]" value="11" class="cekKursi" id="kSebelas">
                           <label id="label_one">11</label>
                         </div>
                       </td>
                       <td>
                         <div class="DuaBelas">
-                          <input type="checkbox" name="seat_passanger[]" value="twelve" class="cekKursi" id="kDubelas">
+                          <input type="checkbox" name="seat_passanger[]" value="12" class="cekKursi" id="kDubelas">
                           <label id="label_one">12</label>
                         </div>
                       </td>
                       <td>
                         <div class="TigaBelas">
-                          <input type="checkbox" name="seat_passanger[]" value="thirteen" class="cekKursi" id="kTigabelas">
+                          <input type="checkbox" name="seat_passanger[]" value="13" class="cekKursi" id="kTigabelas">
                           <label id="label_one">13</label>
                         </div>
                       </td>
@@ -235,19 +235,19 @@
                     <tr>
                       <td>
                         <div class="EmpatBelas">
-                          <input type="checkbox" name="seat_passanger[]" value="fourteen" class="cekKursi" id="kEmpatbelas">
+                          <input type="checkbox" name="seat_passanger[]" value="14" class="cekKursi" id="kEmpatbelas">
                           <label id="label_one">14</label>
                         </div>
                       </td>
                       <td>
                         <div class="LimaBelas">
-                          <input type="checkbox" name="seat_passanger[]" value="fifteen" class="cekKursi" id="kLimabelas">
+                          <input type="checkbox" name="seat_passanger[]" value="15" class="cekKursi" id="kLimabelas">
                           <label id="label_sixteen">15</label>
                         </div>
                       </td>
                       <td>
                         <div class="EnamBelas">
-                          <input type="checkbox" name="seat_passanger[]" value="sixteen" class="cekKursi" id="kEnambelas">
+                          <input type="checkbox" name="seat_passanger[]" value="16" class="cekKursi" id="kEnambelas">
                           <label id="label_sixteen">16</label>
                         </div>
                       </td>
@@ -315,7 +315,7 @@
       $('#ctujuan').empty();
 
       $.each(data, function(index, destObj){
-        $('#ctujuan').append('<option value="'+destObj.id_route+'" name="counter_tujuan">'+destObj.counter_name+'</option>');
+        $('#ctujuan').append('<option value="'+destObj.id_route+'">'+destObj.counter_name+'</option>');
       });
     });
   });
@@ -351,7 +351,7 @@
             var a=1;
               $.each(data, function(index, desObj){
 
-                var list = '<tr><td>'+a+' <input type="hidden" value="'+desObj[0].id+'" name="schedule" id="listJadwal'+desObj[0].id+'"><input type="hidden" value="'+desObj[0].seat+'" name="jumlah"></td><td>'+desObj[0].time+'</td><td>'+desObj[0].seat+' '+"Kursi"+'</td><td>'+"Rp"+' '+desObj[0].ticket+'</td><td><input type="button" class="btn btn-primary btn-flat" onclick="pJadwal('+desObj[0].id+')" value="Pilih" /></td></tr>';
+                var list = '<tr><td>'+a+' <input type="hidden" value="'+desObj[0].id+'" name="schedule" id="listJadwal'+desObj[0].id+'"><input type="hidden" value="'+desObj[0].seat+'" name="jumlah"><input type="hidden" value="'+desObj[0].ticket+'" name="price"><input type="hidden" value="'+desObj[0].time+'" name="time"></td><td>'+desObj[0].time+'</td><td>'+desObj[0].seat+' '+"Kursi"+'</td><td>'+"Rp"+' '+desObj[0].ticket+'</td><td><input type="button" class="btn btn-primary btn-flat" onclick="pJadwal('+desObj[0].id+')" value="Pilih" /></td></tr>';
                  $('#scheduleList').append(list);
                  a=a+1;
 
@@ -374,9 +374,8 @@
               data : 'phone='+ phone,
               dataType: 'json',
               success: function (data) {
-                if (data== ""){
-                  alert("adasdasd");
-                }else{
+                if (data != ""){
+                  alert(data[0].name);
                   $('#nameCustomer').val(data[0].name);
                 }
               }
@@ -405,7 +404,7 @@
               }
               else if (data[$i].one == 1) {
                 $('.kSatu').show();
-                  if (data[$i].seat_number == 'one')
+                  if (data[$i].seat_number == '1')
                   {
                    console.log('satu');
                   }
@@ -416,7 +415,7 @@
               }
               else if (data[$i].two == 1){
                 $('.kDua').show();
-                  if (data[$i].seat_number == 'two')
+                  if (data[$i].seat_number == '2')
                   {
                    console.log('dua');
                   }
@@ -427,7 +426,7 @@
               }
               else if (data[$i].three == 1){
                 $('.kTiga').show();
-                if (data[$i].seat_number == 'three')
+                if (data[$i].seat_number == '3')
                   {
                    console.log('tiga');
                   }
@@ -438,7 +437,7 @@
               }
               else if (data[$i].four == 1){
                 $('.kEmpat').show();
-                if (data[$i].seat_number == 'four')
+                if (data[$i].seat_number == '4')
                   {
                    console.log('empat');
                   }
@@ -449,7 +448,7 @@
               }
               else if (data[$i].five == 1){
                 $('.kLima').show();
-                if (data[$i].seat_number == 'five')
+                if (data[$i].seat_number == '5')
                 {
                   console.log('lima');
                 }
@@ -460,7 +459,7 @@
               }
               else if (data[$i].six == 1){
                 $('.kEnam').show();
-                  if (data[$i].seat_number == 'six')
+                  if (data[$i].seat_number == '6')
                   {
                    console.log('six');
                   }
@@ -471,7 +470,7 @@
               }
               else if (data[$i].seven == 1){
                 $('.kTujuh').show();
-                if (data[$i].seat_number == 'seven')
+                if (data[$i].seat_number == '7')
                   {
                    console.log('tujuh');
                   }
