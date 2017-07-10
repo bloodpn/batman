@@ -380,13 +380,37 @@ class CsoController extends Controller
         $phone = $request->phone;
         $jumlah = $request->jumlah;
         $price = $request->price;
+        $times = $request->time;
+        $time= date('H:i', strtotime($times));
         $total_passanger = count($request->seat_passanger);
         $total_price = $price * $total_passanger;
         $id_origin = $request->origin;
         $origin = Counter::select('name')
         ->where('id',$id_origin)
         ->firstOrFail();
-        
+
+        $today = date('Ymd');
+        $today2 = substr($today, 2);
+        $today1 = '%'.$today2.'%';
+        $searchtiket = Reservation::select('ticket_number')
+            ->where('ticket_number', 'like', $today1)
+            ->orderBy('id', 'desc')
+            ->firstOrFail();
+        $last_no = substr($searchtiket->ticket_number, 7, 3);
+        $NewID1 = $last_no  + 1;
+        $ticketnumber = $id_origin.$today2.sprintf('%03s', $NewID1);
+        // dd($searchtiket);
+        // dd($last_no);
+        // dd($NewID1);
+        // dd($ticketnumber);
+
+        // $query1 = mysql_query("SELECT max(id_tuneup) AS id FROM dbt_tuneup WHERE id_tuneup LIKE '$today1%'");
+        // $data2 = mysql_fetch_array($query1);
+        // $last_nosewa = $data2['id'];
+        // $last_no = substr($last_nosewa, 6, 3);
+        // $NewID1 = $last_no  + 1;
+        // $NewID2 = $today1.sprintf('%03s', $NewID1);
+            
 
         $id_routes = $request->counter_tujuan;
         $destination = Route::select('counters.name as name')
@@ -442,16 +466,18 @@ class CsoController extends Controller
             $reservation->id_departure = $id_departure->id;
             $reservation->id_customer = $id_customer->id;
             $reservation->total_passengers = $total_passanger;
+            $reservation->ticket_number = $ticketnumber;
             $reservation->type_reservation = 'onsite';
             $reservation->save();
 
-            $id_reservation = Reservation::select('id')
+            $reservation = Reservation::select('id')
                 ->orderBy('id', 'desc')
                 ->firstOrFail();
+            $id_reservation = $reservation->id;
 
             for ($i=0; $i < $total_passanger ; $i++) { 
                 $listpass = new ListPassenger;
-                $listpass->id_reservation = $id_reservation->id;
+                $listpass->id_reservation = $id_reservation;
                 $listpass->name_passanger = $name;
                 $listpass->seat_number = $seat_passanger[$i];
                 $listpass->save();
@@ -477,16 +503,18 @@ class CsoController extends Controller
             $reservation->id_departure = $id_departure[0]->id;
             $reservation->id_customer = $id_customer->id;
             $reservation->total_passengers = $total_passanger;
+            $reservation->ticket_number = $ticketnumber;
             $reservation->type_reservation = 'onsite';
             $reservation->save();
 
-            $id_reservation = Reservation::select('id')
+            $reservation = Reservation::select('id')
                 ->orderBy('id', 'desc')
                 ->firstOrFail();
+            $id_reservation = $reservation->id;
 
             for ($i=0; $i < $total_passanger ; $i++) { 
                 $listpass = new ListPassenger;
-                $listpass->id_reservation = $id_reservation->id;
+                $listpass->id_reservation = $id_reservation;
                 $listpass->name_passanger = $name;
                 $listpass->seat_number = $seat_passanger[$i];
                 $listpass->save();            
@@ -497,10 +525,16 @@ class CsoController extends Controller
                 ->where('departure_date','=', $format_departure)
                 ->get();
 
-        return view('pages/cso_pembayaran', ['id_reservation' => $id_reservation, 'origin' => $origin, 'destination' => $destination, 'depart_date' => $depart_date, 'name' => $name, 'phone' => $phone, 'jumlah' => $total_passanger, 'price' => $price, 'total_price' => $total_price,'seat' => $seat_passanger ]);
+        return view('pages/cso_pembayaran', ['id_reservation' => $id_reservation, 'origin' => $origin, 'destination' => $destination, 'depart_date' => $depart_date, 'name' => $name, 'phone' => $phone, 'jumlah' => $total_passanger, 'price' => $price, 'total_price' => $total_price,'seat' => $seat_passanger, 'time' => $time, 'ticketnumber' => $ticketnumber ]);
     }
-    public function paymentcso(Request $request)
+    public function store_payment(Request $request)
     {
+        $reservation_update= Reservation::find($request->id_reservation);
+        $reservation_update->amount = $request->total_biaya;
+        $reservation_update->discount = $request->discount;
+        $reservation_update->type_payment = $request->type_payment;
+        $reservation_update->save();
+
         return redirect('cso');
     }
 }

@@ -13,7 +13,7 @@
 
     <!-- Main content -->
     <section class="content">
-
+      <form action="/invoice_cso" method="POST">
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
@@ -61,43 +61,102 @@
                 <tr>
                   <td>Jenis Pembayaran</td>
                   <td colspan="2">
-                      <select class="form-control" style="width: 100%;" id="asal">
-                        <option>Cash</option>
-                        <option>Debit</option>
-                        <option>Credit</option>
+                      <select class="form-control" style="width: 100%;" id="asal" name="type_payment">
+                        <option value="cash">Cash</option>
+                        <option value="debit">Debit</option>
+                        <option value="credit">Credit</option>
                       </select>
                   </td>
                 </tr>
                 <tr>
                   <td>Voucher</td>
                   <td>
-                    <input type="number" name="phone" id="phoneCustomer" class="form-control" placeholder="Kode Voucher" required="">
+                    <input type="number" name="voucher" id="vouchercode" class="form-control" placeholder="Kode Voucher">
                     <input type="hidden" name="id_reservation" value="{{$id_reservation}}">
                   </td>
                   <td><button class="btn btn-primary btn-flat">Cek</button></td>
                 </tr>
                 <tr>
                   <td>Discount</td>
-                  <td colspan="2">0</td>
+                  <td colspan="2"><input type="text"  class="form-control" name="discount" id="discount" value="0" readonly=""></td>
                 </tr>
                 <tr>
                   <td>Total Pembayaran</td>
-                  <td colspan="2">Budi</td>
+                  <td colspan="2"><input type="text"  class="form-control" name="total_biaya" value="{{$total_price}}" readonly=""></td>
                 </tr>
               </table>
             </div>
           </div>
+
+          <div class="row" id="printInvoice">
+            <div class="col-lg-4">
+              <div class="row">
+                <div class="col-lg-12 text-center" style="font-size: 30px;">Xtrans</div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12 text-center">Pelopor Ontime Shuttle</div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-lg-12">{{$origin->name}} - {{$destination->name}}</div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">{{$depart_date}} - {{$time}} WIB</div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">{{$ticketnumber}}</div>
+              </div>
+              <br>
+              <table>
+                <tr>
+                  <td class="col-md-3">Name</td>
+                  <td>: {{$name}}</td>
+                </tr>
+                <tr>
+                @foreach ($seat as $seats)
+                  <td class="col-md-3">Seat</td>
+                  <td>: {{$seats}}</td>
+                @endforeach
+                </tr>
+                <tr>
+                  <td class="col-md-3">Price</td>
+                  <td>: {{$price}}</td>
+                </tr>
+                <tr>
+                  <td class="col-md-3">Discount</td>
+                  <td>:</td>
+                </tr>
+                <tr>
+                  <td class="col-md-3">Total</td>
+                  <td>: {{$total_price}}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
           <div class="row">
             <div class="col-md-1 pull-right">
-              <input type="submit" class="btn btn-primary btn-flat" name="Submit">
+              <input type="submit" class="btn btn-primary btn-flat" name="Submit" value="create">
+              {{csrf_field()}}
             </div>
           </div>
         </div>
         <!-- /.box-footer-->
       </div>
       <!-- /.box -->
-
+      </form>
     </section>
     <!-- /.content -->
   </div>
  @endsection
+
+@section('script')
+ function printContent(divName) {
+    var printInvoice = document.getElementById(divName).innerHTML;
+    var originalContents = document.body.innerHTML;
+    document.body.innerHTML = printInvoice;
+    window.print();
+    window.location.href= '{{url("invoice_cso")}}';
+    
+  }
+@endsection
