@@ -391,25 +391,14 @@ class CsoController extends Controller
 
         $today = date('Ymd');
         $today2 = substr($today, 2);
-        $today1 = '%'.$today2.'%';
+        $today1 = $id_origin.$today2.'%';
         $searchtiket = Reservation::select('ticket_number')
             ->where('ticket_number', 'like', $today1)
             ->orderBy('id', 'desc')
-            ->firstOrFail();
+            ->first();
         $last_no = substr($searchtiket->ticket_number, 7, 3);
         $NewID1 = $last_no  + 1;
         $ticketnumber = $id_origin.$today2.sprintf('%03s', $NewID1);
-        // dd($searchtiket);
-        // dd($last_no);
-        // dd($NewID1);
-        // dd($ticketnumber);
-
-        // $query1 = mysql_query("SELECT max(id_tuneup) AS id FROM dbt_tuneup WHERE id_tuneup LIKE '$today1%'");
-        // $data2 = mysql_fetch_array($query1);
-        // $last_nosewa = $data2['id'];
-        // $last_no = substr($last_nosewa, 6, 3);
-        // $NewID1 = $last_no  + 1;
-        // $NewID2 = $today1.sprintf('%03s', $NewID1);
             
 
         $id_routes = $request->counter_tujuan;
